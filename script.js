@@ -182,13 +182,82 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(showNextToast, 4000);
 
 
+    // ── 9. COOKIE CONSENT ────────────────────────────────────────────────
+    const cookieBar       = document.getElementById('cookie-bar');
+    const cookieAcceptBtn = document.getElementById('cookie-accept-btn');
+    const COOKIE_KEY      = 'me_cookies_accepted';
+
+    if (cookieBar && !localStorage.getItem(COOKIE_KEY)) {
+        cookieBar.removeAttribute('hidden');
+        // Aparece 2 s después de carga para no saturar al usuario
+        setTimeout(() => cookieBar.classList.add('cookie-visible'), 2000);
+    }
+
+    if (cookieAcceptBtn) {
+        cookieAcceptBtn.addEventListener('click', () => {
+            if (!cookieBar) return;
+            cookieBar.classList.remove('cookie-visible');
+            cookieBar.addEventListener('transitionend', () => {
+                cookieBar.setAttribute('hidden', '');
+            }, { once: true });
+            localStorage.setItem(COOKIE_KEY, '1');
+        });
+    }
+
+
+    // ── 10. PRIVACY POLICY MODAL ─────────────────────────────────────────
+    const privacyModal    = document.getElementById('privacy-modal');
+    const privacyOpenBtn  = document.getElementById('privacy-open-btn');
+    const privacyCloseBtn = document.getElementById('privacy-close-btn');
+
+    // También abrir desde el footer si existe el enlace
+    const privacyFooterLink = document.getElementById('privacy-footer-link');
+
+    const openPrivacyModal = () => {
+        if (!privacyModal) return;
+        privacyModal.removeAttribute('hidden');
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            privacyModal.classList.add('privacy-visible');
+        }));
+        document.body.style.overflow = 'hidden';
+        if (privacyCloseBtn) privacyCloseBtn.focus();
+    };
+
+    const closePrivacyModal = () => {
+        if (!privacyModal) return;
+        privacyModal.classList.remove('privacy-visible');
+        document.body.style.overflow = '';
+        privacyModal.addEventListener('transitionend', () => {
+            privacyModal.setAttribute('hidden', '');
+        }, { once: true });
+    };
+
+    if (privacyOpenBtn)   privacyOpenBtn.addEventListener('click', openPrivacyModal);
+    if (privacyFooterLink) privacyFooterLink.addEventListener('click', e => { e.preventDefault(); openPrivacyModal(); });
+    if (privacyCloseBtn)  privacyCloseBtn.addEventListener('click', closePrivacyModal);
+
+    // Click fuera del glass → cerrar
+    if (privacyModal) {
+        privacyModal.addEventListener('click', e => {
+            if (e.target === privacyModal) closePrivacyModal();
+        });
+    }
+
+    // Escape → cerrar (sin interferir con el modal de conversión)
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && privacyModal && !privacyModal.hasAttribute('hidden')) {
+            closePrivacyModal();
+        }
+    });
+
+
     // ── 6. ROI SIMULATOR ──────────────────────────────────────────────────
-    const roiSlider  = document.getElementById('roi-slider');
-    const roiService = document.getElementById('roi-service');
-    const roiAmount  = document.getElementById('roi-amount');
-    const roiPats    = document.getElementById('roi-patients');
-    const roiRev     = document.getElementById('roi-revenue');
-    const roiRoas    = document.getElementById('roi-roas');
+    const roiSlider   = document.getElementById('roi-slider');
+    const roiSvcGroup = document.getElementById('roi-service-group');
+    const roiAmount   = document.getElementById('roi-amount');
+    const roiPats     = document.getElementById('roi-patients');
+    const roiRev      = document.getElementById('roi-revenue');
+    const roiRoas     = document.getElementById('roi-roas');
 
     const fmtMXN = n => '$' + Number(n).toLocaleString('es-MX');
 
@@ -198,10 +267,15 @@ document.addEventListener('DOMContentLoaded', () => {
         roiSlider.style.setProperty('--fill-pct', pct.toFixed(2) + '%');
     };
 
+    const getActiveTicket = () => {
+        const active = roiSvcGroup && roiSvcGroup.querySelector('.roi-svc-btn--active');
+        return parseInt(active ? active.dataset.value : '6000');
+    };
+
     const calcROI = () => {
-        if (!roiSlider || !roiService) return;
+        if (!roiSlider) return;
         const inv    = parseInt(roiSlider.value);
-        const ticket = parseInt(roiService.value);
+        const ticket = getActiveTicket();
         const CPL    = 350;     // costo por lead promedio sector estético (MXN)
         const conv   = 0.267;   // 26.7% leads → pacientes agendados
         const leads    = inv / CPL;
@@ -216,11 +290,30 @@ document.addEventListener('DOMContentLoaded', () => {
         updateSliderFill();
     };
 
-    if (roiSlider && roiService) {
+    if (roiSlider) {
         roiSlider.addEventListener('input', calcROI, { passive: true });
-        roiService.addEventListener('change', calcROI);
-        calcROI(); // inicializar con valores por defecto
     }
+
+    // Botones de servicio — selección exclusiva
+    if (roiSvcGroup) {
+        roiSvcGroup.querySelectorAll('.roi-svc-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                roiSvcGroup.querySelectorAll('.roi-svc-btn').forEach(b => {
+                    b.classList.remove('roi-svc-btn--active');
+                    b.setAttribute('aria-pressed', 'false');
+                });
+                btn.classList.add('roi-svc-btn--active');
+                btn.setAttribute('aria-pressed', 'true');
+                calcROI();
+            });
+        });
+        // ARIA inicial
+        roiSvcGroup.querySelectorAll('.roi-svc-btn').forEach(b => {
+            b.setAttribute('aria-pressed', b.classList.contains('roi-svc-btn--active') ? 'true' : 'false');
+        });
+    }
+
+    if (roiSlider) calcROI(); // inicializar con valores por defecto
 
 
     // ── 7. LEAD FORM → WHATSAPP ───────────────────────────────────────────

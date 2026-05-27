@@ -343,15 +343,32 @@
                         </div>
                     </div>
 
-                    <!-- Servicio -->
+                    <!-- Servicio — botones de selección visual -->
                     <div>
-                        <label for="roi-service" class="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3 block">Servicio Principal / Ticket Promedio del Paciente:</label>
-                        <select id="roi-service" class="roi-select-light w-full" aria-label="Servicio principal y ticket promedio">
-                            <option value="3500">Aparatología / Limpiezas Faciales ($3,500 MXN)</option>
-                            <option value="6000" selected>Rellenos / Toxina Botulínica ($6,000 MXN)</option>
-                            <option value="15000">Tratamiento Integral de Rejuvenecimiento ($15,000 MXN)</option>
-                            <option value="65000">Procedimiento Quirúrgico / Lipo / Rinoplastia ($65,000 MXN)</option>
-                        </select>
+                        <p class="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Servicio Principal / Ticket Promedio del Paciente:</p>
+                        <div id="roi-service-group" class="grid grid-cols-2 gap-3" role="group" aria-label="Selecciona servicio y ticket promedio">
+
+                            <button type="button" class="roi-svc-btn" data-value="3500">
+                                <span class="roi-svc-price">$3,500 <small>MXN</small></span>
+                                <span class="roi-svc-label">Aparatología / Limpiezas Faciales</span>
+                            </button>
+
+                            <button type="button" class="roi-svc-btn roi-svc-btn--active" data-value="6000">
+                                <span class="roi-svc-price">$6,000 <small>MXN</small></span>
+                                <span class="roi-svc-label">Rellenos / Toxina Botulínica</span>
+                            </button>
+
+                            <button type="button" class="roi-svc-btn" data-value="15000">
+                                <span class="roi-svc-price">$15,000 <small>MXN</small></span>
+                                <span class="roi-svc-label">Rejuvenecimiento Integral</span>
+                            </button>
+
+                            <button type="button" class="roi-svc-btn" data-value="65000">
+                                <span class="roi-svc-price">$65,000 <small>MXN</small></span>
+                                <span class="roi-svc-label">Cirugía / Lipo / Rinoplastia</span>
+                            </button>
+
+                        </div>
                     </div>
                 </div>
 
@@ -628,6 +645,10 @@
                 <p class="text-gray-400 text-xs text-center md:text-left mb-4 md:mb-0 font-bold uppercase tracking-widest">
                     &copy; 2026 MédicoEstético.Marketing &middot; Fernanda Torres. Todos los derechos reservados.
                 </p>
+                <button id="privacy-footer-link" type="button"
+                        class="text-gray-400 hover:text-brand-primary text-xs font-bold uppercase tracking-widest transition-colors focus:outline-none focus-visible:underline">
+                    Aviso de Privacidad
+                </button>
             </div>
         </div>
     </footer>
@@ -638,10 +659,10 @@
 
     <!-- WhatsApp Flotante -->
     <div id="wa-float" role="complementary" aria-label="Contactar por WhatsApp">
-        <a href="https://wa.me/524425500232?text=Hola%20Fernanda%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20el%20marketing%20para%20mi%20cl%C3%ADnica%20est%C3%A9tica"
+        <a href="https://wa.me/524425500232?text=Estoy%20viendo%20tu%20sitio%20web%20y%20me%20interesa%20cotizar%20sus%20servicios%20%F0%9F%92%96"
            target="_blank" rel="noopener noreferrer"
            class="wa-btn"
-           aria-label="Abre WhatsApp para consultar sobre marketing médico estético">
+           aria-label="Cotizar servicios por WhatsApp">
             <span class="wa-pulse wa-pulse-1" aria-hidden="true"></span>
             <span class="wa-pulse wa-pulse-2" aria-hidden="true"></span>
             <svg class="wa-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -689,6 +710,73 @@
                target="_blank" rel="noopener noreferrer"
                class="sticky-bottom-cta">¡Reclamar Ahora!</a>
             <button id="sticky-bottom-close" class="sticky-bottom-close" aria-label="Cerrar banner de oferta">✕</button>
+        </div>
+    </div>
+
+    <!-- ░░ COOKIE CONSENT BAR ░░ -->
+    <div id="cookie-bar" class="cookie-bar" role="region" aria-label="Aviso de uso de cookies" hidden>
+        <div class="cookie-bar-icon" aria-hidden="true">🍪</div>
+        <div class="cookie-bar-body">
+            <p class="cookie-bar-text">
+                Usamos cookies para mejorar tu experiencia.
+                <button type="button" id="privacy-open-btn" class="cookie-privacy-link">Aviso de Privacidad</button>
+            </p>
+            <button type="button" id="cookie-accept-btn" class="cookie-accept-btn">Aceptar</button>
+        </div>
+    </div>
+
+    <!-- ░░ PRIVACY POLICY MODAL ░░ -->
+    <div id="privacy-modal" class="privacy-overlay" role="dialog" aria-modal="true"
+         aria-labelledby="privacy-title" hidden>
+        <div class="privacy-glass">
+            <div class="privacy-header">
+                <h2 id="privacy-title" class="privacy-title">Aviso de Privacidad</h2>
+                <button id="privacy-close-btn" class="privacy-close" aria-label="Cerrar aviso de privacidad">✕</button>
+            </div>
+            <div class="privacy-body">
+                <p class="privacy-updated">Última actualización: mayo 2026</p>
+
+                <h3>1. Responsable del tratamiento</h3>
+                <p><strong>MédicoEstético.Marketing</strong>, representada por <strong>Fernanda Torres</strong>, con domicilio en Querétaro, México, correo electrónico <a href="mailto:medicoestetico.marketing@gmail.com">medicoestetico.marketing@gmail.com</a> y teléfono <a href="tel:+524425500232">+52 442 550 0232</a>, es responsable del tratamiento de sus datos personales conforme a lo dispuesto en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP).</p>
+
+                <h3>2. Datos personales que recabamos</h3>
+                <p>Para llevar a cabo las finalidades descritas en este aviso, podemos recabar los siguientes datos:</p>
+                <ul>
+                    <li>Nombre completo</li>
+                    <li>Especialidad médica o tipo de clínica</li>
+                    <li>Número de WhatsApp o teléfono de contacto</li>
+                    <li>Correo electrónico</li>
+                    <li>Descripción de sus necesidades o retos de marketing</li>
+                </ul>
+
+                <h3>3. Finalidades del tratamiento</h3>
+                <p><strong>Finalidades primarias</strong> (necesarias para la relación):</p>
+                <ul>
+                    <li>Proporcionar diagnósticos y cotizaciones de servicios de marketing digital</li>
+                    <li>Dar seguimiento a solicitudes, consultas y contratos de servicios</li>
+                    <li>Cumplir con obligaciones derivadas de la prestación del servicio</li>
+                </ul>
+                <p><strong>Finalidades secundarias</strong> (opcionales):</p>
+                <ul>
+                    <li>Envío de información sobre estrategias, promociones y contenido educativo del sector estético</li>
+                    <li>Encuestas de satisfacción y mejora de servicios</li>
+                </ul>
+                <p>Si no desea que sus datos se usen para finalidades secundarias, puede comunicarlo a <a href="mailto:medicoestetico.marketing@gmail.com">medicoestetico.marketing@gmail.com</a>.</p>
+
+                <h3>4. Transferencias de datos</h3>
+                <p>Sus datos personales <strong>no serán transferidos a terceros</strong> sin su consentimiento previo, salvo en los casos permitidos por la LFPDPPP (autoridades competentes, obligación legal).</p>
+
+                <h3>5. Uso de cookies y tecnologías de rastreo</h3>
+                <p>Este sitio web puede utilizar cookies y tecnologías similares para analizar el tráfico y mejorar la experiencia de navegación. No se recaban datos personales sensibles a través de estas tecnologías. Puede desactivar las cookies desde la configuración de su navegador.</p>
+
+                <h3>6. Derechos ARCO</h3>
+                <p>Usted tiene derecho a <strong>Acceder, Rectificar, Cancelar u Oponerse</strong> al tratamiento de sus datos personales (Derechos ARCO). Para ejercerlos, envíe un correo a <a href="mailto:medicoestetico.marketing@gmail.com">medicoestetico.marketing@gmail.com</a> indicando su nombre, datos de contacto y la solicitud específica. Respondemos en un plazo máximo de 20 días hábiles.</p>
+
+                <h3>7. Modificaciones al aviso</h3>
+                <p>MédicoEstético.Marketing se reserva el derecho de actualizar este aviso en cualquier momento. Los cambios se publicarán en esta misma página con la fecha de actualización correspondiente.</p>
+
+                <p class="privacy-footer-note">Para cualquier duda adicional sobre el tratamiento de sus datos, contáctenos vía WhatsApp al <a href="https://wa.me/524425500232" target="_blank" rel="noopener noreferrer">+52 442 550 0232</a>.</p>
+            </div>
         </div>
     </div>
 
