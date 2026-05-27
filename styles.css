@@ -354,7 +354,7 @@ body {
 
 /* ─── BIO — SOY FER TORRES ──────────────────── */
 .bio-section {
-    background: #ffffff;
+    background: #f5e4de;
 }
 
 .bio-photo-wrap {
@@ -372,7 +372,6 @@ body {
     display: block;
     position: relative;
     z-index: 2;
-    mix-blend-mode: multiply;
 }
 
 .bio-headline {
