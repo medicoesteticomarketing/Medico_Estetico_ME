@@ -494,13 +494,23 @@ body {
     }
 }
 
-/* Dorado neón — tag handle hero */
+/* Dorado neón — tag handle hero (reservado) */
 .tag-neon-gold {
     color: #FFD700;
     text-shadow:
         0 0 6px rgba(255,215,0,0.9),
         0 0 14px rgba(255,185,0,0.6),
         0 0 28px rgba(255,165,0,0.3);
+}
+
+/* Amarillo neón — tag handle hero */
+.tag-neon-yellow {
+    color: #FFEE00;
+    text-shadow:
+        0 0 6px rgba(255,238,0,1),
+        0 0 14px rgba(255,238,0,0.7),
+        0 0 30px rgba(255,220,0,0.4),
+        0 0 50px rgba(255,200,0,0.2);
 }
 
 /* Palabra "estético" — tipografía con personalidad */
