@@ -173,9 +173,10 @@ body {
 .animation-delay-2000 { animation-delay: 2s; }
 
 /* ╔══════════════════════════════════════════════╗
-   ║  🔒 HERO CSS — BLOQUEADO · NO MODIFICAR     ║
-   ║  Aprobado por cliente · versión final        ║
-   ║  Última edición: 2026-05-27                  ║
+   ║  🔒 ZONA SUPERIOR — BLOQUEADA               ║
+   ║  Top Banner · Navbar · Hero Section         ║
+   ║  Aprobado por cliente · versión final       ║
+   ║  Última edición: 2026-05-27                 ║
    ╚══════════════════════════════════════════════╝ */
 /* ─── AURORA HERO BACKGROUND ─────────────────── */
 .hero-aurora {
