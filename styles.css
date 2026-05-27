@@ -6,7 +6,7 @@
 /* ─── BASE ───────────────────────────────────── */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 116px; /* banner 36px + navbar 80px */
+    scroll-padding-top: 148px; /* banner 36px + navbar 112px */
 }
 
 body {
@@ -21,11 +21,11 @@ body {
 
 /* ─── UTILITY CLASSES ────────────────────────── */
 .nav-link {
-    font-size: 0.8125rem;
-    font-weight: 700;
-    color: #4b5563;
-    text-transform: uppercase;
-    letter-spacing: 0.075em;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-style: italic;
+    color: #6b7280;
+    letter-spacing: 0.01em;
     padding: 0.25rem 0.5rem;
     border-radius: 0.375rem;
     transition: color 0.25s ease;
@@ -219,14 +219,14 @@ body {
 .ticker-item strong { font-weight: 900; }
 
 /* ─── HERO SECTION ───────────────────────────── */
-/* banner(36) + navbar(80) + extra breathing room */
+/* banner(36) + navbar(112) + extra breathing room */
 .hero-section {
-    padding-top: calc(36px + 80px + 4rem);
+    padding-top: calc(36px + 112px + 4rem);
     padding-bottom: 5rem;
 }
 @media (min-width: 1024px) {
     .hero-section {
-        padding-top: calc(36px + 80px + 6rem);
+        padding-top: calc(36px + 112px + 6rem);
         padding-bottom: 8rem;
     }
 }
@@ -238,16 +238,6 @@ body {
     /* línea decorativa debajo */
     position: relative;
     display: inline-block;
-}
-.hero-word-estetico::after {
-    content: '';
-    position: absolute;
-    bottom: 4px;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(90deg, #ff008a 0%, rgba(255,0,138,0.15) 100%);
-    border-radius: 9999px;
 }
 
 /* ─── SERVICE CARDS ──────────────────────────── */
