@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clínica Médica Especializada | Recupera tu Bienestar</title>
-    <meta name="description" content="Atención médica de excelencia con especialistas certificados. Agenda tu consulta hoy y recibe el mejor diagnóstico.">
+    <title>Marketing Médico Estético | Fernanda Torres</title>
+    <meta name="description" content="Especialista en Marketing Digital anichada en el sector estético. Incrementa tus pacientes con estrategias probadas en Facebook Ads, Google Ads e Instagram.">
     
-    <!-- Google Fonts -->
+    <!-- Google Fonts: Raleway como principal -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -18,17 +18,19 @@
             theme: {
                 extend: {
                     colors: {
-                        medical: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0ea5e9',
-                            600: '#0284c7', // Primary Blue
-                            800: '#075985', // Dark text
-                            900: '#0c4a6e', // Deep footer
+                        brand: {
+                            primary: '#ff008a', // Color Primario
+                            secondary: '#000000', // Color Secundario
+                            bg: '#fdf2f8', // Color de Fondo
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        // Utilizando Raleway como familia principal
+                        sans: ['Raleway', 'sans-serif'],
+                        // Fallback para Geometos en encabezados
+                        heading: ['"Geometos Regular"', 'Raleway', 'sans-serif'],
+                        // Fallback para Ophelia
+                        accent: ['Ophelia', 'serif']
                     }
                 }
             }
@@ -38,44 +40,44 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css">
     
-    <!-- Schema.org for LocalBusiness -->
+    <!-- Schema.org for ProfessionalService -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "MedicalClinic",
-      "name": "Clínica Médica Especializada",
-      "description": "Servicios médicos de alta calidad con especialistas certificados.",
-      "image": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=800",
-      "telephone": "+520000000000",
-      "url": "https://tudominio.com",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Av. Principal 123",
-        "addressLocality": "Ciudad",
-        "addressRegion": "Estado",
-        "postalCode": "00000",
-        "addressCountry": "MX"
-      }
+      "@type": "ProfessionalService",
+      "name": "Médico Estético Marketing",
+      "founder": {
+        "@type": "Person",
+        "name": "Fernanda Torres"
+      },
+      "description": "Especialista de marketing digital anichada en el sector estético.",
+      "telephone": "+524425500232",
+      "email": "medicoestetico.marketing@gmail.com",
+      "url": "https://60ecc09f.medico-estetico-me.pages.dev/",
+      "openingHours": "Mo,Tu,We,Th,Fr 10:00-18:00"
     }
     </script>
 </head>
-<body class="bg-white text-gray-800 font-sans antialiased overflow-x-hidden selection:bg-medical-500 selection:text-white">
+<body class="bg-brand-bg text-brand-secondary font-sans antialiased overflow-x-hidden selection:bg-brand-primary selection:text-white">
 
     <!-- Header / Nav -->
-    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300" id="navbar">
+    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-pink-100 transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center">
-                    <span class="font-bold text-2xl tracking-tight text-medical-900">Medi<span class="text-medical-600">Clinic</span>.</span>
+                    <!-- TODO: Reemplazar el texto por la etiqueta <img> cuando el logo esté alojado -->
+                    <span class="font-heading font-black text-xl tracking-tighter text-brand-secondary uppercase">
+                        Médico<span class="text-brand-primary">Estético</span>.Marketing
+                    </span>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#servicios" class="text-sm font-semibold text-gray-600 hover:text-medical-600 transition-colors focus:outline-none focus:ring-2 focus:ring-medical-500 rounded-md px-2 py-1">Especialidades</a>
-                    <a href="#testimonios" class="text-sm font-semibold text-gray-600 hover:text-medical-600 transition-colors focus:outline-none focus:ring-2 focus:ring-medical-500 rounded-md px-2 py-1">Pacientes</a>
-                    <a href="#faq" class="text-sm font-semibold text-gray-600 hover:text-medical-600 transition-colors focus:outline-none focus:ring-2 focus:ring-medical-500 rounded-md px-2 py-1">FAQ</a>
+                    <a href="#servicios" class="text-sm font-bold text-gray-600 hover:text-brand-primary transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary/50 rounded-md px-2 py-1 uppercase tracking-wide">Servicios</a>
+                    <a href="#autoridad" class="text-sm font-bold text-gray-600 hover:text-brand-primary transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary/50 rounded-md px-2 py-1 uppercase tracking-wide">Metodología</a>
+                    <a href="#testimonios" class="text-sm font-bold text-gray-600 hover:text-brand-primary transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary/50 rounded-md px-2 py-1 uppercase tracking-wide">Resultados</a>
                 </div>
                 <div class="flex">
-                    <a href="#contacto" class="bg-medical-600 text-white px-6 py-2.5 rounded-full font-semibold shadow-md hover:bg-medical-800 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-medical-500/50">
-                        Agenda tu Cita
+                    <a href="https://wa.me/524425500232" target="_blank" rel="noopener noreferrer" class="bg-brand-secondary text-white px-6 py-2.5 rounded-full font-bold shadow-md hover:bg-brand-primary hover:shadow-lg hover:shadow-brand-primary/30 transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-brand-primary/50 text-sm uppercase tracking-wider">
+                        Agenda Hoy
                     </a>
                 </div>
             </div>
@@ -83,146 +85,173 @@
     </header>
 
     <!-- 1. HERO SECTION -->
-    <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 relative">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 relative overflow-hidden">
+        <!-- Elementos decorativos -->
+        <div class="absolute inset-0 z-0 opacity-20" aria-hidden="true">
+            <div class="absolute top-20 left-10 w-96 h-96 bg-brand-primary rounded-full mix-blend-multiply filter blur-[100px] animate-blob"></div>
+            <div class="absolute top-40 right-10 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-[100px] animate-blob animation-delay-2000"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
             <div class="fade-in-up">
-                <span class="inline-block bg-medical-50 text-medical-800 px-4 py-1.5 rounded-full text-sm font-bold mb-6 tracking-wide border border-medical-100">
-                    ⚕️ Atención Médica Premium
+                <span class="inline-block bg-white text-brand-primary px-4 py-1.5 rounded-full text-xs font-black mb-6 tracking-widest uppercase border border-pink-200 shadow-sm">
+                    🚀 Exclusivo para Sector Médico y Estético
                 </span>
-                <h1 class="text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-medical-900">
-                    Tu salud en manos de <span class="text-medical-600">verdaderos expertos</span>.
+                <h1 class="text-5xl lg:text-7xl font-heading font-black leading-tight mb-6 text-brand-secondary uppercase">
+                    Convierte tus <br/><span class="text-brand-primary">seguidores</span> <br/>en pacientes.
                 </h1>
-                <p class="text-lg text-gray-600 mb-8 max-w-lg leading-relaxed">
-                    Diagnósticos precisos y tratamientos personalizados. Recupera tu bienestar hoy mismo con nuestros especialistas certificados.
+                <p class="text-lg text-gray-700 mb-8 max-w-lg leading-relaxed font-medium">
+                    Soy Fernanda Torres. Especialista en Marketing Digital anichada en el sector estético. Construyo sistemas de venta predecibles que llenan tu agenda todos los meses.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#contacto" class="bg-medical-600 text-white text-center px-8 py-4 rounded-full font-bold shadow-[0_8px_20px_rgba(2,132,199,0.3)] hover:shadow-[0_12px_25px_rgba(2,132,199,0.4)] hover:bg-medical-800 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-medical-500/50">
-                        Solicitar Valoración
-                    </a>
-                    <a href="#servicios" class="bg-white text-medical-800 border border-gray-200 text-center px-8 py-4 rounded-full font-bold hover:bg-gray-50 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-gray-200">
-                        Conocer Tratamientos
+                <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                    <a href="https://wa.me/524425500232" target="_blank" rel="noopener noreferrer" class="bg-brand-primary text-white text-center px-8 py-4 rounded-full font-black shadow-[0_8px_20px_rgba(255,0,138,0.3)] hover:shadow-[0_12px_25px_rgba(255,0,138,0.5)] hover:bg-pink-700 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-brand-primary/50 uppercase tracking-wide">
+                        Obtén 20% de Descuento
                     </a>
                 </div>
-                <div class="mt-8 flex items-center gap-4 text-sm text-gray-500 font-medium">
-                    <div class="flex -space-x-2">
-                        <img class="w-8 h-8 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=100" alt="Paciente">
-                        <img class="w-8 h-8 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100" alt="Paciente">
-                        <img class="w-8 h-8 rounded-full border-2 border-white object-cover" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" alt="Paciente">
-                    </div>
-                    <p>+2,000 pacientes atendidos este año.</p>
-                </div>
+                <p class="text-sm text-brand-secondary font-bold flex items-center">
+                    <span class="mr-2 text-brand-primary text-xl">✨</span> Promo: 3 meses con 20% OFF en tu pago mensual.
+                </p>
             </div>
             <div class="relative fade-in-up delay-200">
-                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=800" alt="Doctora sonriendo en clínica" class="rounded-3xl shadow-2xl object-cover h-[500px] lg:h-[600px] w-full">
+                <div class="absolute inset-0 bg-gradient-to-tr from-brand-primary/20 to-transparent rounded-[2.5rem] transform translate-x-4 translate-y-4" aria-hidden="true"></div>
+                <!-- TODO: Reemplazar por foto real de Fernanda Torres -->
+                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800" alt="Fernanda Torres - Marketing Médico Estético" class="relative z-10 rounded-[2.5rem] shadow-2xl object-cover h-[500px] lg:h-[650px] w-full border border-white/50">
             </div>
         </div>
     </section>
 
-    <!-- 2. AUTORIDAD (Trust Signals) -->
-    <section class="py-12 bg-medical-50 border-y border-medical-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <p class="text-center text-sm font-bold text-gray-500 uppercase tracking-widest mb-8">Respaldados por certificaciones de excelencia</p>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center items-center opacity-70">
-                <!-- Logos placeholder -->
-                <div class="fade-in-up font-bold text-xl text-medical-800">🏥 Consejo Médico Nacional</div>
-                <div class="fade-in-up delay-100 font-bold text-xl text-medical-800">🏅 ISO 9001 Salud</div>
-                <div class="fade-in-up delay-200 font-bold text-xl text-medical-800">🎓 Academia de Especialistas</div>
-                <div class="fade-in-up delay-300 font-bold text-xl text-medical-800">⭐ +15 Años Experiencia</div>
+    <!-- 2. AUTORIDAD (Certificaciones) -->
+    <section id="autoridad" class="py-16 bg-white border-y border-pink-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-sm font-black text-gray-400 uppercase tracking-widest mb-10">Metodología respaldada por</h2>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
+                <!-- Certificado 1 -->
+                <div class="flex items-center fade-in-up">
+                    <div class="w-16 h-16 bg-brand-bg rounded-2xl flex items-center justify-center text-brand-primary mr-4 border border-pink-100">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    </div>
+                    <div class="text-left">
+                        <p class="font-black text-brand-secondary text-lg">EC1474</p>
+                        <p class="text-xs text-gray-500 max-w-[200px] uppercase font-bold">Diseño y promoción de Marca Personal</p>
+                    </div>
+                </div>
+                <!-- Avalador -->
+                <div class="hidden md:block h-12 w-px bg-gray-200"></div>
+                <div class="fade-in-up delay-100">
+                    <p class="text-2xl font-black text-brand-secondary tracking-widest">RED<span class="text-brand-primary">CONOCER</span></p>
+                    <p class="text-xs text-gray-500 uppercase font-bold tracking-widest">Certificación Oficial</p>
+                </div>
+                <div class="hidden md:block h-12 w-px bg-gray-200"></div>
+                <!-- Certificado 2 -->
+                <div class="flex items-center fade-in-up delay-200">
+                    <div class="w-16 h-16 bg-brand-bg rounded-2xl flex items-center justify-center text-brand-primary mr-4 border border-pink-100">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    </div>
+                    <div class="text-left">
+                        <p class="font-black text-brand-secondary text-lg">EC1621</p>
+                        <p class="text-xs text-gray-500 max-w-[200px] uppercase font-bold">Estrategias de Mkt en medios digitales</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. SERVICIOS / TRATAMIENTOS -->
-    <section id="servicios" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- 3. SERVICIOS -->
+    <section id="servicios" class="py-24 bg-brand-bg relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 fade-in-up">
-                <h2 class="text-3xl lg:text-4xl font-extrabold text-medical-900 mb-4">Tratamientos Especializados</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto text-lg">Soluciones clínicas avanzadas diseñadas para resolver tu problema de raíz con la tecnología más moderna.</p>
+                <span class="text-sm text-brand-primary font-black uppercase tracking-widest mb-2 block">El Ecosistema</span>
+                <h2 class="text-4xl lg:text-5xl font-heading font-black text-brand-secondary mb-4 uppercase">¿Cómo llenamos <br/>tu agenda?</h2>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <article class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-400 hover:-translate-y-2 group fade-in-up">
-                    <div class="w-14 h-14 bg-medical-50 rounded-xl flex items-center justify-center mb-6 text-medical-600 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Servicio 1 -->
+                <article class="bg-white p-8 rounded-[2rem] border border-pink-100 shadow-sm hover:shadow-xl hover:border-brand-primary/30 transition-all duration-400 hover:-translate-y-2 group fade-in-up">
+                    <div class="w-16 h-16 bg-brand-bg rounded-2xl flex items-center justify-center mb-6 text-brand-primary group-hover:scale-110 group-hover:bg-brand-primary group-hover:text-white transition-all duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-medical-900">Consulta Diagnóstica</h3>
-                    <p class="text-gray-600 mb-6 line-clamp-3">Evaluación completa de tu estado de salud mediante equipos de última generación para identificar la causa exacta de tu malestar.</p>
-                    <a href="#contacto" class="text-medical-600 font-bold hover:text-medical-800 inline-flex items-center">
-                        Saber más <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
+                    <h3 class="text-xl font-black mb-3 text-brand-secondary uppercase">Facebook Ads</h3>
+                    <p class="text-gray-600 mb-6 text-sm leading-relaxed font-medium">Campañas hiper-segmentadas enfocadas exclusivamente en atraer pacientes interesados en tus tratamientos estéticos más rentables.</p>
                 </article>
                 
-                <!-- Card 2 -->
-                <article class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-400 hover:-translate-y-2 group fade-in-up delay-100">
-                    <div class="w-14 h-14 bg-medical-50 rounded-xl flex items-center justify-center mb-6 text-medical-600 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                <!-- Servicio 2 -->
+                <article class="bg-white p-8 rounded-[2rem] border border-pink-100 shadow-sm hover:shadow-xl hover:border-brand-primary/30 transition-all duration-400 hover:-translate-y-2 group fade-in-up delay-100">
+                    <div class="w-16 h-16 bg-brand-bg rounded-2xl flex items-center justify-center mb-6 text-brand-primary group-hover:scale-110 group-hover:bg-brand-primary group-hover:text-white transition-all duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-medical-900">Tratamiento Integral</h3>
-                    <p class="text-gray-600 mb-6 line-clamp-3">Protocolos médicos probados científicamente y adaptados a tus necesidades específicas para asegurar una recuperación óptima.</p>
-                    <a href="#contacto" class="text-medical-600 font-bold hover:text-medical-800 inline-flex items-center">
-                        Saber más <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
+                    <h3 class="text-xl font-black mb-3 text-brand-secondary uppercase">Google Ads</h3>
+                    <p class="text-gray-600 mb-6 text-sm leading-relaxed font-medium">Interceptamos a los pacientes que ya están buscando activamente clínicas estéticas o dermatológicas en tu ciudad. Aparece primero.</p>
                 </article>
 
-                <!-- Card 3 -->
-                <article class="bg-white p-8 rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-400 hover:-translate-y-2 group fade-in-up delay-200">
-                    <div class="w-14 h-14 bg-medical-50 rounded-xl flex items-center justify-center mb-6 text-medical-600 group-hover:scale-110 transition-transform duration-300">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                <!-- Servicio 3 -->
+                <article class="bg-white p-8 rounded-[2rem] border border-pink-100 shadow-sm hover:shadow-xl hover:border-brand-primary/30 transition-all duration-400 hover:-translate-y-2 group fade-in-up delay-200">
+                    <div class="w-16 h-16 bg-brand-bg rounded-2xl flex items-center justify-center mb-6 text-brand-primary group-hover:scale-110 group-hover:bg-brand-primary group-hover:text-white transition-all duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-medical-900">Seguimiento Continuo</h3>
-                    <p class="text-gray-600 mb-6 line-clamp-3">No te dejamos solo después de la cita. Acompañamiento médico garantizado hasta el alta definitiva de tu tratamiento.</p>
-                    <a href="#contacto" class="text-medical-600 font-bold hover:text-medical-800 inline-flex items-center">
-                        Saber más <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </a>
+                    <h3 class="text-xl font-black mb-3 text-brand-secondary uppercase">Branding & Marca</h3>
+                    <p class="text-gray-600 mb-6 text-sm leading-relaxed font-medium">Diseño y promoción de tu marca personal y clínica. Proyecta un posicionamiento Premium, seguro y confiable para cobrar lo que mereces.</p>
+                </article>
+
+                <!-- Servicio 4 -->
+                <article class="bg-white p-8 rounded-[2rem] border border-pink-100 shadow-sm hover:shadow-xl hover:border-brand-primary/30 transition-all duration-400 hover:-translate-y-2 group fade-in-up delay-300">
+                    <div class="w-16 h-16 bg-brand-bg rounded-2xl flex items-center justify-center mb-6 text-brand-primary group-hover:scale-110 group-hover:bg-brand-primary group-hover:text-white transition-all duration-300">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-black mb-3 text-brand-secondary uppercase">Instagram Strategy</h3>
+                    <p class="text-gray-600 mb-6 text-sm leading-relaxed font-medium">Estrategia de contenidos y ventas diseñada para educar, cautivar y convencer a tu comunidad de que tú eres su mejor opción estética.</p>
                 </article>
             </div>
         </div>
     </section>
 
     <!-- 4. PRUEBA SOCIAL -->
-    <section id="testimonios" class="py-24 bg-gray-50 border-t border-gray-100">
+    <section id="testimonios" class="py-24 bg-white border-t border-pink-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in-up">
-                <h2 class="text-3xl lg:text-4xl font-extrabold text-medical-900 mb-4">Pacientes Reales. Resultados Reales.</h2>
+                <h2 class="text-3xl lg:text-5xl font-heading font-black text-brand-secondary mb-4 uppercase">Testimonios</h2>
+                <p class="text-gray-500 font-bold tracking-widest uppercase text-sm">Doctores y clínicas que ya transformaron sus ventas</p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <article class="bg-white p-8 rounded-2xl shadow-sm fade-in-up relative">
-                    <div class="flex text-yellow-400 mb-4">★★★★★</div>
-                    <p class="text-gray-700 italic mb-6">"Llevaba meses con dolores que nadie lograba diagnosticar. En la primera consulta aquí me dieron un diagnóstico claro y en tres semanas ya me sentía perfecto. Excelente trato humano."</p>
+                <!-- Testimonial 1 Placeholder -->
+                <article class="bg-brand-bg p-10 rounded-[2rem] border border-pink-100 relative fade-in-up">
+                    <div class="absolute -top-5 right-10 text-6xl text-brand-primary opacity-20 font-serif font-black">"</div>
+                    <div class="flex text-brand-primary mb-6 text-xl">★★★★★</div>
+                    <p class="text-gray-700 italic mb-8 font-medium">"Desde que implementamos la estrategia de Fernanda, el volumen de pacientes cualificados para nuestros tratamientos estéticos aumentó drásticamente. Entiende perfectamente el lenguaje médico."</p>
                     <div class="flex items-center">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" alt="Roberto M." class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div class="w-12 h-12 rounded-full bg-pink-200 mr-4"></div>
                         <div>
-                            <p class="font-bold text-sm text-medical-900">Roberto M.</p>
-                            <p class="text-xs text-gray-500">Paciente de Consulta General</p>
+                            <p class="font-black text-sm text-brand-secondary uppercase">Dr. Placeholder</p>
+                            <p class="text-xs text-brand-primary font-bold">Servicio: FB & Google Ads</p>
                         </div>
                     </div>
                 </article>
                 
-                <!-- Testimonial 2 -->
-                <article class="bg-white p-8 rounded-2xl shadow-sm fade-in-up delay-100 relative">
-                    <div class="flex text-yellow-400 mb-4">★★★★★</div>
-                    <p class="text-gray-700 italic mb-6">"Las instalaciones son de primer nivel y el equipo de especialistas transmite una confianza absoluta. El tratamiento fue exactamente como me lo explicaron desde el día 1."</p>
+                <!-- Testimonial 2 Placeholder -->
+                <article class="bg-brand-bg p-10 rounded-[2rem] border border-pink-100 relative fade-in-up delay-100">
+                    <div class="absolute -top-5 right-10 text-6xl text-brand-primary opacity-20 font-serif font-black">"</div>
+                    <div class="flex text-brand-primary mb-6 text-xl">★★★★★</div>
+                    <p class="text-gray-700 italic mb-8 font-medium">"El rediseño de nuestra marca personal y la estrategia en Instagram nos posicionó como la clínica Premium que siempre quisimos ser. Dejamos de competir por precio."</p>
                     <div class="flex items-center">
-                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150" alt="Laura G." class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div class="w-12 h-12 rounded-full bg-pink-200 mr-4"></div>
                         <div>
-                            <p class="font-bold text-sm text-medical-900">Laura G.</p>
-                            <p class="text-xs text-gray-500">Paciente Tratamiento Integral</p>
+                            <p class="font-black text-sm text-brand-secondary uppercase">Clínica Estética XYZ</p>
+                            <p class="text-xs text-brand-primary font-bold">Servicio: Branding Médico</p>
                         </div>
                     </div>
                 </article>
-                
-                <!-- Testimonial 3 -->
-                <article class="bg-white p-8 rounded-2xl shadow-sm fade-in-up delay-200 relative">
-                    <div class="flex text-yellow-400 mb-4">★★★★★</div>
-                    <p class="text-gray-700 italic mb-6">"Agendar fue muy rápido por WhatsApp. Entré a mi cita puntualmente y el doctor me explicó todo con detalle, sin prisa. 100% recomendados en toda la ciudad."</p>
+
+                <!-- Testimonial 3 Placeholder -->
+                <article class="bg-brand-bg p-10 rounded-[2rem] border border-pink-100 relative fade-in-up delay-200">
+                    <div class="absolute -top-5 right-10 text-6xl text-brand-primary opacity-20 font-serif font-black">"</div>
+                    <div class="flex text-brand-primary mb-6 text-xl">★★★★★</div>
+                    <p class="text-gray-700 italic mb-8 font-medium">"Trabajar con especialistas de marketing anichados en el sector estético hace toda la diferencia. Saben qué contenido funciona y cómo evitar bloqueos en anuncios."</p>
                     <div class="flex items-center">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150" alt="María C." class="w-12 h-12 rounded-full object-cover mr-4">
+                        <div class="w-12 h-12 rounded-full bg-pink-200 mr-4"></div>
                         <div>
-                            <p class="font-bold text-sm text-medical-900">María C.</p>
-                            <p class="text-xs text-gray-500">Paciente Seguimiento</p>
+                            <p class="font-black text-sm text-brand-secondary uppercase">Dra. Placeholder</p>
+                            <p class="text-xs text-brand-primary font-bold">Servicio: Estrategia Integral</p>
                         </div>
                     </div>
                 </article>
@@ -231,71 +260,59 @@
     </section>
 
     <!-- 5. FAQ -->
-    <section id="faq" class="py-24 bg-white">
+    <section id="faq" class="py-24 bg-brand-secondary text-white">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in-up">
-                <h2 class="text-3xl lg:text-4xl font-extrabold text-medical-900 mb-4">Preguntas Frecuentes</h2>
-                <p class="text-gray-600">Resolvemos tus dudas principales para que asistas con total tranquilidad.</p>
+                <h2 class="text-3xl lg:text-4xl font-heading font-black mb-4 uppercase">¿Tienes Dudas?</h2>
+                <p class="text-gray-400 font-medium">Todo sobre el servicio de marketing médico estético.</p>
             </div>
             
             <div class="space-y-4 fade-in-up delay-100">
                 <!-- Q1 -->
-                <div class="faq-item border-b border-gray-200">
-                    <button class="faq-button w-full py-5 text-left flex justify-between items-center font-bold text-lg text-medical-900 focus:outline-none focus:text-medical-600 transition-colors" aria-expanded="false">
-                        ¿Atienden emergencias médicas sin cita previa?
-                        <span class="faq-icon transform transition-transform duration-300 text-medical-600" aria-hidden="true">↓</span>
+                <div class="faq-item bg-white/5 border border-white/10 rounded-2xl">
+                    <button class="faq-button w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg focus:outline-none focus:text-brand-primary transition-colors" aria-expanded="false">
+                        ¿Trabajas con clínicas fuera de tu ciudad?
+                        <span class="faq-icon transform transition-transform duration-300 text-brand-primary font-light" aria-hidden="true">+</span>
                     </button>
                     <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="pb-5 text-gray-600 text-sm leading-relaxed">
-                            Trabajamos principalmente mediante citas programadas para garantizar el tiempo y la atención que cada paciente merece. Para urgencias vitales, sugerimos acudir a la sala de emergencias más cercana.
+                        <div class="px-6 pb-5 text-gray-300 text-sm leading-relaxed">
+                            Absolutamente. Nuestros servicios de marketing digital, Ads y Branding se ejecutan 100% de manera remota para clínicas en cualquier lugar.
                         </div>
                     </div>
                 </div>
                 <!-- Q2 -->
-                <div class="faq-item border-b border-gray-200">
-                    <button class="faq-button w-full py-5 text-left flex justify-between items-center font-bold text-lg text-medical-900 focus:outline-none focus:text-medical-600 transition-colors" aria-expanded="false">
-                        ¿Aceptan seguros de gastos médicos mayores?
-                        <span class="faq-icon transform transition-transform duration-300 text-medical-600" aria-hidden="true">↓</span>
+                <div class="faq-item bg-white/5 border border-white/10 rounded-2xl">
+                    <button class="faq-button w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg focus:outline-none focus:text-brand-primary transition-colors" aria-expanded="false">
+                        ¿Cómo funciona la promoción del 20% de descuento?
+                        <span class="faq-icon transform transition-transform duration-300 text-brand-primary font-light" aria-hidden="true">+</span>
                     </button>
                     <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="pb-5 text-gray-600 text-sm leading-relaxed">
-                            Sí, trabajamos por reembolso con la mayoría de las aseguradoras del país. Al finalizar tu consulta te entregaremos factura y reporte médico completo para tu trámite.
+                        <div class="px-6 pb-5 text-gray-300 text-sm leading-relaxed">
+                            Al contratar nuestros planes de acompañamiento, te aplicamos un 20% de descuento directo en tu pago mensual durante tus primeros 3 meses, para ayudarte a maximizar tu ROI inicial.
                         </div>
                     </div>
                 </div>
                 <!-- Q3 -->
-                <div class="faq-item border-b border-gray-200">
-                    <button class="faq-button w-full py-5 text-left flex justify-between items-center font-bold text-lg text-medical-900 focus:outline-none focus:text-medical-600 transition-colors" aria-expanded="false">
-                        ¿Qué incluye la primera consulta de valoración?
-                        <span class="faq-icon transform transition-transform duration-300 text-medical-600" aria-hidden="true">↓</span>
+                <div class="faq-item bg-white/5 border border-white/10 rounded-2xl">
+                    <button class="faq-button w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg focus:outline-none focus:text-brand-primary transition-colors" aria-expanded="false">
+                        ¿Las campañas incluyen presupuesto para Facebook o Google?
+                        <span class="faq-icon transform transition-transform duration-300 text-brand-primary font-light" aria-hidden="true">+</span>
                     </button>
                     <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="pb-5 text-gray-600 text-sm leading-relaxed">
-                            Incluye historial clínico detallado, exploración física completa, revisión de estudios previos (si los tienes) y un plan de tratamiento o diagnóstico inicial sugerido por el especialista.
+                        <div class="px-6 pb-5 text-gray-300 text-sm leading-relaxed">
+                            Nuestros honorarios cubren la estrategia, creación, gestión y optimización experta. La inversión publicitaria (pauta) se paga directamente a las plataformas desde la tarjeta de la clínica.
                         </div>
                     </div>
                 </div>
                 <!-- Q4 -->
-                <div class="faq-item border-b border-gray-200">
-                    <button class="faq-button w-full py-5 text-left flex justify-between items-center font-bold text-lg text-medical-900 focus:outline-none focus:text-medical-600 transition-colors" aria-expanded="false">
-                        ¿Tienen facilidades de pago para tratamientos largos?
-                        <span class="faq-icon transform transition-transform duration-300 text-medical-600" aria-hidden="true">↓</span>
+                <div class="faq-item bg-white/5 border border-white/10 rounded-2xl">
+                    <button class="faq-button w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg focus:outline-none focus:text-brand-primary transition-colors" aria-expanded="false">
+                        ¿Por qué un marketing "anichado" en el sector estético?
+                        <span class="faq-icon transform transition-transform duration-300 text-brand-primary font-light" aria-hidden="true">+</span>
                     </button>
                     <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="pb-5 text-gray-600 text-sm leading-relaxed">
-                            Sí, contamos con opciones de financiamiento y meses sin intereses con tarjetas participantes para tratamientos especializados o cirugías.
-                        </div>
-                    </div>
-                </div>
-                <!-- Q5 -->
-                <div class="faq-item border-b border-gray-200">
-                    <button class="faq-button w-full py-5 text-left flex justify-between items-center font-bold text-lg text-medical-900 focus:outline-none focus:text-medical-600 transition-colors" aria-expanded="false">
-                        ¿Cómo puedo agendar mi cita rápidamente?
-                        <span class="faq-icon transform transition-transform duration-300 text-medical-600" aria-hidden="true">↓</span>
-                    </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="pb-5 text-gray-600 text-sm leading-relaxed">
-                            La forma más rápida es haciendo clic en nuestro botón de WhatsApp. Nuestro equipo te responderá en minutos con los horarios disponibles más próximos.
+                        <div class="px-6 pb-5 text-gray-300 text-sm leading-relaxed">
+                            El sector médico/estético tiene regulaciones publicitarias estrictas, objeciones específicas de los pacientes y un lenguaje único. Un marketing generalista fracasa aquí; los especialistas logramos resultados reales.
                         </div>
                     </div>
                 </div>
@@ -304,76 +321,69 @@
     </section>
 
     <!-- 6. CTA FINAL (Urgencia) -->
-    <section id="contacto" class="py-24 relative overflow-hidden bg-medical-900">
-        <div class="absolute inset-0 z-0" aria-hidden="true">
-            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1600" alt="Fondo hospitalario" class="w-full h-full object-cover opacity-10">
-        </div>
-        
+    <section class="py-24 relative overflow-hidden bg-brand-bg">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center fade-in-up">
-            <span class="inline-block bg-red-500/20 text-red-100 px-4 py-1.5 rounded-full text-sm font-bold mb-6 tracking-wide border border-red-500/30">
-                🚨 Horarios Limitados Disponibles
-            </span>
-            <h2 class="text-4xl lg:text-5xl font-extrabold text-white mb-6">
-                No pospongas más tu salud.
+            <div class="inline-block bg-brand-primary text-white px-6 py-2 rounded-full text-sm font-black mb-8 shadow-lg uppercase tracking-widest animate-pulse">
+                ⏳ Promoción Activa
+            </div>
+            <h2 class="text-4xl lg:text-6xl font-heading font-black text-brand-secondary mb-6 uppercase">
+                Domina tu mercado<br/>antes que tu competencia.
             </h2>
-            <p class="text-medical-100 text-lg mb-10 max-w-2xl mx-auto">
-                Las molestias de hoy pueden ser los problemas graves de mañana. Actúa ahora y reserva tu espacio antes de que nuestra agenda semanal se llene por completo.
+            <p class="text-gray-700 text-xl mb-12 font-medium">
+                Aprovecha <span class="font-black text-brand-primary">3 meses con 20% de descuento</span> en tu pago mensual y comencemos a escalar tus ventas de servicios estéticos hoy mismo.
             </p>
-            <a href="https://wa.me/520000000000" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-medical-500 text-white px-10 py-5 rounded-full font-bold text-lg shadow-[0_10px_30px_rgba(14,165,233,0.4)] hover:shadow-[0_15px_40px_rgba(14,165,233,0.6)] hover:bg-medical-600 transition-all duration-300 transform hover:-translate-y-2 focus:outline-none focus:ring-4 focus:ring-medical-500/50">
-                <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423 14.416c-6.627 0-12-5.373-12-12s5.373-12 12-12 12 5.373 12 12-5.373 12-12 12zm8.127-21.473c-2.17-2.17-5.052-3.366-8.127-3.366-6.337 0-11.493 5.155-11.493 11.492 0 2.025.528 4.004 1.533 5.748l-1.63 5.952 6.09-1.597c1.668.91 3.541 1.391 5.495 1.391h.004c6.335 0 11.492-5.157 11.492-11.494 0-3.072-1.196-5.956-3.364-8.126z"/></svg>
-                Agendar Vía WhatsApp
+            <a href="https://wa.me/524425500232" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-brand-secondary text-white px-10 py-5 rounded-full font-black text-lg hover:bg-brand-primary transition-all duration-300 transform hover:-translate-y-2 focus:outline-none focus:ring-4 focus:ring-brand-primary/50 shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_15px_40px_rgba(255,0,138,0.4)] uppercase tracking-wider">
+                <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423 14.416c-6.627 0-12-5.373-12-12s5.373-12 12-12 12 5.373 12 12-5.373 12-12 12zm8.127-21.473c-2.17-2.17-5.052-3.366-8.127-3.366-6.337 0-11.493 5.155-11.493 11.492 0 2.025.528 4.004 1.533 5.748l-1.63 5.952 6.09-1.597c1.668.91 3.541 1.391 5.495 1.391h.004c6.335 0 11.492-5.157 11.492-11.494 0-3.072-1.196-5.956-3.364-8.126z"/></svg>
+                Quiero mi diagnóstico inicial
             </a>
-            <p class="mt-6 text-medical-100 text-sm">Respuesta en menos de 15 minutos durante horario hábil.</p>
         </div>
     </section>
 
     <!-- 7. FOOTER -->
-    <footer class="bg-medical-900 pt-16 pb-8 border-t border-medical-800">
+    <footer class="bg-white pt-16 pb-8 border-t border-pink-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="md:col-span-2">
-                    <span class="font-bold text-2xl tracking-tight text-white mb-4 inline-block">Medi<span class="text-medical-500">Clinic</span>.</span>
-                    <p class="text-medical-100 text-sm leading-relaxed max-w-sm mt-4">
-                        Comprometidos con tu salud y bienestar integral. Atención médica de vanguardia con trato humano y especializado.
+                    <span class="font-heading font-black text-xl tracking-tighter text-brand-secondary uppercase mb-4 inline-block">
+                        Médico<span class="text-brand-primary">Estético</span>.Marketing
+                    </span>
+                    <p class="text-gray-500 text-sm leading-relaxed max-w-sm mt-2 font-medium">
+                        Fernanda Torres. Tu aliada para dominar el marketing digital anichado en el sector médico y estético.
                     </p>
                 </div>
                 <div>
-                    <h3 class="font-bold text-lg mb-6 text-white">Contacto Directo</h3>
-                    <ul class="space-y-4 text-medical-100 text-sm">
-                        <li class="flex items-start">
-                            <span class="text-medical-500 mr-3" aria-hidden="true">📍</span> <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors focus:outline-none focus:underline">Av. Principal 123, Ciudad, MX.</a>
+                    <h3 class="font-black text-lg mb-6 text-brand-secondary uppercase">Contacto Directo</h3>
+                    <ul class="space-y-4 text-gray-500 text-sm font-medium">
+                        <li class="flex items-center">
+                            <span class="text-brand-primary mr-3 text-lg" aria-hidden="true">✉️</span> <a href="mailto:medicoestetico.marketing@gmail.com" class="hover:text-brand-primary transition-colors focus:outline-none focus:underline">medicoestetico.marketing@gmail.com</a>
                         </li>
                         <li class="flex items-center">
-                            <span class="text-medical-500 mr-3" aria-hidden="true">✉️</span> <a href="mailto:contacto@clinicamedica.com" class="hover:text-white transition-colors focus:outline-none focus:underline">contacto@clinicamedica.com</a>
+                            <span class="text-brand-primary mr-3 text-lg" aria-hidden="true">📞</span> <a href="https://wa.me/524425500232" target="_blank" rel="noopener noreferrer" class="hover:text-brand-primary transition-colors focus:outline-none focus:underline">+52 4425500232</a>
                         </li>
                         <li class="flex items-center">
-                            <span class="text-medical-500 mr-3" aria-hidden="true">📞</span> <a href="tel:+520000000000" class="hover:text-white transition-colors focus:outline-none focus:underline">+52 (000) 000 0000</a>
-                        </li>
-                        <li class="flex items-center">
-                            <span class="text-medical-500 mr-3" aria-hidden="true">🕒</span> Lun - Sáb: 8:00am - 8:00pm
+                            <span class="text-brand-primary mr-3 text-lg" aria-hidden="true">🕒</span> Lun - Vie: 10:00am - 6:00pm
                         </li>
                     </ul>
                 </div>
                 <div>
-                    <h3 class="font-bold text-lg mb-6 text-white">Redes Sociales</h3>
+                    <h3 class="font-black text-lg mb-6 text-brand-secondary uppercase">Síguenos</h3>
                     <div class="flex space-x-4">
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-medical-800 rounded-full flex items-center justify-center text-medical-100 hover:bg-medical-500 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white" aria-label="Facebook">
+                        <a href="https://www.instagram.com/medicoestetico.marketing" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-brand-bg rounded-full flex items-center justify-center text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-primary" aria-label="Instagram">
+                            IG
+                        </a>
+                        <a href="https://www.facebook.com/medicoestetico.marketing" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-brand-bg rounded-full flex items-center justify-center text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-primary" aria-label="Facebook">
                             FB
                         </a>
-                        <a href="#" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-medical-800 rounded-full flex items-center justify-center text-medical-100 hover:bg-medical-500 hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-white" aria-label="Instagram">
-                            IG
+                        <a href="https://www.tiktok.com/@medicoestetico.marketing" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-brand-bg rounded-full flex items-center justify-center text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-primary" aria-label="TikTok">
+                            TK
                         </a>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-medical-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-medical-400 text-xs text-center md:text-left mb-4 md:mb-0">
-                    &copy; 2026 Clínica Médica Especializada. Todos los derechos reservados.
+            <div class="border-t border-pink-100 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-xs text-center md:text-left mb-4 md:mb-0 font-bold uppercase tracking-widest">
+                    &copy; 2026 MedicoEstetico.Marketing. Todos los derechos reservados.
                 </p>
-                <div class="flex space-x-6 text-xs text-medical-400">
-                    <a href="#" class="hover:text-white focus:outline-none focus:underline">Aviso de Privacidad</a>
-                    <a href="#" class="hover:text-white focus:outline-none focus:underline">Términos y Condiciones</a>
-                </div>
             </div>
         </div>
     </footer>
