@@ -12,16 +12,12 @@
     font-display: swap;
 }
 
-/* Forzar relleno sólido en todos los glifos de Kenao.
-   Algunos caracteres son outline por diseño del font —
-   text-shadow superpuesto los rellena sin distorsionar. */
+/* Rellena glifos outline de Kenao con blur suave — sin pixelado */
 .font-heading {
-    -webkit-text-stroke: 0.6px currentColor;
-    text-shadow:
-        0.4px 0   0 currentColor,
-       -0.4px 0   0 currentColor,
-        0  0.4px  0 currentColor,
-        0 -0.4px  0 currentColor;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    text-shadow: 0 0 0.8px currentColor;
 }
 
 /* ─── BASE ───────────────────────────────────── */
