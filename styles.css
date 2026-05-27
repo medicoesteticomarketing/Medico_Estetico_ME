@@ -358,13 +358,15 @@ body {
 }
 
 .bio-photo-wrap {
-    margin-left: -1.5rem;
+    min-height: 600px;
 }
 
 .bio-photo {
     width: 100%;
-    height: auto;
+    height: 100%;
+    min-height: 600px;
     object-fit: cover;
+    object-position: center top;
     display: block;
 }
 
