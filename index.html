@@ -33,6 +33,9 @@
         }
     </script>
 
+    <!-- Favicon -->
+    <link rel="icon" href="assets/logo/logo_me_diamante_blanco.svg" type="image/svg+xml">
+
     <link rel="stylesheet" href="styles.css">
 
     <script type="application/ld+json">
@@ -86,9 +89,11 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <a href="#" class="flex-shrink-0 flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-md" aria-label="Inicio MédicoEstético.Marketing">
-                    <span class="font-heading font-black text-xl tracking-tighter text-brand-secondary uppercase">
-                        Médico<span class="text-brand-primary">Estético</span>.Marketing
-                    </span>
+                    <img src="assets/logo/logo_me_original.svg"
+                         alt="MédicoEstético.Marketing — Fernanda Torres"
+                         class="h-12 w-auto object-contain"
+                         width="120" height="48"
+                         loading="eager">
                 </a>
                 <nav class="hidden md:flex space-x-8" aria-label="Navegación principal">
                     <a href="#servicios"   class="nav-link">Servicios</a>
@@ -158,10 +163,13 @@
             </div>
             <div class="relative fade-in-up delay-200">
                 <div class="absolute inset-0 bg-gradient-to-tr from-brand-primary/20 to-transparent rounded-[2.5rem] transform translate-x-4 translate-y-4" aria-hidden="true"></div>
-                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800"
-                     alt="Fernanda Torres — Especialista en Marketing Médico Estético"
-                     class="relative z-10 rounded-[2.5rem] shadow-2xl object-cover h-[500px] lg:h-[650px] w-full border border-white/50"
-                     loading="eager" width="800" height="650">
+                <picture>
+                    <source srcset="assets/img/foto_personal_1.webp" type="image/webp">
+                    <img src="assets/img/foto_personal_1.webp"
+                         alt="Fernanda Torres — Especialista en Marketing Médico Estético"
+                         class="relative z-10 rounded-[2.5rem] shadow-2xl object-cover object-top h-[500px] lg:h-[650px] w-full border border-white/50"
+                         loading="eager" width="800" height="650">
+                </picture>
             </div>
         </div>
     </section>
@@ -379,9 +387,11 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="md:col-span-2">
-                    <span class="font-heading font-black text-xl tracking-tighter text-brand-secondary uppercase mb-4 inline-block">
-                        Médico<span class="text-brand-primary">Estético</span>.Marketing
-                    </span>
+                    <img src="assets/logo/logo_me_original.svg"
+                         alt="MédicoEstético.Marketing"
+                         class="h-14 w-auto object-contain mb-4"
+                         width="140" height="56"
+                         loading="lazy">
                     <p class="text-gray-500 text-sm leading-relaxed max-w-sm mt-2 font-medium">
                         Fernanda Torres. Tu aliada para dominar el marketing digital nicho en el sector médico y estético. Certificada RED Conocer EC1474 &amp; EC1621.
                     </p>
