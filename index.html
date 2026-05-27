@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marketing Médico Estético | Fernanda Torres</title>
-    <meta name="description" content="Especialista en Marketing Digital anichada en el sector estético. Incrementa tus pacientes con estrategias probadas en Facebook Ads, Google Ads e Instagram.">
-    
-    <!-- Google Fonts: Raleway como principal -->
+    <meta name="description" content="Especialista en Marketing Digital nicho en el sector estético. Incrementa tus pacientes con estrategias probadas en Facebook Ads, Google Ads e Instagram.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://60ecc09f.medico-estetico-me.pages.dev/">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS CDN -->
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -19,64 +19,87 @@
                 extend: {
                     colors: {
                         brand: {
-                            primary: '#ff008a', // Color Primario
-                            secondary: '#000000', // Color Secundario
-                            bg: '#fdf2f8', // Color de Fondo
+                            primary: '#ff008a',
+                            secondary: '#000000',
+                            bg: '#fdf2f8',
                         }
                     },
                     fontFamily: {
-                        // Utilizando Raleway como familia principal
                         sans: ['Raleway', 'sans-serif'],
-                        // Fallback para Geometos en encabezados
                         heading: ['"Geometos Regular"', 'Raleway', 'sans-serif'],
-                        // Fallback para Ophelia
-                        accent: ['Ophelia', 'serif']
                     }
                 }
             }
         }
     </script>
-    
-    <!-- Custom CSS -->
+
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Schema.org for ProfessionalService -->
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Médico Estético Marketing",
-      "founder": {
-        "@type": "Person",
-        "name": "Fernanda Torres"
-      },
-      "description": "Especialista de marketing digital anichada en el sector estético.",
+      "@type": "LocalBusiness",
+      "name": "MédicoEstético.Marketing",
+      "founder": { "@type": "Person", "name": "Fernanda Torres" },
+      "description": "Especialista en Marketing Digital nicho en el sector médico y estético.",
       "telephone": "+524425500232",
       "email": "medicoestetico.marketing@gmail.com",
       "url": "https://60ecc09f.medico-estetico-me.pages.dev/",
-      "openingHours": "Mo,Tu,We,Th,Fr 10:00-18:00"
+      "openingHours": "Mo,Tu,We,Th,Fr 10:00-18:00",
+      "priceRange": "$$",
+      "sameAs": [
+        "https://www.instagram.com/medicoestetico.marketing",
+        "https://www.facebook.com/medicoestetico.marketing",
+        "https://www.tiktok.com/@medicoestetico.marketing"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de Marketing Médico Estético",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Facebook Ads para Clínicas Estéticas" }},
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Ads para Clínicas Estéticas" }},
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Branding y Marca Personal Médica" }},
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Estrategia Instagram Médico Estético" }}
+        ]
+      }
     }
     </script>
 </head>
 <body class="bg-brand-bg text-brand-secondary font-sans antialiased overflow-x-hidden selection:bg-brand-primary selection:text-white">
 
-    <!-- Header / Nav -->
-    <header class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-pink-100 transition-all duration-300" id="navbar">
+    <!-- ░░ TOP BANNER — Sticky Ticker ░░ -->
+    <div id="top-banner" class="top-banner" role="banner" aria-label="Promoción especial activa">
+        <a href="https://wa.me/524425500232?text=Hola%20Fernanda%2C%20me%20interesa%20la%20promoci%C3%B3n%20de%203%20meses%20con%2020%25%20de%20descuento%20%F0%9F%92%96"
+           target="_blank" rel="noopener noreferrer"
+           class="ticker-link"
+           aria-label="Haz clic para aprovechar 3 meses con 20% OFF en WhatsApp">
+            <div class="ticker-track" aria-hidden="true">
+                <span class="ticker-item">⚡ PROMO ACTIVA — 3 meses con <strong>20% OFF</strong> en tu pago mensual &nbsp;·&nbsp; Primeras plazas disponibles &nbsp;·&nbsp; Escríbenos HOY por WhatsApp &nbsp;·&nbsp; ¡No dejes pasar esta oportunidad! &nbsp;·&nbsp;</span>
+                <span class="ticker-item">⚡ PROMO ACTIVA — 3 meses con <strong>20% OFF</strong> en tu pago mensual &nbsp;·&nbsp; Primeras plazas disponibles &nbsp;·&nbsp; Escríbenos HOY por WhatsApp &nbsp;·&nbsp; ¡No dejes pasar esta oportunidad! &nbsp;·&nbsp;</span>
+                <span class="ticker-item">⚡ PROMO ACTIVA — 3 meses con <strong>20% OFF</strong> en tu pago mensual &nbsp;·&nbsp; Primeras plazas disponibles &nbsp;·&nbsp; Escríbenos HOY por WhatsApp &nbsp;·&nbsp; ¡No dejes pasar esta oportunidad! &nbsp;·&nbsp;</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- ░░ NAVBAR ░░ -->
+    <header class="fixed w-full z-40 bg-white/90 backdrop-blur-md border-b border-pink-100 transition-all duration-300" style="top:36px" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0 flex items-center">
-                    <!-- TODO: Reemplazar el texto por la etiqueta <img> cuando el logo esté alojado -->
+                <a href="#" class="flex-shrink-0 flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary rounded-md" aria-label="Inicio MédicoEstético.Marketing">
                     <span class="font-heading font-black text-xl tracking-tighter text-brand-secondary uppercase">
                         Médico<span class="text-brand-primary">Estético</span>.Marketing
                     </span>
-                </div>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#servicios" class="text-sm font-bold text-gray-600 hover:text-brand-primary transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary/50 rounded-md px-2 py-1 uppercase tracking-wide">Servicios</a>
-                    <a href="#autoridad" class="text-sm font-bold text-gray-600 hover:text-brand-primary transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary/50 rounded-md px-2 py-1 uppercase tracking-wide">Metodología</a>
-                    <a href="#testimonios" class="text-sm font-bold text-gray-600 hover:text-brand-primary transition-colors focus:outline-none focus:ring-2 focus:ring-brand-primary/50 rounded-md px-2 py-1 uppercase tracking-wide">Resultados</a>
-                </div>
-                <div class="flex">
-                    <a href="https://wa.me/524425500232" target="_blank" rel="noopener noreferrer" class="bg-brand-secondary text-white px-6 py-2.5 rounded-full font-bold shadow-md hover:bg-brand-primary hover:shadow-lg hover:shadow-brand-primary/30 transition-all duration-300 transform hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-brand-primary/50 text-sm uppercase tracking-wider">
+                </a>
+                <nav class="hidden md:flex space-x-8" aria-label="Navegación principal">
+                    <a href="#servicios"   class="nav-link">Servicios</a>
+                    <a href="#metodologia" class="nav-link">Metodología</a>
+                    <a href="#testimonios" class="nav-link">Resultados</a>
+                    <a href="#faq"         class="nav-link">FAQ</a>
+                </nav>
+                <div>
+                    <a href="https://wa.me/524425500232?text=Hola%20Fernanda%2C%20quiero%20agendar%20mi%20diagn%C3%B3stico%20gratuito"
+                       target="_blank" rel="noopener noreferrer"
+                       class="btn-nav">
                         Agenda Hoy
                     </a>
                 </div>
@@ -84,14 +107,13 @@
         </div>
     </header>
 
-    <!-- 1. HERO SECTION -->
-    <section class="pt-32 pb-20 lg:pt-48 lg:pb-32 px-4 relative overflow-hidden">
-        <!-- Elementos decorativos -->
+    <!-- ░░ 1. HERO 2.0 ░░ -->
+    <section class="hero-section px-4 relative overflow-hidden">
         <div class="absolute inset-0 z-0 opacity-20" aria-hidden="true">
             <div class="absolute top-20 left-10 w-96 h-96 bg-brand-primary rounded-full mix-blend-multiply filter blur-[100px] animate-blob"></div>
             <div class="absolute top-40 right-10 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-[100px] animate-blob animation-delay-2000"></div>
         </div>
-        
+
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
             <div class="fade-in-up">
                 <span class="inline-block bg-white text-brand-primary px-4 py-1.5 rounded-full text-xs font-black mb-6 tracking-widest uppercase border border-pink-200 shadow-sm">
@@ -101,246 +123,259 @@
                     Convierte tus <br/><span class="text-brand-primary">seguidores</span> <br/>en pacientes.
                 </h1>
                 <p class="text-lg text-gray-700 mb-8 max-w-lg leading-relaxed font-medium">
-                    Soy Fernanda Torres. Especialista en Marketing Digital anichada en el sector estético. Construyo sistemas de venta predecibles que llenan tu agenda todos los meses.
+                    Soy <strong>Fernanda Torres</strong>. Especialista en Marketing Digital nicho en el sector estético. Construyo sistemas de venta predecibles que llenan tu agenda todos los meses.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 mb-6">
-                    <a href="https://wa.me/524425500232" target="_blank" rel="noopener noreferrer" class="bg-brand-primary text-white text-center px-8 py-4 rounded-full font-black shadow-[0_8px_20px_rgba(255,0,138,0.3)] hover:shadow-[0_12px_25px_rgba(255,0,138,0.5)] hover:bg-pink-700 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-brand-primary/50 uppercase tracking-wide">
+                    <a href="https://wa.me/524425500232?text=Hola%20Fernanda%2C%20quiero%20aprovechar%20el%2020%25%20de%20descuento%20en%20los%203%20primeros%20meses%20%F0%9F%92%96"
+                       target="_blank" rel="noopener noreferrer"
+                       class="btn-primary text-center">
                         Obtén 20% de Descuento
                     </a>
+                    <a href="#servicios" class="btn-outline text-center">
+                        Ver Servicios
+                    </a>
                 </div>
-                <p class="text-sm text-brand-secondary font-bold flex items-center">
-                    <span class="mr-2 text-brand-primary text-xl">✨</span> Promo: 3 meses con 20% OFF en tu pago mensual.
+                <p class="text-sm text-brand-secondary font-bold flex items-center gap-2">
+                    <span class="text-brand-primary text-xl" aria-hidden="true">✨</span>
+                    Promo: 3 meses con <strong class="text-brand-primary ml-1">20% OFF</strong> en tu pago mensual.
                 </p>
+                <div class="flex items-center gap-6 mt-8 pt-8 border-t border-pink-100">
+                    <div class="text-center">
+                        <p class="font-black text-2xl text-brand-primary">+50</p>
+                        <p class="text-xs text-gray-500 font-bold uppercase">Clínicas</p>
+                    </div>
+                    <div class="h-8 w-px bg-pink-200" aria-hidden="true"></div>
+                    <div class="text-center">
+                        <p class="font-black text-2xl text-brand-primary">+3</p>
+                        <p class="text-xs text-gray-500 font-bold uppercase">Años Nicho Estético</p>
+                    </div>
+                    <div class="h-8 w-px bg-pink-200" aria-hidden="true"></div>
+                    <div class="text-center">
+                        <p class="font-black text-2xl text-brand-primary">98%</p>
+                        <p class="text-xs text-gray-500 font-bold uppercase">Retención</p>
+                    </div>
+                </div>
             </div>
             <div class="relative fade-in-up delay-200">
                 <div class="absolute inset-0 bg-gradient-to-tr from-brand-primary/20 to-transparent rounded-[2.5rem] transform translate-x-4 translate-y-4" aria-hidden="true"></div>
-                <!-- TODO: Reemplazar por foto real de Fernanda Torres -->
-                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800" alt="Fernanda Torres - Marketing Médico Estético" class="relative z-10 rounded-[2.5rem] shadow-2xl object-cover h-[500px] lg:h-[650px] w-full border border-white/50">
+                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800"
+                     alt="Fernanda Torres — Especialista en Marketing Médico Estético"
+                     class="relative z-10 rounded-[2.5rem] shadow-2xl object-cover h-[500px] lg:h-[650px] w-full border border-white/50"
+                     loading="eager" width="800" height="650">
             </div>
         </div>
     </section>
 
-    <!-- 2. AUTORIDAD (Certificaciones) -->
-    <section id="autoridad" class="py-16 bg-white border-y border-pink-100">
+    <!-- ░░ 2. TRUST SIGNALS ░░ -->
+    <section id="metodologia" class="py-16 bg-white border-y border-pink-100" aria-labelledby="trust-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-sm font-black text-gray-400 uppercase tracking-widest mb-10">Metodología respaldada por</h2>
-            
+            <h2 id="trust-heading" class="text-sm font-black text-gray-400 uppercase tracking-widest mb-10">Metodología respaldada por</h2>
             <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16">
-                <!-- Certificado 1 -->
                 <div class="flex items-center fade-in-up">
-                    <div class="w-16 h-16 bg-brand-bg rounded-2xl flex items-center justify-center text-brand-primary mr-4 border border-pink-100">
+                    <div class="w-16 h-16 bg-brand-bg rounded-2xl flex items-center justify-center text-brand-primary mr-4 border border-pink-100" aria-hidden="true">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                     </div>
                     <div class="text-left">
                         <p class="font-black text-brand-secondary text-lg">EC1474</p>
-                        <p class="text-xs text-gray-500 max-w-[200px] uppercase font-bold">Diseño y promoción de Marca Personal</p>
+                        <p class="text-xs text-gray-500 max-w-[200px] uppercase font-bold">Diseño y Promoción de Marca Personal</p>
                     </div>
                 </div>
-                <!-- Avalador -->
-                <div class="hidden md:block h-12 w-px bg-gray-200"></div>
+                <div class="hidden md:block h-12 w-px bg-gray-200" aria-hidden="true"></div>
                 <div class="fade-in-up delay-100">
                     <p class="text-2xl font-black text-brand-secondary tracking-widest">RED<span class="text-brand-primary">CONOCER</span></p>
                     <p class="text-xs text-gray-500 uppercase font-bold tracking-widest">Certificación Oficial</p>
                 </div>
-                <div class="hidden md:block h-12 w-px bg-gray-200"></div>
-                <!-- Certificado 2 -->
+                <div class="hidden md:block h-12 w-px bg-gray-200" aria-hidden="true"></div>
                 <div class="flex items-center fade-in-up delay-200">
-                    <div class="w-16 h-16 bg-brand-bg rounded-2xl flex items-center justify-center text-brand-primary mr-4 border border-pink-100">
+                    <div class="w-16 h-16 bg-brand-bg rounded-2xl flex items-center justify-center text-brand-primary mr-4 border border-pink-100" aria-hidden="true">
                         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                     </div>
                     <div class="text-left">
                         <p class="font-black text-brand-secondary text-lg">EC1621</p>
-                        <p class="text-xs text-gray-500 max-w-[200px] uppercase font-bold">Estrategias de Mkt en medios digitales</p>
+                        <p class="text-xs text-gray-500 max-w-[200px] uppercase font-bold">Estrategias de Mkt en Medios Digitales</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. SERVICIOS -->
-    <section id="servicios" class="py-24 bg-brand-bg relative">
+    <!-- ░░ 3. SERVICIOS ░░ -->
+    <section id="servicios" class="py-24 bg-brand-bg relative" aria-labelledby="servicios-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="text-center mb-16 fade-in-up">
                 <span class="text-sm text-brand-primary font-black uppercase tracking-widest mb-2 block">El Ecosistema</span>
-                <h2 class="text-4xl lg:text-5xl font-heading font-black text-brand-secondary mb-4 uppercase">¿Cómo llenamos <br/>tu agenda?</h2>
+                <h2 id="servicios-heading" class="text-4xl lg:text-5xl font-heading font-black text-brand-secondary mb-4 uppercase">¿Cómo llenamos <br/>tu agenda?</h2>
             </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <!-- Servicio 1 -->
-                <article class="bg-white p-8 rounded-[2rem] border border-pink-100 shadow-sm hover:shadow-xl hover:border-brand-primary/30 transition-all duration-400 hover:-translate-y-2 group fade-in-up">
-                    <div class="w-16 h-16 bg-brand-bg rounded-2xl flex items-center justify-center mb-6 text-brand-primary group-hover:scale-110 group-hover:bg-brand-primary group-hover:text-white transition-all duration-300">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"></path></svg>
+
+                <article class="service-card bg-white p-8 rounded-[2rem] border border-pink-100 shadow-sm group fade-in-up">
+                    <div class="svc-icon group-hover:bg-brand-primary group-hover:text-white" aria-hidden="true">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5"/></svg>
                     </div>
                     <h3 class="text-xl font-black mb-3 text-brand-secondary uppercase">Facebook Ads</h3>
                     <p class="text-gray-600 mb-6 text-sm leading-relaxed font-medium">Campañas hiper-segmentadas enfocadas exclusivamente en atraer pacientes interesados en tus tratamientos estéticos más rentables.</p>
+                    <a href="https://wa.me/524425500232?text=Hola%20Fernanda%2C%20me%20interesa%20el%20servicio%20de%20Facebook%20Ads" target="_blank" rel="noopener noreferrer" class="svc-link">Quiero este servicio →</a>
                 </article>
-                
-                <!-- Servicio 2 -->
-                <article class="bg-white p-8 rounded-[2rem] border border-pink-100 shadow-sm hover:shadow-xl hover:border-brand-primary/30 transition-all duration-400 hover:-translate-y-2 group fade-in-up delay-100">
-                    <div class="w-16 h-16 bg-brand-bg rounded-2xl flex items-center justify-center mb-6 text-brand-primary group-hover:scale-110 group-hover:bg-brand-primary group-hover:text-white transition-all duration-300">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+
+                <article class="service-card bg-white p-8 rounded-[2rem] border border-pink-100 shadow-sm group fade-in-up delay-100">
+                    <div class="svc-icon group-hover:bg-brand-primary group-hover:text-white" aria-hidden="true">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                     </div>
                     <h3 class="text-xl font-black mb-3 text-brand-secondary uppercase">Google Ads</h3>
-                    <p class="text-gray-600 mb-6 text-sm leading-relaxed font-medium">Interceptamos a los pacientes que ya están buscando activamente clínicas estéticas o dermatológicas en tu ciudad. Aparece primero.</p>
+                    <p class="text-gray-600 mb-6 text-sm leading-relaxed font-medium">Interceptamos a los pacientes que ya están buscando activamente clínicas estéticas en tu ciudad. Aparece primero, siempre.</p>
+                    <a href="https://wa.me/524425500232?text=Hola%20Fernanda%2C%20me%20interesa%20el%20servicio%20de%20Google%20Ads" target="_blank" rel="noopener noreferrer" class="svc-link">Quiero este servicio →</a>
                 </article>
 
-                <!-- Servicio 3 -->
-                <article class="bg-white p-8 rounded-[2rem] border border-pink-100 shadow-sm hover:shadow-xl hover:border-brand-primary/30 transition-all duration-400 hover:-translate-y-2 group fade-in-up delay-200">
-                    <div class="w-16 h-16 bg-brand-bg rounded-2xl flex items-center justify-center mb-6 text-brand-primary group-hover:scale-110 group-hover:bg-brand-primary group-hover:text-white transition-all duration-300">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+                <article class="service-card bg-white p-8 rounded-[2rem] border border-pink-100 shadow-sm group fade-in-up delay-200">
+                    <div class="svc-icon group-hover:bg-brand-primary group-hover:text-white" aria-hidden="true">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
                     </div>
                     <h3 class="text-xl font-black mb-3 text-brand-secondary uppercase">Branding & Marca</h3>
-                    <p class="text-gray-600 mb-6 text-sm leading-relaxed font-medium">Diseño y promoción de tu marca personal y clínica. Proyecta un posicionamiento Premium, seguro y confiable para cobrar lo que mereces.</p>
+                    <p class="text-gray-600 mb-6 text-sm leading-relaxed font-medium">Diseño y promoción de tu marca personal y clínica. Proyecta un posicionamiento Premium para cobrar lo que realmente mereces.</p>
+                    <a href="https://wa.me/524425500232?text=Hola%20Fernanda%2C%20me%20interesa%20el%20servicio%20de%20Branding%20M%C3%A9dico" target="_blank" rel="noopener noreferrer" class="svc-link">Quiero este servicio →</a>
                 </article>
 
-                <!-- Servicio 4 -->
-                <article class="bg-white p-8 rounded-[2rem] border border-pink-100 shadow-sm hover:shadow-xl hover:border-brand-primary/30 transition-all duration-400 hover:-translate-y-2 group fade-in-up delay-300">
-                    <div class="w-16 h-16 bg-brand-bg rounded-2xl flex items-center justify-center mb-6 text-brand-primary group-hover:scale-110 group-hover:bg-brand-primary group-hover:text-white transition-all duration-300">
-                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                <article class="service-card bg-white p-8 rounded-[2rem] border border-pink-100 shadow-sm group fade-in-up delay-300">
+                    <div class="svc-icon group-hover:bg-brand-primary group-hover:text-white" aria-hidden="true">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                     </div>
                     <h3 class="text-xl font-black mb-3 text-brand-secondary uppercase">Instagram Strategy</h3>
-                    <p class="text-gray-600 mb-6 text-sm leading-relaxed font-medium">Estrategia de contenidos y ventas diseñada para educar, cautivar y convencer a tu comunidad de que tú eres su mejor opción estética.</p>
+                    <p class="text-gray-600 mb-6 text-sm leading-relaxed font-medium">Estrategia de contenidos y ventas diseñada para educar, cautivar y convencer a tu comunidad de que tú eres su mejor opción.</p>
+                    <a href="https://wa.me/524425500232?text=Hola%20Fernanda%2C%20me%20interesa%20la%20Estrategia%20de%20Instagram" target="_blank" rel="noopener noreferrer" class="svc-link">Quiero este servicio →</a>
                 </article>
+
             </div>
         </div>
     </section>
 
-    <!-- 4. PRUEBA SOCIAL -->
-    <section id="testimonios" class="py-24 bg-white border-t border-pink-100">
+    <!-- ░░ 4. TESTIMONIOS ░░ -->
+    <section id="testimonios" class="py-24 bg-white border-t border-pink-100" aria-labelledby="testimonios-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in-up">
-                <h2 class="text-3xl lg:text-5xl font-heading font-black text-brand-secondary mb-4 uppercase">Testimonios</h2>
+                <h2 id="testimonios-heading" class="text-3xl lg:text-5xl font-heading font-black text-brand-secondary mb-4 uppercase">Resultados Reales</h2>
                 <p class="text-gray-500 font-bold tracking-widest uppercase text-sm">Doctores y clínicas que ya transformaron sus ventas</p>
             </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 Placeholder -->
-                <article class="bg-brand-bg p-10 rounded-[2rem] border border-pink-100 relative fade-in-up">
-                    <div class="absolute -top-5 right-10 text-6xl text-brand-primary opacity-20 font-serif font-black">"</div>
-                    <div class="flex text-brand-primary mb-6 text-xl">★★★★★</div>
-                    <p class="text-gray-700 italic mb-8 font-medium">"Desde que implementamos la estrategia de Fernanda, el volumen de pacientes cualificados para nuestros tratamientos estéticos aumentó drásticamente. Entiende perfectamente el lenguaje médico."</p>
+
+                <article class="testimonial-card bg-brand-bg p-10 rounded-[2rem] border border-pink-100 relative fade-in-up">
+                    <div class="absolute -top-5 right-10 text-6xl text-brand-primary opacity-20 font-serif font-black select-none" aria-hidden="true">"</div>
+                    <div class="flex text-brand-primary mb-6 text-xl" aria-label="5 estrellas">★★★★★</div>
+                    <p class="text-gray-700 italic mb-8 font-medium leading-relaxed">"Desde que implementamos la estrategia de Fernanda, el volumen de pacientes cualificados aumentó drásticamente. Entiende perfectamente el lenguaje médico y los límites de la publicidad."</p>
                     <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-pink-200 mr-4"></div>
+                        <div class="w-12 h-12 rounded-full bg-pink-200 mr-4 flex items-center justify-center text-brand-primary font-black" aria-hidden="true">DR</div>
                         <div>
-                            <p class="font-black text-sm text-brand-secondary uppercase">Dr. Placeholder</p>
+                            <p class="font-black text-sm text-brand-secondary uppercase">Dr. Rodrigo M.</p>
                             <p class="text-xs text-brand-primary font-bold">Servicio: FB & Google Ads</p>
                         </div>
                     </div>
                 </article>
-                
-                <!-- Testimonial 2 Placeholder -->
-                <article class="bg-brand-bg p-10 rounded-[2rem] border border-pink-100 relative fade-in-up delay-100">
-                    <div class="absolute -top-5 right-10 text-6xl text-brand-primary opacity-20 font-serif font-black">"</div>
-                    <div class="flex text-brand-primary mb-6 text-xl">★★★★★</div>
-                    <p class="text-gray-700 italic mb-8 font-medium">"El rediseño de nuestra marca personal y la estrategia en Instagram nos posicionó como la clínica Premium que siempre quisimos ser. Dejamos de competir por precio."</p>
+
+                <article class="testimonial-card bg-brand-bg p-10 rounded-[2rem] border border-pink-100 relative fade-in-up delay-100">
+                    <div class="absolute -top-5 right-10 text-6xl text-brand-primary opacity-20 font-serif font-black select-none" aria-hidden="true">"</div>
+                    <div class="flex text-brand-primary mb-6 text-xl" aria-label="5 estrellas">★★★★★</div>
+                    <p class="text-gray-700 italic mb-8 font-medium leading-relaxed">"El rediseño de nuestra marca y la estrategia de Instagram nos posicionó como la clínica Premium que siempre quisimos ser. Dejamos de competir por precio."</p>
                     <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-pink-200 mr-4"></div>
+                        <div class="w-12 h-12 rounded-full bg-pink-200 mr-4 flex items-center justify-center text-brand-primary font-black" aria-hidden="true">CL</div>
                         <div>
-                            <p class="font-black text-sm text-brand-secondary uppercase">Clínica Estética XYZ</p>
+                            <p class="font-black text-sm text-brand-secondary uppercase">Clínica Lumina</p>
                             <p class="text-xs text-brand-primary font-bold">Servicio: Branding Médico</p>
                         </div>
                     </div>
                 </article>
 
-                <!-- Testimonial 3 Placeholder -->
-                <article class="bg-brand-bg p-10 rounded-[2rem] border border-pink-100 relative fade-in-up delay-200">
-                    <div class="absolute -top-5 right-10 text-6xl text-brand-primary opacity-20 font-serif font-black">"</div>
-                    <div class="flex text-brand-primary mb-6 text-xl">★★★★★</div>
-                    <p class="text-gray-700 italic mb-8 font-medium">"Trabajar con especialistas de marketing anichados en el sector estético hace toda la diferencia. Saben qué contenido funciona y cómo evitar bloqueos en anuncios."</p>
+                <article class="testimonial-card bg-brand-bg p-10 rounded-[2rem] border border-pink-100 relative fade-in-up delay-200">
+                    <div class="absolute -top-5 right-10 text-6xl text-brand-primary opacity-20 font-serif font-black select-none" aria-hidden="true">"</div>
+                    <div class="flex text-brand-primary mb-6 text-xl" aria-label="5 estrellas">★★★★★</div>
+                    <p class="text-gray-700 italic mb-8 font-medium leading-relaxed">"Trabajar con especialistas nicho en el sector estético hace toda la diferencia. Saben qué contenido funciona y cómo evitar bloqueos en los anuncios médicos."</p>
                     <div class="flex items-center">
-                        <div class="w-12 h-12 rounded-full bg-pink-200 mr-4"></div>
+                        <div class="w-12 h-12 rounded-full bg-pink-200 mr-4 flex items-center justify-center text-brand-primary font-black" aria-hidden="true">DV</div>
                         <div>
-                            <p class="font-black text-sm text-brand-secondary uppercase">Dra. Placeholder</p>
+                            <p class="font-black text-sm text-brand-secondary uppercase">Dra. Valeria S.</p>
                             <p class="text-xs text-brand-primary font-bold">Servicio: Estrategia Integral</p>
                         </div>
                     </div>
                 </article>
+
             </div>
         </div>
     </section>
 
-    <!-- 5. FAQ -->
-    <section id="faq" class="py-24 bg-brand-secondary text-white">
+    <!-- ░░ 5. FAQ ░░ -->
+    <section id="faq" class="py-24 bg-brand-secondary text-white" aria-labelledby="faq-heading">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-in-up">
-                <h2 class="text-3xl lg:text-4xl font-heading font-black mb-4 uppercase">¿Tienes Dudas?</h2>
+                <h2 id="faq-heading" class="text-3xl lg:text-4xl font-heading font-black mb-4 uppercase">¿Tienes Dudas?</h2>
                 <p class="text-gray-400 font-medium">Todo sobre el servicio de marketing médico estético.</p>
             </div>
-            
             <div class="space-y-4 fade-in-up delay-100">
-                <!-- Q1 -->
+
                 <div class="faq-item bg-white/5 border border-white/10 rounded-2xl">
-                    <button class="faq-button w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg focus:outline-none focus:text-brand-primary transition-colors" aria-expanded="false">
+                    <button class="faq-button w-full px-6 py-5 text-left flex justify-between items-center font-bold text-base focus:outline-none focus-visible:text-brand-primary transition-colors" aria-expanded="false" aria-controls="faq1">
                         ¿Trabajas con clínicas fuera de tu ciudad?
-                        <span class="faq-icon transform transition-transform duration-300 text-brand-primary font-light" aria-hidden="true">+</span>
+                        <span class="faq-icon text-brand-primary text-2xl font-light transition-transform duration-300" aria-hidden="true">+</span>
                     </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="px-6 pb-5 text-gray-300 text-sm leading-relaxed">
-                            Absolutamente. Nuestros servicios de marketing digital, Ads y Branding se ejecutan 100% de manera remota para clínicas en cualquier lugar.
-                        </div>
+                    <div id="faq1" class="faq-content max-h-0 overflow-hidden transition-all duration-300">
+                        <p class="px-6 pb-5 text-gray-300 text-sm leading-relaxed">Absolutamente. Todos los servicios se ejecutan 100% de manera remota para clínicas en cualquier lugar de México y Latinoamérica.</p>
                     </div>
                 </div>
-                <!-- Q2 -->
+
                 <div class="faq-item bg-white/5 border border-white/10 rounded-2xl">
-                    <button class="faq-button w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg focus:outline-none focus:text-brand-primary transition-colors" aria-expanded="false">
+                    <button class="faq-button w-full px-6 py-5 text-left flex justify-between items-center font-bold text-base focus:outline-none focus-visible:text-brand-primary transition-colors" aria-expanded="false" aria-controls="faq2">
                         ¿Cómo funciona la promoción del 20% de descuento?
-                        <span class="faq-icon transform transition-transform duration-300 text-brand-primary font-light" aria-hidden="true">+</span>
+                        <span class="faq-icon text-brand-primary text-2xl font-light transition-transform duration-300" aria-hidden="true">+</span>
                     </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="px-6 pb-5 text-gray-300 text-sm leading-relaxed">
-                            Al contratar nuestros planes de acompañamiento, te aplicamos un 20% de descuento directo en tu pago mensual durante tus primeros 3 meses, para ayudarte a maximizar tu ROI inicial.
-                        </div>
+                    <div id="faq2" class="faq-content max-h-0 overflow-hidden transition-all duration-300">
+                        <p class="px-6 pb-5 text-gray-300 text-sm leading-relaxed">Al contratar un plan de acompañamiento, aplicamos 20% de descuento en tu pago mensual durante los primeros 3 meses para maximizar tu ROI inicial.</p>
                     </div>
                 </div>
-                <!-- Q3 -->
+
                 <div class="faq-item bg-white/5 border border-white/10 rounded-2xl">
-                    <button class="faq-button w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg focus:outline-none focus:text-brand-primary transition-colors" aria-expanded="false">
-                        ¿Las campañas incluyen presupuesto para Facebook o Google?
-                        <span class="faq-icon transform transition-transform duration-300 text-brand-primary font-light" aria-hidden="true">+</span>
+                    <button class="faq-button w-full px-6 py-5 text-left flex justify-between items-center font-bold text-base focus:outline-none focus-visible:text-brand-primary transition-colors" aria-expanded="false" aria-controls="faq3">
+                        ¿Las campañas incluyen el presupuesto publicitario?
+                        <span class="faq-icon text-brand-primary text-2xl font-light transition-transform duration-300" aria-hidden="true">+</span>
                     </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="px-6 pb-5 text-gray-300 text-sm leading-relaxed">
-                            Nuestros honorarios cubren la estrategia, creación, gestión y optimización experta. La inversión publicitaria (pauta) se paga directamente a las plataformas desde la tarjeta de la clínica.
-                        </div>
+                    <div id="faq3" class="faq-content max-h-0 overflow-hidden transition-all duration-300">
+                        <p class="px-6 pb-5 text-gray-300 text-sm leading-relaxed">Nuestros honorarios cubren estrategia, creación, gestión y optimización experta. La inversión publicitaria (pauta) se paga directamente a las plataformas desde la tarjeta de tu clínica.</p>
                     </div>
                 </div>
-                <!-- Q4 -->
+
                 <div class="faq-item bg-white/5 border border-white/10 rounded-2xl">
-                    <button class="faq-button w-full px-6 py-5 text-left flex justify-between items-center font-bold text-lg focus:outline-none focus:text-brand-primary transition-colors" aria-expanded="false">
-                        ¿Por qué un marketing "anichado" en el sector estético?
-                        <span class="faq-icon transform transition-transform duration-300 text-brand-primary font-light" aria-hidden="true">+</span>
+                    <button class="faq-button w-full px-6 py-5 text-left flex justify-between items-center font-bold text-base focus:outline-none focus-visible:text-brand-primary transition-colors" aria-expanded="false" aria-controls="faq4">
+                        ¿Por qué un marketing "nicho" en el sector estético?
+                        <span class="faq-icon text-brand-primary text-2xl font-light transition-transform duration-300" aria-hidden="true">+</span>
                     </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300">
-                        <div class="px-6 pb-5 text-gray-300 text-sm leading-relaxed">
-                            El sector médico/estético tiene regulaciones publicitarias estrictas, objeciones específicas de los pacientes y un lenguaje único. Un marketing generalista fracasa aquí; los especialistas logramos resultados reales.
-                        </div>
+                    <div id="faq4" class="faq-content max-h-0 overflow-hidden transition-all duration-300">
+                        <p class="px-6 pb-5 text-gray-300 text-sm leading-relaxed">El sector médico/estético tiene regulaciones publicitarias estrictas, objeciones específicas de pacientes y un lenguaje único. Un marketing generalista fracasa aquí; los especialistas logramos resultados reales.</p>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
 
-    <!-- 6. CTA FINAL (Urgencia) -->
+    <!-- ░░ 6. CTA FINAL ░░ -->
     <section class="py-24 relative overflow-hidden bg-brand-bg">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center fade-in-up">
             <div class="inline-block bg-brand-primary text-white px-6 py-2 rounded-full text-sm font-black mb-8 shadow-lg uppercase tracking-widest animate-pulse">
-                ⏳ Promoción Activa
+                ⏳ Promoción Activa — Plazas Limitadas
             </div>
             <h2 class="text-4xl lg:text-6xl font-heading font-black text-brand-secondary mb-6 uppercase">
                 Domina tu mercado<br/>antes que tu competencia.
             </h2>
             <p class="text-gray-700 text-xl mb-12 font-medium">
-                Aprovecha <span class="font-black text-brand-primary">3 meses con 20% de descuento</span> en tu pago mensual y comencemos a escalar tus ventas de servicios estéticos hoy mismo.
+                Aprovecha <span class="font-black text-brand-primary">3 meses con 20% de descuento</span> en tu pago mensual y comencemos a escalar tus ventas hoy.
             </p>
-            <a href="https://wa.me/524425500232" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-brand-secondary text-white px-10 py-5 rounded-full font-black text-lg hover:bg-brand-primary transition-all duration-300 transform hover:-translate-y-2 focus:outline-none focus:ring-4 focus:ring-brand-primary/50 shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_15px_40px_rgba(255,0,138,0.4)] uppercase tracking-wider">
-                <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423 14.416c-6.627 0-12-5.373-12-12s5.373-12 12-12 12 5.373 12 12-5.373 12-12 12zm8.127-21.473c-2.17-2.17-5.052-3.366-8.127-3.366-6.337 0-11.493 5.155-11.493 11.492 0 2.025.528 4.004 1.533 5.748l-1.63 5.952 6.09-1.597c1.668.91 3.541 1.391 5.495 1.391h.004c6.335 0 11.492-5.157 11.492-11.494 0-3.072-1.196-5.956-3.364-8.126z"/></svg>
+            <a href="https://wa.me/524425500232?text=Hola%20Fernanda%2C%20quiero%20mi%20diagn%C3%B3stico%20inicial%20gratuito%20y%20aprovechar%20la%20promoci%C3%B3n"
+               target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center justify-center bg-brand-secondary text-white px-10 py-5 rounded-full font-black text-lg hover:bg-brand-primary transition-all duration-300 transform hover:-translate-y-2 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-primary/50 shadow-[0_10px_30px_rgba(0,0,0,0.2)] hover:shadow-[0_15px_40px_rgba(255,0,138,0.4)] uppercase tracking-wider">
+                <svg class="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423 14.416c-6.627 0-12-5.373-12-12s5.373-12 12-12 12 5.373 12 12-5.373 12-12 12zm8.127-21.473c-2.17-2.17-5.052-3.366-8.127-3.366-6.337 0-11.493 5.155-11.493 11.492 0 2.025.528 4.004 1.533 5.748l-1.63 5.952 6.09-1.597c1.668.91 3.541 1.391 5.495 1.391h.004c6.335 0 11.492-5.157 11.492-11.494 0-3.072-1.196-5.956-3.364-8.126z"/></svg>
                 Quiero mi diagnóstico inicial
             </a>
         </div>
     </section>
 
-    <!-- 7. FOOTER -->
-    <footer class="bg-white pt-16 pb-8 border-t border-pink-100">
+    <!-- ░░ 7. FOOTER — Modal Trigger ░░ -->
+    <footer id="footer" class="bg-white pt-16 pb-8 border-t border-pink-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div class="md:col-span-2">
@@ -348,47 +383,84 @@
                         Médico<span class="text-brand-primary">Estético</span>.Marketing
                     </span>
                     <p class="text-gray-500 text-sm leading-relaxed max-w-sm mt-2 font-medium">
-                        Fernanda Torres. Tu aliada para dominar el marketing digital anichado en el sector médico y estético.
+                        Fernanda Torres. Tu aliada para dominar el marketing digital nicho en el sector médico y estético. Certificada RED Conocer EC1474 &amp; EC1621.
                     </p>
                 </div>
                 <div>
                     <h3 class="font-black text-lg mb-6 text-brand-secondary uppercase">Contacto Directo</h3>
                     <ul class="space-y-4 text-gray-500 text-sm font-medium">
                         <li class="flex items-center">
-                            <span class="text-brand-primary mr-3 text-lg" aria-hidden="true">✉️</span> <a href="mailto:medicoestetico.marketing@gmail.com" class="hover:text-brand-primary transition-colors focus:outline-none focus:underline">medicoestetico.marketing@gmail.com</a>
+                            <span class="text-brand-primary mr-3 text-lg" aria-hidden="true">✉️</span>
+                            <a href="mailto:medicoestetico.marketing@gmail.com" class="hover:text-brand-primary transition-colors focus:outline-none focus-visible:underline">medicoestetico.marketing@gmail.com</a>
                         </li>
                         <li class="flex items-center">
-                            <span class="text-brand-primary mr-3 text-lg" aria-hidden="true">📞</span> <a href="https://wa.me/524425500232" target="_blank" rel="noopener noreferrer" class="hover:text-brand-primary transition-colors focus:outline-none focus:underline">+52 4425500232</a>
+                            <span class="text-brand-primary mr-3 text-lg" aria-hidden="true">📞</span>
+                            <a href="https://wa.me/524425500232" target="_blank" rel="noopener noreferrer" class="hover:text-brand-primary transition-colors focus:outline-none focus-visible:underline">+52 442 550 0232</a>
                         </li>
                         <li class="flex items-center">
-                            <span class="text-brand-primary mr-3 text-lg" aria-hidden="true">🕒</span> Lun - Vie: 10:00am - 6:00pm
+                            <span class="text-brand-primary mr-3 text-lg" aria-hidden="true">🕒</span>
+                            Lun - Vie: 10:00am - 6:00pm
                         </li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="font-black text-lg mb-6 text-brand-secondary uppercase">Síguenos</h3>
                     <div class="flex space-x-4">
-                        <a href="https://www.instagram.com/medicoestetico.marketing" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-brand-bg rounded-full flex items-center justify-center text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-primary" aria-label="Instagram">
-                            IG
-                        </a>
-                        <a href="https://www.facebook.com/medicoestetico.marketing" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-brand-bg rounded-full flex items-center justify-center text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-primary" aria-label="Facebook">
-                            FB
-                        </a>
-                        <a href="https://www.tiktok.com/@medicoestetico.marketing" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-brand-bg rounded-full flex items-center justify-center text-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-primary" aria-label="TikTok">
-                            TK
-                        </a>
+                        <a href="https://www.instagram.com/medicoestetico.marketing" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Instagram de MédicoEstético.Marketing">IG</a>
+                        <a href="https://www.facebook.com/medicoestetico.marketing"  target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="Facebook de MédicoEstético.Marketing">FB</a>
+                        <a href="https://www.tiktok.com/@medicoestetico.marketing"   target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="TikTok de MédicoEstético.Marketing">TK</a>
                     </div>
                 </div>
             </div>
             <div class="border-t border-pink-100 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-400 text-xs text-center md:text-left mb-4 md:mb-0 font-bold uppercase tracking-widest">
-                    &copy; 2026 MedicoEstetico.Marketing. Todos los derechos reservados.
+                    &copy; 2026 MédicoEstético.Marketing &middot; Fernanda Torres. Todos los derechos reservados.
                 </p>
             </div>
         </div>
     </footer>
 
-    <!-- Scripts -->
+    <!-- ═══════════════════════════════════════════════════ -->
+    <!-- CONVERSION LAYER                                   -->
+    <!-- ═══════════════════════════════════════════════════ -->
+
+    <!-- WhatsApp Flotante -->
+    <div id="wa-float" role="complementary" aria-label="Contactar por WhatsApp">
+        <a href="https://wa.me/524425500232?text=Hola%20Fernanda%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20el%20marketing%20para%20mi%20cl%C3%ADnica%20est%C3%A9tica"
+           target="_blank" rel="noopener noreferrer"
+           class="wa-btn"
+           aria-label="Abre WhatsApp para consultar sobre marketing médico estético">
+            <span class="wa-pulse wa-pulse-1" aria-hidden="true"></span>
+            <span class="wa-pulse wa-pulse-2" aria-hidden="true"></span>
+            <svg class="wa-icon" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423 14.416c-6.627 0-12-5.373-12-12s5.373-12 12-12 12 5.373 12 12-5.373 12-12 12zm8.127-21.473c-2.17-2.17-5.052-3.366-8.127-3.366-6.337 0-11.493 5.155-11.493 11.492 0 2.025.528 4.004 1.533 5.748l-1.63 5.952 6.09-1.597c1.668.91 3.541 1.391 5.495 1.391h.004c6.335 0 11.492-5.157 11.492-11.494 0-3.072-1.196-5.956-3.364-8.126z"/>
+            </svg>
+        </a>
+    </div>
+
+    <!-- Social Proof Toast Container -->
+    <div id="toast-container" role="status" aria-live="polite" aria-label="Actividad reciente de clientes"></div>
+
+    <!-- Conversion Modal -->
+    <div id="conversion-modal" class="modal-overlay" role="dialog" aria-modal="true"
+         aria-labelledby="modal-title" aria-describedby="modal-desc" hidden>
+        <div class="modal-glass">
+            <button id="modal-close" class="modal-close" aria-label="Cerrar esta ventana">✕</button>
+            <div class="modal-badge">⏳ Promo Activa — Plazas Limitadas</div>
+            <h2 id="modal-title" class="modal-title">¡Espera!<br/><span>20% OFF</span> tus primeros 3 meses</h2>
+            <p id="modal-desc" class="modal-desc">No dejes pasar esta oportunidad. Hoy puedes comenzar a llenar tu agenda con pacientes cualificados con un <strong>20% de descuento</strong> durante los primeros 3 meses.</p>
+            <a href="https://wa.me/524425500232?text=Hola%20Fernanda%2C%20no%20quiero%20perder%20el%2020%25%20de%20descuento%20en%20los%203%20primeros%20meses%20%F0%9F%92%96"
+               target="_blank" rel="noopener noreferrer"
+               class="modal-cta">
+                <svg class="w-5 h-5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.274.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824zm-3.423 14.416c-6.627 0-12-5.373-12-12s5.373-12 12-12 12 5.373 12 12-5.373 12-12 12zm8.127-21.473c-2.17-2.17-5.052-3.366-8.127-3.366-6.337 0-11.493 5.155-11.493 11.492 0 2.025.528 4.004 1.533 5.748l-1.63 5.952 6.09-1.597c1.668.91 3.541 1.391 5.495 1.391h.004c6.335 0 11.492-5.157 11.492-11.494 0-3.072-1.196-5.956-3.364-8.126z"/></svg>
+                Quiero mi 20% de Descuento
+            </a>
+            <p class="modal-skip-wrap">
+                <button id="modal-skip" class="modal-skip-btn">No, prefiero pagar precio completo</button>
+            </p>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
