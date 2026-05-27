@@ -1,0 +1,46 @@
+/* Styles for Medical CRO Landing Page */
+
+/* Base setup and accessible focus states */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px; /* offset for fixed header */
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+*:focus-visible {
+    outline: 2px solid #0ea5e9; /* Tailwind medical-500 */
+    outline-offset: 3px;
+}
+
+/* Animations - Suaves al scroll (300ms - 500ms como se solicitó) */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+
+/* FAQ Accordion Icons */
+.faq-button[aria-expanded="true"] .faq-icon {
+    transform: rotate(180deg);
+}
+
+/* Line clamp polyfill for standard cards */
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
