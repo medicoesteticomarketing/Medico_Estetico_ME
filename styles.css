@@ -186,17 +186,17 @@ body {
     z-index: 0;
 }
 
-/* Textura patrón de puntos sobre la aurora */
-.hero-aurora::before {
+/* Textura líneas diagonales blancas sobre el hero */
+.hero-section::after {
     content: '';
     position: absolute;
     inset: 0;
     background-image: repeating-linear-gradient(
         45deg,
         transparent 0px,
-        transparent 14px,
-        rgba(255,0,138,0.22) 14px,
-        rgba(255,0,138,0.22) 16px
+        transparent 16px,
+        rgba(255,255,255,0.18) 16px,
+        rgba(255,255,255,0.18) 17.5px
     );
     pointer-events: none;
     z-index: 1;
