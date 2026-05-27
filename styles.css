@@ -359,6 +359,7 @@ body {
 
 .bio-photo-wrap {
     height: 100%;
+    padding-left: 2rem;
 }
 
 .bio-photo {
