@@ -116,12 +116,16 @@
     </header>
 
     <!-- ░░ 1. HERO ░░ -->
-    <section class="hero-section hero-dark px-4 relative overflow-hidden">
-        <!-- Dark neon background -->
-        <div class="hero-dark-bg" aria-hidden="true">
-            <div class="neon-orb neon-orb-1"></div>
-            <div class="neon-orb neon-orb-2"></div>
-            <div class="neon-orb neon-orb-3"></div>
+    <section class="hero-section px-4 relative overflow-hidden">
+        <!-- Grain + gradient background -->
+        <div class="hero-grain-bg" aria-hidden="true">
+            <svg class="grain-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <filter id="grain-filter">
+                    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+                    <feColorMatrix type="saturate" values="0"/>
+                </filter>
+                <rect width="100%" height="100%" filter="url(#grain-filter)" opacity="0.07"/>
+            </svg>
         </div>
 
         <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
