@@ -3,21 +3,12 @@
    styles.css
    ═══════════════════════════════════════════════ */
 
-/* ─── FUENTE KENAO (títulos) ─────────────────── */
-@font-face {
-    font-family: 'Kenao';
-    src: url('assets/fonts/Kenao.otf') format('opentype');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* Rellena glifos outline de Kenao con blur suave — sin pixelado */
+/* ─── FUENTE BRICOLAGE GROTESQUE (títulos) ──── */
+/* Cargada vía Google Fonts CDN — no requiere archivo local */
 .font-heading {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    text-shadow: 0 0 0.8px currentColor;
 }
 
 /* ─── BASE ───────────────────────────────────── */
