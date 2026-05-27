@@ -675,6 +675,30 @@ body {
 .roi-select:focus-visible { border-color: #ff008a; outline: 2px solid #ff008a; }
 .roi-select option { background: #111; color: #fff; }
 
+/* Light variant — for white-background ROI section */
+.roi-select-light {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ff008a' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    border: 1.5px solid rgba(255,0,138,0.3);
+    color: #1a1a1a;
+    padding: 1rem 3rem 1rem 1.25rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    font-family: 'Raleway', sans-serif;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.roi-select-light:hover  { border-color: #ff008a; }
+.roi-select-light:focus,
+.roi-select-light:focus-visible { border-color: #ff008a; outline: 2px solid rgba(255,0,138,0.35); outline-offset: 2px; box-shadow: 0 0 0 4px rgba(255,0,138,0.08); }
+.roi-select-light option { background: #fff; color: #1a1a1a; }
+
 .sim-results {
     background: linear-gradient(135deg, #0f0f0f 0%, #1a0010 100%);
     border: 1px solid rgba(255,0,138,0.25);
