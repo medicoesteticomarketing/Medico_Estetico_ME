@@ -162,7 +162,7 @@ body {
 .delay-200 { transition-delay: 200ms; }
 .delay-300 { transition-delay: 300ms; }
 
-/* ─── BLOB ANIMATION ─────────────────────────── */
+/* ─── BLOB ANIMATION (legacy) ────────────────── */
 @keyframes blob {
     0%   { transform: translate(0,0) scale(1); }
     33%  { transform: translate(30px,-50px) scale(1.1); }
@@ -171,6 +171,80 @@ body {
 }
 .animate-blob { animation: blob 7s infinite; }
 .animation-delay-2000 { animation-delay: 2s; }
+
+/* ─── AURORA HERO BACKGROUND ─────────────────── */
+.hero-aurora {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #fdf2f8 0%, #fce4f0 35%, #f9d0e8 65%, #fdf2f8 100%);
+    overflow: hidden;
+    z-index: 0;
+}
+
+.aurora-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+}
+
+/* Orbe 1 — rosa primario grande, esquina superior izquierda */
+.aurora-orb-1 {
+    width: 650px;
+    height: 650px;
+    top: -120px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(255,0,138,0.45) 0%, rgba(255,0,138,0) 70%);
+    animation: auroraFloat1 14s ease-in-out infinite;
+}
+
+/* Orbe 2 — rosa suave, centro */
+.aurora-orb-2 {
+    width: 550px;
+    height: 550px;
+    top: 10%;
+    left: 30%;
+    background: radial-gradient(circle, rgba(255,150,200,0.35) 0%, rgba(255,150,200,0) 70%);
+    animation: auroraFloat2 18s ease-in-out infinite;
+}
+
+/* Orbe 3 — malva/lila, derecha */
+.aurora-orb-3 {
+    width: 600px;
+    height: 600px;
+    top: -80px;
+    right: -80px;
+    background: radial-gradient(circle, rgba(220,80,180,0.3) 0%, rgba(220,80,180,0) 70%);
+    animation: auroraFloat3 20s ease-in-out infinite;
+}
+
+/* Orbe 4 — blanco/crema, parte baja */
+.aurora-orb-4 {
+    width: 500px;
+    height: 500px;
+    bottom: -100px;
+    left: 20%;
+    background: radial-gradient(circle, rgba(255,240,250,0.8) 0%, rgba(255,240,250,0) 70%);
+    animation: auroraFloat1 16s ease-in-out infinite reverse;
+}
+
+@keyframes auroraFloat1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25%       { transform: translate(60px, -50px) scale(1.12); }
+    50%       { transform: translate(-40px, 70px) scale(0.92); }
+    75%       { transform: translate(50px, 30px) scale(1.06); }
+}
+
+@keyframes auroraFloat2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%       { transform: translate(-80px, 60px) scale(1.18); }
+    66%       { transform: translate(60px, -40px) scale(0.88); }
+}
+
+@keyframes auroraFloat3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    40%       { transform: translate(-90px, 50px) scale(1.1); }
+    80%       { transform: translate(70px, -70px) scale(0.94); }
+}
 
 /* ─── TOP BANNER TICKER ──────────────────────── */
 .top-banner {
