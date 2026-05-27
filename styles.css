@@ -1237,14 +1237,14 @@ body {
     padding: 1.1rem 2rem;
     border-radius: 9999px;
     font-size: 1rem;
-    font-weight: 900;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border: none;
     cursor: pointer;
     box-shadow: 0 8px 24px rgba(255,0,138,0.35);
     transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
     display: block;
     margin-top: 0.5rem;
 }
