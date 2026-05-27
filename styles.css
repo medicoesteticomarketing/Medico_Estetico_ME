@@ -247,6 +247,63 @@ body {
     80%       { transform: translate(70px, -70px) scale(0.94); }
 }
 
+/* ─── SHIMMER SWEEP ──────────────────────────── */
+.aurora-shimmer {
+    position: absolute;
+    top: 0;
+    left: -80%;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(
+        105deg,
+        transparent 0%,
+        rgba(255,255,255,0.08) 35%,
+        rgba(255,255,255,0.28) 50%,
+        rgba(255,255,255,0.08) 65%,
+        transparent 100%
+    );
+    pointer-events: none;
+    animation: shimmerSweep 9s ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes shimmerSweep {
+    0%        { left: -80%; opacity: 0; }
+    8%        { opacity: 1; }
+    48%       { left: 130%; opacity: 1; }
+    55%       { opacity: 0; }
+    100%      { left: 130%; opacity: 0; }
+}
+
+/* ─── SPARKLES ───────────────────────────────── */
+.sparkle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 8px 3px rgba(255,255,255,0.9), 0 0 16px 6px rgba(255,200,230,0.4);
+    pointer-events: none;
+    opacity: 0;
+    animation: sparkleFloat 5s ease-in-out infinite;
+}
+
+.sparkle-1 { top: 75%; left: 10%;  animation-delay: 0s;    animation-duration: 5s; }
+.sparkle-2 { top: 60%; left: 38%;  animation-delay: 1.2s;  animation-duration: 6s; }
+.sparkle-3 { top: 80%; left: 62%;  animation-delay: 2.4s;  animation-duration: 4.5s; }
+.sparkle-4 { top: 55%; left: 80%;  animation-delay: 0.8s;  animation-duration: 5.5s; }
+.sparkle-5 { top: 85%; left: 25%;  animation-delay: 3s;    animation-duration: 5s; }
+.sparkle-6 { top: 65%; left: 52%;  animation-delay: 1.8s;  animation-duration: 6.5s; }
+.sparkle-7 { top: 90%; left: 70%;  animation-delay: 0.4s;  animation-duration: 4s; }
+.sparkle-8 { top: 70%; left: 88%;  animation-delay: 2s;    animation-duration: 5.8s; }
+
+@keyframes sparkleFloat {
+    0%   { transform: translateY(0)   scale(0);   opacity: 0; }
+    15%  { transform: translateY(-12px) scale(1); opacity: 1; }
+    70%  { transform: translateY(-45px) scale(0.7); opacity: 0.7; }
+    100% { transform: translateY(-70px) scale(0);   opacity: 0; }
+}
+
 /* ─── DARK NEON HERO BACKGROUND (reserved) ───── */
 /* ─── GRAIN + GRADIENT HERO BACKGROUND ──────── */
 .hero-grain-bg {
