@@ -176,7 +176,7 @@ body {
 .hero-aurora {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #fce8f4 0%, #f9c8e8 30%, #f5b0dc 60%, #fce8f4 100%);
+    background: linear-gradient(135deg, #fdf2f8 0%, #fce4f0 35%, #f9d0e8 65%, #fdf2f8 100%);
     overflow: hidden;
     z-index: 0;
 }
@@ -184,46 +184,47 @@ body {
 .aurora-orb {
     position: absolute;
     border-radius: 50%;
-    filter: blur(60px);
+    filter: blur(90px);
 }
 
 /* Orbe 1 — rosa primario grande, esquina superior izquierda */
 .aurora-orb-1 {
-    width: 750px;
-    height: 750px;
-    top: -150px;
-    left: -120px;
-    background: radial-gradient(circle, rgba(255,0,138,0.75) 0%, rgba(255,0,138,0) 70%);
+    width: 650px;
+    height: 650px;
+    top: -120px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(255,0,138,0.45) 0%, rgba(255,0,138,0) 70%);
     animation: auroraFloat1 14s ease-in-out infinite;
 }
 
 /* Orbe 2 — rosa suave, centro */
 .aurora-orb-2 {
-    width: 650px;
-    height: 650px;
-    top: 5%;
-    left: 25%;
-    background: radial-gradient(circle, rgba(255,100,180,0.6) 0%, rgba(255,100,180,0) 70%);
+    width: 550px;
+    height: 550px;
+    top: 10%;
+    left: 30%;
+    background: radial-gradient(circle, rgba(255,150,200,0.35) 0%, rgba(255,150,200,0) 70%);
     animation: auroraFloat2 18s ease-in-out infinite;
 }
 
 /* Orbe 3 — malva/lila, derecha */
 .aurora-orb-3 {
-    width: 700px;
-    height: 700px;
-    top: -100px;
-    right: -100px;
-    background: radial-gradient(circle, rgba(210,50,160,0.55) 0%, rgba(210,50,160,0) 70%);
+    width: 600px;
+    height: 600px;
+    top: -80px;
+    right: -80px;
+    background: radial-gradient(circle, rgba(220,80,180,0.3) 0%, rgba(220,80,180,0) 70%);
     animation: auroraFloat3 20s ease-in-out infinite;
 }
 
-/* Orbe 4 — rosa brillante, parte baja */
+/* Orbe 4 — blanco luminoso, centro-bajo */
 .aurora-orb-4 {
-    width: 600px;
-    height: 600px;
-    bottom: -120px;
+    width: 700px;
+    height: 700px;
+    bottom: -80px;
     left: 15%;
-    background: radial-gradient(circle, rgba(255,150,210,0.65) 0%, rgba(255,150,210,0) 70%);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.6) 30%, rgba(255,255,255,0) 70%);
+    filter: blur(50px);
     animation: auroraFloat1 16s ease-in-out infinite reverse;
 }
 
