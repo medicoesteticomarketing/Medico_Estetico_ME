@@ -372,6 +372,7 @@ body {
     display: block;
     position: relative;
     z-index: 2;
+    mix-blend-mode: multiply;
 }
 
 .bio-headline {
