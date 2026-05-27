@@ -474,6 +474,44 @@ body {
     color: #ff008a;
 }
 
+/* ─── FOOTER — PARTÍCULAS ROSAS FLOTANTES ────── */
+.footer-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.fp {
+    position: absolute;
+    border-radius: 50%;
+    background: #ff008a;
+    opacity: 0;
+    animation: fpFloat linear infinite;
+}
+
+@keyframes fpFloat {
+    0%   { opacity: 0;    transform: translateY(0)      scale(1); }
+    10%  { opacity: 0.55; }
+    80%  { opacity: 0.35; }
+    100% { opacity: 0;    transform: translateY(-320px) scale(0.6); }
+}
+
+/* Tamaños, posiciones y tiempos variados */
+.fp-1  { width:  6px; height:  6px; left:  5%;  bottom: 0; animation-duration: 7s;  animation-delay:  0s;   }
+.fp-2  { width:  4px; height:  4px; left: 12%;  bottom: 0; animation-duration: 9s;  animation-delay: -2s;  }
+.fp-3  { width:  8px; height:  8px; left: 22%;  bottom: 0; animation-duration: 6s;  animation-delay: -1s;  }
+.fp-4  { width:  5px; height:  5px; left: 33%;  bottom: 0; animation-duration: 11s; animation-delay: -3.5s;}
+.fp-5  { width:  7px; height:  7px; left: 44%;  bottom: 0; animation-duration: 8s;  animation-delay: -0.8s;}
+.fp-6  { width:  4px; height:  4px; left: 55%;  bottom: 0; animation-duration: 10s; animation-delay: -2.2s;}
+.fp-7  { width:  9px; height:  9px; left: 64%;  bottom: 0; animation-duration: 7.5s;animation-delay: -1.5s;}
+.fp-8  { width:  5px; height:  5px; left: 73%;  bottom: 0; animation-duration: 9.5s;animation-delay: -4s;  }
+.fp-9  { width:  6px; height:  6px; left: 82%;  bottom: 0; animation-duration: 6.5s;animation-delay: -0.5s;}
+.fp-10 { width:  4px; height:  4px; left: 89%;  bottom: 0; animation-duration: 8.5s;animation-delay: -2.8s;}
+.fp-11 { width:  7px; height:  7px; left: 95%;  bottom: 0; animation-duration: 7.2s;animation-delay: -1.2s;}
+.fp-12 { width:  5px; height:  5px; left: 50%;  bottom: 0; animation-duration: 10.5s;animation-delay:-3s;  }
+
 /* ─── CTA FINAL — AURORA EFFECT ─────────────── */
 .cta-aurora {
     position: absolute;
