@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
         roiSlider.addEventListener('input', calcROI, { passive: true });
     }
 
-    // Botones de servicio — selección exclusiva
+    // Botones de servicio — selección exclusiva (Versión A)
     if (roiSvcGroup) {
         roiSvcGroup.querySelectorAll('.roi-svc-btn').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -307,11 +307,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 calcROI();
             });
         });
-        // ARIA inicial
         roiSvcGroup.querySelectorAll('.roi-svc-btn').forEach(b => {
             b.setAttribute('aria-pressed', b.classList.contains('roi-svc-btn--active') ? 'true' : 'false');
         });
     }
+
+    // ── 6B. ROI SIMULATOR — VERSIÓN B (dropdown) ──────────────────────
+    const roi2Slider   = document.getElementById('roi2-slider');
+    const roi2SvcGroup = document.getElementById('roi2-service-group');
+    const roi2Amount   = document.getElementById('roi2-amount');
+    const roi2Pats     = document.getElementById('roi2-patients');
+    const roi2Rev      = document.getElementById('roi2-revenue');
+    const roi2Roas     = document.getElementById('roi2-roas');
+
+    const updateSlider2Fill = () => {
+        if (!roi2Slider) return;
+        const pct = ((roi2Slider.value - roi2Slider.min) / (roi2Slider.max - roi2Slider.min)) * 100;
+        roi2Slider.style.setProperty('--fill-pct', pct.toFixed(2) + '%');
+    };
+
+    const calcROI2 = () => {
+        if (!roi2Slider) return;
+        const inv    = parseInt(roi2Slider.value);
+        const ticket = parseInt(roi2SvcGroup ? roi2SvcGroup.value : '6000');
+        const CPL    = 350;
+        const conv   = 0.267;
+        const leads    = inv / CPL;
+        const patients = Math.round(leads * conv);
+        const revenue  = patients * ticket;
+        const roas     = (revenue / inv).toFixed(1);
+
+        if (roi2Amount) roi2Amount.textContent = fmtMXN(inv) + ' MXN';
+        if (roi2Pats)   roi2Pats.textContent   = patients;
+        if (roi2Rev)    roi2Rev.textContent    = fmtMXN(revenue);
+        if (roi2Roas)   roi2Roas.textContent   = roas + 'x';
+        updateSlider2Fill();
+    };
+
+    if (roi2Slider)   roi2Slider.addEventListener('input', calcROI2, { passive: true });
+    if (roi2SvcGroup) roi2SvcGroup.addEventListener('change', calcROI2);
+    if (roi2Slider)   calcROI2();
 
     if (roiSlider) calcROI(); // inicializar con valores por defecto
 

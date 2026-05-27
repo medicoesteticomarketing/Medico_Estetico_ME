@@ -380,12 +380,12 @@
         </div>
     </section>
 
-    <!-- ░░ ROI SIMULATOR ░░ -->
+    <!-- ░░ ROI SIMULATOR — VERSIÓN A: BOTONES ░░ -->
     <section id="simulador" class="py-24 bg-white" aria-labelledby="sim-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-                <!-- Controles — fondo blanco como screenshot -->
+                <!-- Controles -->
                 <div class="fade-in-up">
                     <span class="text-brand-primary text-xs font-black uppercase tracking-widest mb-4 block">Calculadora de pacientes</span>
                     <h2 id="sim-heading" class="text-5xl lg:text-7xl font-display font-black text-brand-secondary mb-6 leading-tight uppercase">
@@ -412,27 +412,22 @@
                     <div>
                         <p class="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Servicio Principal / Ticket Promedio del Paciente:</p>
                         <div id="roi-service-group" class="grid grid-cols-2 gap-3" role="group" aria-label="Selecciona servicio y ticket promedio">
-
                             <button type="button" class="roi-svc-btn" data-value="3500">
                                 <span class="roi-svc-price">$3,500 <small>MXN</small></span>
                                 <span class="roi-svc-label">Aparatología / Limpiezas Faciales</span>
                             </button>
-
                             <button type="button" class="roi-svc-btn roi-svc-btn--active" data-value="6000">
                                 <span class="roi-svc-price">$6,000 <small>MXN</small></span>
                                 <span class="roi-svc-label">Rellenos / Toxina Botulínica</span>
                             </button>
-
                             <button type="button" class="roi-svc-btn" data-value="15000">
                                 <span class="roi-svc-price">$15,000 <small>MXN</small></span>
                                 <span class="roi-svc-label">Rejuvenecimiento Integral</span>
                             </button>
-
                             <button type="button" class="roi-svc-btn" data-value="65000">
                                 <span class="roi-svc-price">$65,000 <small>MXN</small></span>
                                 <span class="roi-svc-label">Cirugía / Lipo / Rinoplastia</span>
                             </button>
-
                         </div>
                     </div>
                 </div>
@@ -459,6 +454,75 @@
                        target="_blank" rel="noopener noreferrer"
                        class="sim-cta">
                         Quiero estos resultados para mi clínica
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ░░ ROI SIMULATOR — VERSIÓN B: DROPDOWN ░░ -->
+    <section id="simulador-b" class="py-24 bg-gray-50 border-t border-pink-100" aria-labelledby="sim2-heading">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+                <!-- Controles -->
+                <div class="fade-in-up">
+                    <span class="text-brand-primary text-xs font-black uppercase tracking-widest mb-4 block">Simulador de Inversión</span>
+                    <h2 id="sim2-heading" class="text-5xl lg:text-6xl font-display font-black text-brand-secondary mb-5 leading-tight">
+                        Calcula tu Retorno de<br>Inversión (ROI) Estimado
+                    </h2>
+                    <p class="text-gray-500 mb-10 leading-relaxed">
+                        Usa esta herramienta exclusiva para estimar cuántos nuevos pacientes y facturación puedes generar estructurando campañas de tráfico médico estético profesionales.
+                    </p>
+
+                    <!-- Slider B -->
+                    <div class="mb-8">
+                        <div class="flex justify-between items-center mb-3">
+                            <label for="roi2-slider" class="text-sm font-bold text-gray-700 uppercase tracking-wide">Inversión Mensual Publicitaria:</label>
+                            <span id="roi2-amount" class="text-brand-primary font-black text-lg" aria-live="polite">$27,500 MXN</span>
+                        </div>
+                        <input type="range" id="roi2-slider" min="5000" max="50000" step="500" value="27500"
+                               class="roi-slider w-full" aria-label="Inversión mensual publicitaria en MXN">
+                        <div class="flex justify-between text-xs text-gray-400 mt-2 font-bold">
+                            <span>$5k</span><span>$25k</span><span>$50k</span>
+                        </div>
+                    </div>
+
+                    <!-- Servicio — dropdown select -->
+                    <div>
+                        <p class="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3">Servicio Principal / Ticket Promedio del Paciente:</p>
+                        <select id="roi2-service-group" class="roi-select-light w-full" aria-label="Selecciona servicio y ticket promedio">
+                            <option value="3500">Aparatología / Limpiezas Faciales ($3,500 MXN)</option>
+                            <option value="6000" selected>Rellenos / Toxina Botulínica ($6,000 MXN)</option>
+                            <option value="15000">Tratamiento Integral de Rejuvenecimiento ($15,000 MXN)</option>
+                            <option value="65000">Procedimiento Quirúrgico / Lipo / Rinoplastia ($65,000 MXN)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Resultados B — dark card -->
+                <div class="sim-results fade-in-up delay-200">
+                    <h3 class="text-2xl font-black mb-6 text-white">Resultados Proyectados</h3>
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <div class="sim-metric">
+                            <p class="sim-metric-label">PACIENTES NUEVOS (EST.)</p>
+                            <p id="roi2-patients" class="sim-metric-value" aria-live="polite">21</p>
+                        </div>
+                        <div class="sim-metric">
+                            <p class="sim-metric-label">INGRESOS PROYECTADOS</p>
+                            <p id="roi2-revenue" class="sim-metric-value text-brand-primary" aria-live="polite">$126,000</p>
+                        </div>
+                    </div>
+                    <div class="sim-metric mb-6">
+                        <p class="sim-metric-label">ROAS ESTIMADO (RETORNO)</p>
+                        <p id="roi2-roas" class="text-5xl font-black" style="color:#4ade80" aria-live="polite">4.6x</p>
+                    </div>
+                    <p class="text-xs text-gray-400 mb-6 leading-relaxed">*Este simulador es un cálculo basado en tasas de conversión promedio del sector (20-30% de agendado de leads calificados). Los resultados pueden variar.</p>
+                    <a href="https://wa.me/524425500232?text=Hola%20Fernanda%2C%20us%C3%A9%20el%20simulador%20y%20quiero%20reclamar%20mi%20plan%20personalizado%20con%20descuento"
+                       target="_blank" rel="noopener noreferrer"
+                       class="sim-cta">
+                        Reclamar Plan Personalizado con Descuento
                     </a>
                 </div>
 
