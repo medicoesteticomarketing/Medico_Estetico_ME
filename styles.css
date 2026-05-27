@@ -172,6 +172,11 @@ body {
 .animate-blob { animation: blob 7s infinite; }
 .animation-delay-2000 { animation-delay: 2s; }
 
+/* ╔══════════════════════════════════════════════╗
+   ║  🔒 HERO CSS — BLOQUEADO · NO MODIFICAR     ║
+   ║  Aprobado por cliente · versión final        ║
+   ║  Última edición: 2026-05-27                  ║
+   ╚══════════════════════════════════════════════╝ */
 /* ─── AURORA HERO BACKGROUND ─────────────────── */
 .hero-aurora {
     position: absolute;
@@ -303,6 +308,8 @@ body {
     70%  { transform: translateY(-55px) scale(0.7); opacity: 0.9; }
     100% { transform: translateY(-70px) scale(0);   opacity: 0; }
 }
+
+/* ── FIN HERO CSS BLOQUEADO ───────────────────── */
 
 /* ─── DARK NEON HERO BACKGROUND (reserved) ───── */
 /* ─── GRAIN + GRADIENT HERO BACKGROUND ──────── */
