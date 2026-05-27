@@ -41,6 +41,50 @@ body {
 .nav-link:hover { color: #ff008a; }
 .nav-link:focus-visible { outline: 2px solid #ff008a; outline-offset: 3px; }
 
+/* ─── BUTTON SHINE SWEEP ─────────────────────── */
+.btn-nav,
+.btn-primary,
+.btn-outline,
+.sim-cta,
+.form-submit,
+.btn-shine {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-nav::after,
+.btn-primary::after,
+.btn-outline::after,
+.sim-cta::after,
+.form-submit::after,
+.btn-shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 55%;
+    height: 100%;
+    background: linear-gradient(
+        105deg,
+        transparent 15%,
+        rgba(255,255,255,0.5) 50%,
+        transparent 85%
+    );
+    transform: skewX(-15deg);
+    transition: left 0.55s ease;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.btn-nav:hover::after,
+.btn-primary:hover::after,
+.btn-outline:hover::after,
+.sim-cta:hover::after,
+.form-submit:hover::after,
+.btn-shine:hover::after {
+    left: 160%;
+}
+
 .btn-nav {
     background: #000;
     color: #fff;
