@@ -6,7 +6,7 @@
 /* ─── BASE ───────────────────────────────────── */
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 148px; /* banner 36px + navbar 112px */
+    scroll-padding-top: 100px; /* banner 36px + navbar 64px */
 }
 
 body {
@@ -219,15 +219,15 @@ body {
 .ticker-item strong { font-weight: 900; }
 
 /* ─── HERO SECTION ───────────────────────────── */
-/* banner(36) + navbar(112) + extra breathing room */
+/* banner(36) + navbar(64) + extra breathing room */
 .hero-section {
-    padding-top: calc(36px + 112px + 4rem);
-    padding-bottom: 5rem;
+    padding-top: calc(36px + 64px + 3rem);
+    padding-bottom: 4rem;
 }
 @media (min-width: 1024px) {
     .hero-section {
-        padding-top: calc(36px + 112px + 6rem);
-        padding-bottom: 8rem;
+        padding-top: calc(36px + 64px + 4rem);
+        padding-bottom: 6rem;
     }
 }
 
