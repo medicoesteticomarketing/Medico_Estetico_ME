@@ -357,34 +357,14 @@ body {
     background: linear-gradient(180deg, #fdf2f8 0%, #fff8fc 100%);
 }
 
-.bio-arch-container {
-    position: relative;
-    width: 360px;
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-}
-
-.bio-arch {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 300px;
-    height: 420px;
-    background: #ff008a;
-    border-radius: 180px 180px 0 0;
-    z-index: 0;
+.bio-photo-wrap {
+    margin-left: -1.5rem;
 }
 
 .bio-photo {
-    position: relative;
-    z-index: 1;
     width: 100%;
     height: auto;
-    object-fit: contain;
-    object-position: bottom;
+    object-fit: cover;
     display: block;
 }
 
