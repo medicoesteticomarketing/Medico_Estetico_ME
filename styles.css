@@ -474,6 +474,108 @@ body {
     color: #ff008a;
 }
 
+/* ─── CTA FINAL — AURORA EFFECT ─────────────── */
+.cta-aurora {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Diagonal lines texture */
+.cta-aurora::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent 0px, transparent 16px,
+        rgba(255,255,255,0.18) 16px,
+        rgba(255,255,255,0.18) 17.5px
+    );
+    z-index: 1;
+}
+
+.cta-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(65px);
+    animation: ctaFloat 9s ease-in-out infinite;
+}
+.cta-orb-1 {
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(255,0,138,0.20) 0%, transparent 70%);
+    top: -120px; left: -100px;
+    animation-duration: 10s;
+}
+.cta-orb-2 {
+    width: 380px; height: 380px;
+    background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%);
+    top: calc(50% - 190px); right: -80px;
+    animation-duration: 12s;
+    animation-delay: -4s;
+}
+.cta-orb-3 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, rgba(255,0,138,0.15) 0%, transparent 70%);
+    bottom: -80px; left: 38%;
+    animation-duration: 8s;
+    animation-delay: -2s;
+}
+.cta-orb-4 {
+    width: 250px; height: 250px;
+    background: radial-gradient(circle, rgba(255,182,220,0.25) 0%, transparent 70%);
+    top: 20%; left: 55%;
+    animation-duration: 13s;
+    animation-delay: -6s;
+}
+
+@keyframes ctaFloat {
+    0%, 100% { transform: translate(0, 0); }
+    33%       { transform: translate(18px, -18px); }
+    66%       { transform: translate(-14px, 14px); }
+}
+
+.cta-shimmer {
+    position: absolute;
+    top: 0; left: -80%;
+    width: 55%; height: 100%;
+    background: linear-gradient(105deg,
+        transparent 0%,
+        rgba(255,255,255,0.10) 30%,
+        rgba(255,255,255,0.45) 50%,
+        rgba(255,255,255,0.10) 70%,
+        transparent 100%
+    );
+    animation: ctaShimmer 9s ease-in-out infinite;
+    z-index: 2;
+}
+@keyframes ctaShimmer {
+    0%       { left: -80%; }
+    60%, 100% { left: 120%; }
+}
+
+.cta-sparkle {
+    position: absolute;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 6px 2px rgba(255,0,138,0.55), 0 0 14px 4px rgba(255,255,255,0.35);
+    animation: ctaSparkle 3s ease-in-out infinite;
+    z-index: 3;
+}
+@keyframes ctaSparkle {
+    0%, 100% { opacity: 0; transform: scale(0.4); }
+    50%       { opacity: 1; transform: scale(1); }
+}
+.cta-sparkle-1 { top: 12%; left:  8%;  animation-delay:  0s;    animation-duration: 3.2s; }
+.cta-sparkle-2 { top: 72%; left: 14%;  animation-delay: -1.2s;  animation-duration: 2.9s; }
+.cta-sparkle-3 { top: 18%; right: 9%;  animation-delay: -0.6s;  animation-duration: 3.6s; }
+.cta-sparkle-4 { top: 68%; right: 7%;  animation-delay: -1.9s;  animation-duration: 2.6s; }
+.cta-sparkle-5 { top: 42%; left: 48%;  animation-delay: -0.9s;  animation-duration: 4.1s; }
+.cta-sparkle-6 { top: 28%; left: 28%;  animation-delay: -2.4s;  animation-duration: 3.0s; }
+
 /* ─── TOP BANNER TICKER ──────────────────────── */
 .top-banner {
     position: fixed;
