@@ -526,3 +526,386 @@ body {
 }
 .modal-skip-btn:hover { color: #777; }
 .modal-skip-btn:focus-visible { outline: 2px solid #ff008a; outline-offset: 2px; border-radius: 2px; }
+
+/* ═══════════════════════════════════════════════
+   NUEVAS SECCIONES — Conversion Machine v2
+   ═══════════════════════════════════════════════ */
+
+/* ─── CERTIFICATIONS (Enhanced) ─────────────── */
+.cert-card {
+    background: #fff;
+    border: 1px solid #f0e0ed;
+    border-radius: 2rem;
+    padding: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+.cert-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(0,0,0,0.08);
+    border-color: rgba(255,0,138,0.25);
+}
+.cert-icon-wrap {
+    width: 56px;
+    height: 56px;
+    border: 2px solid #ff008a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #ff008a;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.cert-card:hover .cert-icon-wrap {
+    background: #ff008a;
+    color: #fff;
+}
+.cert-body { flex: 1; }
+.cert-badge {
+    display: inline-block;
+    background: rgba(255,0,138,0.1);
+    color: #ff008a;
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    margin-bottom: 0.75rem;
+}
+.cert-title {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #000;
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+}
+.cert-authority {
+    font-size: 0.62rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #aaa;
+    margin-bottom: 0.875rem;
+    line-height: 1.5;
+}
+.cert-desc {
+    font-size: 0.875rem;
+    color: #555;
+    line-height: 1.7;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+}
+.cert-link {
+    color: #ff008a;
+    font-size: 0.78rem;
+    font-weight: 900;
+    text-decoration: none;
+    transition: text-decoration 0.2s;
+}
+.cert-link:hover { text-decoration: underline; }
+.cert-link:focus-visible { outline: 2px solid #ff008a; outline-offset: 2px; border-radius: 2px; }
+
+/* ─── ROI SIMULATOR ──────────────────────────── */
+.roi-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    --fill-pct: 50%;
+    background: linear-gradient(
+        to right,
+        #ff008a 0%,
+        #ff008a var(--fill-pct),
+        rgba(255,255,255,0.15) var(--fill-pct),
+        rgba(255,255,255,0.15) 100%
+    );
+}
+.roi-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ff008a;
+    cursor: pointer;
+    box-shadow: 0 0 0 4px rgba(255,0,138,0.25);
+    transition: box-shadow 0.2s ease;
+}
+.roi-slider::-webkit-slider-thumb:hover {
+    box-shadow: 0 0 0 8px rgba(255,0,138,0.2);
+}
+.roi-slider::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #ff008a;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 0 4px rgba(255,0,138,0.25);
+}
+.roi-slider:focus-visible {
+    outline: 2px solid #ff008a;
+    outline-offset: 4px;
+}
+
+.roi-select {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: rgba(255,255,255,0.08);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ff008a' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 1rem 3rem 1rem 1.25rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    font-family: 'Raleway', sans-serif;
+    transition: border-color 0.25s ease;
+}
+.roi-select:focus-visible { border-color: #ff008a; outline: 2px solid #ff008a; }
+.roi-select option { background: #111; color: #fff; }
+
+.sim-results {
+    background: linear-gradient(135deg, #0f0f0f 0%, #1a0010 100%);
+    border: 1px solid rgba(255,0,138,0.25);
+    border-radius: 2rem;
+    padding: 2rem;
+}
+.sim-metric {
+    background: rgba(255,255,255,0.05);
+    border-radius: 1rem;
+    padding: 1.25rem;
+}
+.sim-metric-label {
+    font-size: 0.62rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 0.5rem;
+}
+.sim-metric-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #fff;
+    line-height: 1;
+}
+.sim-cta {
+    display: block;
+    background: #ff008a;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(255,0,138,0.35);
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.sim-cta:hover {
+    background: #c4006a;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(255,0,138,0.5);
+}
+.sim-cta:focus-visible { outline: 3px solid #ff008a; outline-offset: 3px; border-radius: 9999px; }
+
+/* ─── LEAD CAPTURE FORM ──────────────────────── */
+.form-group { margin-bottom: 1.1rem; }
+
+.form-label {
+    display: block;
+    font-size: 0.68rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #111;
+    margin-bottom: 0.5rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #333;
+    background: #fff;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    outline: none;
+    font-family: 'Raleway', sans-serif;
+    display: block;
+}
+.form-input:focus {
+    border-color: #ff008a;
+    box-shadow: 0 0 0 4px rgba(255,0,138,0.1);
+}
+.form-input::placeholder { color: #c0c0c0; }
+.form-input:focus-visible { outline: none; }
+
+.form-select-input {
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23ff008a' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.25rem center;
+    cursor: pointer;
+    padding-right: 3rem;
+}
+.form-textarea {
+    resize: vertical;
+    min-height: 96px;
+}
+
+.form-submit {
+    background: #ff008a;
+    color: #fff;
+    padding: 1.1rem 2rem;
+    border-radius: 9999px;
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(255,0,138,0.35);
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Raleway', sans-serif;
+    display: block;
+    margin-top: 0.5rem;
+}
+.form-submit:hover {
+    background: #c4006a;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(255,0,138,0.5);
+}
+.form-submit:focus-visible { outline: 3px solid #ff008a; outline-offset: 3px; border-radius: 9999px; }
+
+/* ─── STICKY BOTTOM BANNER ───────────────────── */
+.sticky-bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 55;
+    background: #000;
+    border-top: 1px solid rgba(255,0,138,0.3);
+    padding: 0.65rem 1rem;
+    transform: translateY(100%);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.sticky-bottom.sb-visible { transform: translateY(0); }
+
+.sticky-bottom-inner {
+    max-width: 80rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    flex-wrap: nowrap;
+}
+@media (max-width: 640px) {
+    .sticky-bottom-inner { flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
+}
+
+.sticky-bottom-badge {
+    background: #ff008a;
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 900;
+    padding: 0.3rem 0.75rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.sticky-bottom-text {
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+@media (max-width: 640px) {
+    .sticky-bottom-text { font-size: 0.7rem; flex: none; }
+}
+
+.sticky-bottom-timer {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    flex-shrink: 0;
+}
+.timer-digit {
+    background: rgba(255,0,138,0.2);
+    color: #fff;
+    font-size: 0.95rem;
+    font-weight: 900;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+    min-width: 2rem;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+    font-family: 'Raleway', monospace;
+}
+.timer-sep {
+    color: #ff008a;
+    font-weight: 900;
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.sticky-bottom-cta {
+    background: #ff008a;
+    color: #fff;
+    padding: 0.55rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+    transition: background 0.25s ease, transform 0.25s ease;
+    box-shadow: 0 4px 14px rgba(255,0,138,0.4);
+}
+.sticky-bottom-cta:hover { background: #c4006a; transform: translateY(-1px); }
+.sticky-bottom-cta:focus-visible { outline: 2px solid #fff; outline-offset: 2px; border-radius: 9999px; }
+
+.sticky-bottom-close {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.35);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.25rem;
+    line-height: 1;
+    transition: color 0.2s;
+    flex-shrink: 0;
+}
+.sticky-bottom-close:hover { color: #fff; }
+.sticky-bottom-close:focus-visible { outline: 2px solid #ff008a; outline-offset: 2px; border-radius: 2px; }
+
+/* When sticky banner is visible, lift floating elements */
+body.has-sticky-banner #wa-float { bottom: 80px; }
+body.has-sticky-banner #toast-container { bottom: 160px; }
