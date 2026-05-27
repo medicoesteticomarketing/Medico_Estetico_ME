@@ -268,38 +268,85 @@
         </div>
     </section>
 
+    <!-- ░░ LAPTOP VISUAL (Social Proof Visual) ░░ -->
+    <section class="py-16 bg-brand-bg overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="fade-in-up">
+                    <span class="text-brand-primary text-xs font-black uppercase tracking-widest mb-4 block">Tecnología + Estrategia</span>
+                    <h2 class="text-4xl lg:text-5xl font-heading font-black text-brand-secondary mb-6 uppercase leading-tight">
+                        Resultados medibles,<br/><span class="text-brand-primary">en tiempo real.</span>
+                    </h2>
+                    <p class="text-gray-600 font-medium leading-relaxed mb-8">
+                        Cada campaña que gestiono está respaldada por dashboards de rendimiento en vivo. Monitoreo tus métricas clave — pacientes nuevos, costo por lead y ROAS — para optimizar continuamente y maximizar tu inversión.
+                    </p>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <span class="text-brand-primary text-xl mt-0.5" aria-hidden="true">✓</span>
+                            <span class="text-sm font-bold text-gray-700">Reportes semanales de resultados por canal</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-brand-primary text-xl mt-0.5" aria-hidden="true">✓</span>
+                            <span class="text-sm font-bold text-gray-700">Tracking de pacientes agendados vs. leads generados</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-brand-primary text-xl mt-0.5" aria-hidden="true">✓</span>
+                            <span class="text-sm font-bold text-gray-700">Optimización continua para reducir tu costo por paciente</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative fade-in-up delay-200">
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-primary/10 to-transparent rounded-[2.5rem] transform translate-x-3 translate-y-3" aria-hidden="true"></div>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=900"
+                         alt="Dashboard de rendimiento de marketing médico estético con métricas de pacientes, leads y ROAS"
+                         class="relative z-10 rounded-[2.5rem] shadow-2xl w-full object-cover h-[380px] border border-white/60"
+                         loading="lazy" width="900" height="380">
+                    <!-- Floating stat chips -->
+                    <div class="absolute top-6 left-6 z-20 bg-white/90 backdrop-blur-sm border border-pink-100 rounded-2xl px-4 py-3 shadow-lg" aria-hidden="true">
+                        <p class="text-xs font-black text-gray-400 uppercase tracking-wide">Pacientes / mes</p>
+                        <p class="text-2xl font-black text-brand-primary">+21</p>
+                    </div>
+                    <div class="absolute bottom-6 right-6 z-20 bg-white/90 backdrop-blur-sm border border-pink-100 rounded-2xl px-4 py-3 shadow-lg" aria-hidden="true">
+                        <p class="text-xs font-black text-gray-400 uppercase tracking-wide">ROAS Promedio</p>
+                        <p class="text-2xl font-black" style="color:#16a34a">4.6x</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ░░ ROI SIMULATOR ░░ -->
-    <section id="simulador" class="py-24 bg-brand-secondary text-white" aria-labelledby="sim-heading">
+    <section id="simulador" class="py-24 bg-white" aria-labelledby="sim-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
-                <!-- Controles -->
+                <!-- Controles — fondo blanco como screenshot -->
                 <div class="fade-in-up">
                     <span class="text-brand-primary text-xs font-black uppercase tracking-widest mb-4 block">SIMULADOR DE INVERSIÓN</span>
-                    <h2 id="sim-heading" class="text-4xl lg:text-5xl font-heading font-black mb-6 leading-tight uppercase">
+                    <h2 id="sim-heading" class="text-4xl lg:text-5xl font-heading font-black text-brand-secondary mb-6 leading-tight uppercase">
                         Calcula tu Retorno de Inversión (ROI) Estimado
                     </h2>
-                    <p class="text-gray-300 mb-10 font-medium leading-relaxed">
+                    <p class="text-gray-600 mb-10 font-medium leading-relaxed">
                         Usa esta herramienta exclusiva para estimar cuántos nuevos pacientes y facturación puedes generar estructurando campañas de tráfico médico estético profesionales.
                     </p>
 
                     <!-- Slider -->
                     <div class="mb-8">
                         <div class="flex justify-between items-center mb-3">
-                            <label for="roi-slider" class="text-sm font-bold text-gray-300 uppercase tracking-wide">Inversión Mensual Publicitaria:</label>
+                            <label for="roi-slider" class="text-sm font-bold text-gray-700 uppercase tracking-wide">Inversión Mensual Publicitaria:</label>
                             <span id="roi-amount" class="text-brand-primary font-black text-lg" aria-live="polite">$27,500 MXN</span>
                         </div>
                         <input type="range" id="roi-slider" min="5000" max="50000" step="500" value="27500"
                                class="roi-slider w-full" aria-label="Inversión mensual publicitaria en MXN">
-                        <div class="flex justify-between text-xs text-gray-500 mt-2 font-bold">
+                        <div class="flex justify-between text-xs text-gray-400 mt-2 font-bold">
                             <span>$5k</span><span>$25k</span><span>$50k</span>
                         </div>
                     </div>
 
                     <!-- Servicio -->
                     <div>
-                        <label for="roi-service" class="text-sm font-bold text-gray-300 uppercase tracking-wide mb-3 block">Servicio Principal / Ticket Promedio del Paciente:</label>
-                        <select id="roi-service" class="roi-select w-full" aria-label="Servicio principal y ticket promedio">
+                        <label for="roi-service" class="text-sm font-bold text-gray-700 uppercase tracking-wide mb-3 block">Servicio Principal / Ticket Promedio del Paciente:</label>
+                        <select id="roi-service" class="roi-select-light w-full" aria-label="Servicio principal y ticket promedio">
                             <option value="3500">Aparatología / Limpiezas Faciales ($3,500 MXN)</option>
                             <option value="6000" selected>Rellenos / Toxina Botulínica ($6,000 MXN)</option>
                             <option value="15000">Tratamiento Integral de Rejuvenecimiento ($15,000 MXN)</option>
@@ -308,9 +355,9 @@
                     </div>
                 </div>
 
-                <!-- Resultados -->
+                <!-- Resultados — dark glass card -->
                 <div class="sim-results fade-in-up delay-200">
-                    <h3 class="text-2xl font-black mb-6 uppercase">Resultados Proyectados</h3>
+                    <h3 class="text-2xl font-black mb-6 uppercase text-white">Resultados Proyectados</h3>
                     <div class="grid grid-cols-2 gap-4 mb-4">
                         <div class="sim-metric">
                             <p class="sim-metric-label">PACIENTES NUEVOS (EST.)</p>
