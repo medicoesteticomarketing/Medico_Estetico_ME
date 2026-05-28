@@ -1848,38 +1848,52 @@ body.has-sticky-banner #cookie-bar      { bottom: 90px; }
     /* Pink word stays — accent only */
 }
 
-/* ─── VB: HEADLINE SHIMMER (destello auto) ───── */
+/* ─── VB: HEADLINE SHIMMER — background-clip:text ─ */
+/* El destello se pinta SOLO sobre los píxeles del texto,
+   sin caja ni rectángulo visible alrededor               */
+
 .hero-headline-shine {
-    position: relative;
-    overflow: hidden;
     display: block;
 }
 
-.hero-headline-shine::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -120%;
-    width: 50%;
-    height: 100%;
+/* Destello sobre MARKETING (texto negro → gris claro → negro) */
+.hero-text-shimmer-dark {
     background: linear-gradient(
-        105deg,
-        transparent 10%,
-        rgba(255,255,255,0.85) 50%,
-        transparent 90%
+        120deg,
+        #000000 20%,
+        #999999 37%,
+        #000000 55%
     );
-    transform: skewX(-15deg);
-    pointer-events: none;
-    z-index: 2;
-    animation: headlineShimmer 6s ease-in-out infinite;
+    background-size: 600px 100%;
+    background-position: -600px 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    animation: heroTextSweep 7s ease-in-out infinite;
 }
 
-@keyframes headlineShimmer {
-    0%        { left: -120%; opacity: 0; }
-    6%        { opacity: 1; }
-    48%       { left: 140%; opacity: 1; }
-    54%       { opacity: 0; }
-    100%      { left: 140%; opacity: 0; }
+/* Destello sobre ESTÉTICO (texto rosa → blanco-rosa → rosa) */
+.hero-text-shimmer-pink {
+    background: linear-gradient(
+        120deg,
+        #ff008a 20%,
+        #ffcce8 38%,
+        #ff008a 56%
+    );
+    background-size: 600px 100%;
+    background-position: -600px 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: block;
+    animation: heroTextSweep 7s ease-in-out infinite;
+}
+
+@keyframes heroTextSweep {
+    0%          { background-position: -600px 0; }
+    42%         { background-position: 1100px 0; }
+    42.01%, 100% { background-position: -600px 0; }
 }
 
 /* ─── VB: NAV LINK hover crisp black → pink ─── */
