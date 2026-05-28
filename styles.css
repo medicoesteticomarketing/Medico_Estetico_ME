@@ -148,7 +148,7 @@ body {
 .svc-icon {
     width: 4rem;
     height: 4rem;
-    background: #fdf2f8;
+    background: #f0f0f0;
     border-radius: 1rem;
     display: flex;
     align-items: center;
@@ -174,7 +174,7 @@ body {
 .social-icon {
     width: 2.5rem;
     height: 2.5rem;
-    background: #fdf2f8;
+    background: #f0f0f0;
     border-radius: 9999px;
     display: flex;
     align-items: center;
@@ -226,12 +226,12 @@ body {
 .hero-aurora {
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #fdf2f8 0%, #fce4f0 35%, #f9d0e8 65%, #fdf2f8 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #f4f4f4 35%, #eeeeee 65%, #ffffff 100%);
     overflow: hidden;
     z-index: 0;
 }
 
-/* Textura líneas diagonales blancas sobre el hero */
+/* Textura líneas diagonales sutiles sobre el hero */
 .hero-section::after {
     content: '';
     position: absolute;
@@ -240,8 +240,8 @@ body {
         45deg,
         transparent 0px,
         transparent 16px,
-        rgba(255,255,255,0.15) 16px,
-        rgba(255,255,255,0.15) 17.5px
+        rgba(0,0,0,0.03) 16px,
+        rgba(0,0,0,0.03) 17.5px
     );
     pointer-events: none;
     z-index: 1;
@@ -253,33 +253,33 @@ body {
     filter: blur(90px);
 }
 
-/* Orbe 1 — rosa primario grande, esquina superior izquierda */
+/* Orbe 1 — plata suave, esquina superior izquierda */
 .aurora-orb-1 {
     width: 650px;
     height: 650px;
     top: -120px;
     left: -100px;
-    background: radial-gradient(circle, rgba(255,0,138,0.45) 0%, rgba(255,0,138,0) 70%);
+    background: radial-gradient(circle, rgba(160,160,160,0.22) 0%, rgba(160,160,160,0) 70%);
     animation: auroraFloat1 14s ease-in-out infinite;
 }
 
-/* Orbe 2 — rosa suave, centro */
+/* Orbe 2 — rosa mínimo (acento), centro */
 .aurora-orb-2 {
     width: 550px;
     height: 550px;
     top: 10%;
     left: 30%;
-    background: radial-gradient(circle, rgba(255,150,200,0.35) 0%, rgba(255,150,200,0) 70%);
+    background: radial-gradient(circle, rgba(255,0,138,0.06) 0%, rgba(255,0,138,0) 70%);
     animation: auroraFloat2 18s ease-in-out infinite;
 }
 
-/* Orbe 3 — malva/lila, derecha */
+/* Orbe 3 — gris claro, derecha */
 .aurora-orb-3 {
     width: 600px;
     height: 600px;
     top: -80px;
     right: -80px;
-    background: radial-gradient(circle, rgba(220,80,180,0.3) 0%, rgba(220,80,180,0) 70%);
+    background: radial-gradient(circle, rgba(200,200,200,0.2) 0%, rgba(200,200,200,0) 70%);
     animation: auroraFloat3 20s ease-in-out infinite;
 }
 
@@ -344,11 +344,11 @@ body {
 /* ─── SPARKLES ───────────────────────────────── */
 .sparkle {
     position: absolute;
-    width: 7px;
-    height: 7px;
-    background: white;
+    width: 5px;
+    height: 5px;
+    background: #ff008a;
     border-radius: 50%;
-    box-shadow: 0 0 10px 4px rgba(255,255,255,1), 0 0 22px 8px rgba(255,180,220,0.6);
+    box-shadow: 0 0 8px 3px rgba(255,0,138,0.4), 0 0 16px 5px rgba(255,0,138,0.15);
     pointer-events: none;
     opacity: 0;
     animation: sparkleFloat 5s ease-in-out infinite;
@@ -398,7 +398,7 @@ body {
 
 /* ─── BIO — SOY FER TORRES ──────────────────── */
 .bio-section {
-    background: #FDF7F2;
+    background: #f5f5f5;
 }
 
 .bio-photo-wrap {
@@ -587,27 +587,27 @@ body {
 }
 .cta-orb-1 {
     width: 420px; height: 420px;
-    background: radial-gradient(circle, rgba(255,0,138,0.20) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(200,200,200,0.18) 0%, transparent 70%);
     top: -120px; left: -100px;
     animation-duration: 10s;
 }
 .cta-orb-2 {
     width: 380px; height: 380px;
-    background: radial-gradient(circle, rgba(255,255,255,0.35) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255,0,138,0.06) 0%, transparent 70%);
     top: calc(50% - 190px); right: -80px;
     animation-duration: 12s;
     animation-delay: -4s;
 }
 .cta-orb-3 {
     width: 300px; height: 300px;
-    background: radial-gradient(circle, rgba(255,0,138,0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(180,180,180,0.12) 0%, transparent 70%);
     bottom: -80px; left: 38%;
     animation-duration: 8s;
     animation-delay: -2s;
 }
 .cta-orb-4 {
     width: 250px; height: 250px;
-    background: radial-gradient(circle, rgba(255,182,220,0.25) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255,0,138,0.08) 0%, transparent 70%);
     top: 20%; left: 55%;
     animation-duration: 13s;
     animation-delay: -6s;
@@ -625,9 +625,9 @@ body {
     width: 55%; height: 100%;
     background: linear-gradient(105deg,
         transparent 0%,
-        rgba(255,255,255,0.10) 30%,
-        rgba(255,255,255,0.45) 50%,
-        rgba(255,255,255,0.10) 70%,
+        rgba(255,255,255,0.05) 30%,
+        rgba(255,255,255,0.18) 50%,
+        rgba(255,255,255,0.05) 70%,
         transparent 100%
     );
     animation: ctaShimmer 9s ease-in-out infinite;
@@ -667,9 +667,8 @@ body {
     z-index: 60;
     height: 36px;
     overflow: hidden;
-    background: linear-gradient(90deg, #ff008a, #c4006a, #ff008a);
-    background-size: 200% 100%;
-    animation: bannerGradient 5s ease infinite;
+    background: #0a0a0a;
+    border-bottom: 1px solid rgba(255,0,138,0.25);
 }
 
 @keyframes bannerGradient {
@@ -1188,8 +1187,8 @@ body {
         to right,
         #ff008a 0%,
         #ff008a var(--fill-pct),
-        rgba(255,255,255,0.15) var(--fill-pct),
-        rgba(255,255,255,0.15) 100%
+        #e5e7eb var(--fill-pct),
+        #e5e7eb 100%
     );
 }
 .roi-slider::-webkit-slider-thumb {
@@ -1807,10 +1806,66 @@ body.has-sticky-banner #cookie-bar      { bottom: 90px; }
 .privacy-footer-note {
     margin-top: 1.5rem !important;
     padding: 1rem 1.25rem;
-    background: #fdf2f8;
+    background: #f8f8f8;
     border-radius: 0.875rem;
     border-left: 3px solid #ff008a;
     font-size: 0.82rem;
     font-weight: 600;
     color: #4b5563;
 }
+
+/* ═══════════════════════════════════════════════
+   VERSION B — Editorial B&W with Pink Accents
+   ═══════════════════════════════════════════════ */
+
+/* ─── VB: HERO — Clean typographic accent ───── */
+.hero-word-estetico {
+    /* Pink word stays — accent only */
+}
+
+/* ─── VB: NAV LINK hover crisp black → pink ─── */
+.nav-link {
+    color: #374151;
+}
+
+/* ─── VB: BIO SECTION — contrast text ──────── */
+.bio-section {
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* ─── VB: CERT CARD — clean edge border ─────── */
+.cert-card {
+    border-color: #e5e7eb;
+}
+.cert-card:hover {
+    border-color: #ff008a;
+}
+
+/* ─── VB: SERVICE CARD — on dark bg polish ───── */
+.service-card:hover {
+    box-shadow: 0 20px 40px rgba(255,255,255,0.08);
+    border-color: rgba(255,255,255,0.25);
+}
+
+/* ─── VB: SIM RESULTS — keep dark glass ─────── */
+/* Already dark by default — no change needed */
+
+/* ─── VB: TESTIMONIAL CARDS HOVER — dark ─────── */
+.testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+    border-color: rgba(255,0,138,0.3) !important;
+}
+
+/* ─── VB: FOOTER SOCIAL ICONS ─────────────────── */
+.social-icon {
+    border: 1px solid #e5e7eb;
+}
+
+/* ─── VB: BODY SECTION RHYTHM ─────────────────── */
+/* Alternating white / near-black sections =
+   white → dark (services) → light gray →
+   white → light gray → dark (testimonios) →
+   dark (faq) → white (cta) → white (footer)
+*/
