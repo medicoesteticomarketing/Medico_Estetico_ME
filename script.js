@@ -351,6 +351,72 @@ document.addEventListener('DOMContentLoaded', () => {
     if (roiSlider) calcROI(); // inicializar con valores por defecto
 
 
+    // ── 11. CALC MODALS (Calculadora + Simulador inside Diagnóstico) ─────────
+    const calcModal      = document.getElementById('calc-modal');
+    const simModal       = document.getElementById('sim-modal');
+    const openCalcBtn    = document.getElementById('open-calc-btn');
+    const openSimBtn     = document.getElementById('open-sim-btn');
+    const calcModalClose = document.getElementById('calc-modal-close');
+    const simModalClose  = document.getElementById('sim-modal-close');
+
+    const openCalcModal = () => {
+        if (!calcModal) return;
+        calcModal.removeAttribute('hidden');
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            calcModal.classList.add('modal-visible');
+        }));
+        document.body.style.overflow = 'hidden';
+        if (calcModalClose) calcModalClose.focus();
+        calcROI(); // refresh values once modal is painted
+    };
+
+    const closeCalcModal = () => {
+        if (!calcModal) return;
+        calcModal.classList.remove('modal-visible');
+        document.body.style.overflow = '';
+        calcModal.addEventListener('transitionend', () => {
+            calcModal.setAttribute('hidden', '');
+        }, { once: true });
+    };
+
+    const openSimModal = () => {
+        if (!simModal) return;
+        simModal.removeAttribute('hidden');
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            simModal.classList.add('modal-visible');
+        }));
+        document.body.style.overflow = 'hidden';
+        if (simModalClose) simModalClose.focus();
+        calcROI2(); // refresh values once modal is painted
+    };
+
+    const closeSimModal = () => {
+        if (!simModal) return;
+        simModal.classList.remove('modal-visible');
+        document.body.style.overflow = '';
+        simModal.addEventListener('transitionend', () => {
+            simModal.setAttribute('hidden', '');
+        }, { once: true });
+    };
+
+    if (openCalcBtn)    openCalcBtn.addEventListener('click', openCalcModal);
+    if (openSimBtn)     openSimBtn.addEventListener('click', openSimModal);
+    if (calcModalClose) calcModalClose.addEventListener('click', closeCalcModal);
+    if (simModalClose)  simModalClose.addEventListener('click', closeSimModal);
+
+    // Click outside glass pane → close
+    if (calcModal) calcModal.addEventListener('click', e => { if (e.target === calcModal) closeCalcModal(); });
+    if (simModal)  simModal.addEventListener('click',  e => { if (e.target === simModal)  closeSimModal(); });
+
+    // Escape → close (without interfering with other modals)
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            if (calcModal && !calcModal.hasAttribute('hidden')) closeCalcModal();
+            if (simModal  && !simModal.hasAttribute('hidden'))  closeSimModal();
+        }
+    });
+
+
     // ── 7. LEAD FORM → WHATSAPP ───────────────────────────────────────────
     const leadForm = document.getElementById('lead-form');
     if (leadForm) {

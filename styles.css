@@ -1942,3 +1942,106 @@ body.has-sticky-banner #cookie-bar      { bottom: 90px; }
    white → light gray → dark (testimonios) →
    dark (faq) → white (cta) → white (footer)
 */
+
+/* ─── VB: CALC TOOL BUTTONS (inside diagnóstico) ─── */
+.calc-tool-btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    min-width: 200px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 1.25rem;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    text-align: left;
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+.calc-tool-btn:hover {
+    border-color: #ff008a;
+    background: rgba(255,0,138,0.10);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255,0,138,0.15);
+}
+.calc-tool-btn:focus-visible {
+    outline: 2px solid #ff008a;
+    outline-offset: 3px;
+    border-radius: 1.25rem;
+}
+.calc-tool-icon {
+    font-size: 1.75rem;
+    flex-shrink: 0;
+    line-height: 1;
+}
+.calc-tool-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.calc-tool-title {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #fff;
+}
+.calc-tool-sub {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #94a3b8;
+    line-height: 1.35;
+}
+
+/* ─── VB: DIAG WHATSAPP CTA ─────────────────────── */
+.diag-wa-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    width: 100%;
+    border: 2px solid rgba(255,0,138,0.55);
+    color: #ff008a;
+    background: rgba(255,0,138,0.06);
+    padding: 0.875rem 1.5rem;
+    border-radius: 9999px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 900;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.diag-wa-cta:hover {
+    background: rgba(255,0,138,0.15);
+    border-color: #ff008a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255,0,138,0.25);
+}
+.diag-wa-cta:focus-visible {
+    outline: 3px solid #ff008a;
+    outline-offset: 3px;
+    border-radius: 9999px;
+}
+
+/* ─── VB: WIDE MODAL GLASS (calculadoras) ────────── */
+.modal-glass--wide {
+    max-width: 900px;
+    text-align: left;
+    max-height: 88vh;
+    overflow-y: auto;
+    padding: 2.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,0,138,0.35) transparent;
+}
+.modal-glass--wide::-webkit-scrollbar { width: 5px; }
+.modal-glass--wide::-webkit-scrollbar-track { background: transparent; }
+.modal-glass--wide::-webkit-scrollbar-thumb {
+    background: rgba(255,0,138,0.3);
+    border-radius: 9999px;
+}
