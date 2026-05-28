@@ -379,11 +379,11 @@ body {
     inset: 0;
     background:
         linear-gradient(135deg,
-            #fff0f7 0%,
-            #ffd6ec 25%,
-            #fce4f3 50%,
-            #ffe8f5 75%,
-            #fff5fb 100%);
+            #ffffff 0%,
+            #f4f4f4 25%,
+            #eeeeee 50%,
+            #f4f4f4 75%,
+            #ffffff 100%);
     z-index: 0;
 }
 
@@ -1098,7 +1098,7 @@ body {
 /* ─── CERTIFICATIONS (Enhanced) ─────────────── */
 .cert-card {
     background: #fff;
-    border: 1px solid #f0e0ed;
+    border: 1px solid #e5e7eb;
     border-radius: 2rem;
     padding: 2rem;
     display: flex;
@@ -1320,7 +1320,7 @@ body {
 }
 
 .sim-results {
-    background: linear-gradient(135deg, #0f0f0f 0%, #1a0010 100%);
+    background: linear-gradient(135deg, #0f0f0f 0%, #111111 100%);
     border: 1px solid rgba(255,0,138,0.25);
     border-radius: 2rem;
     padding: 2rem;
@@ -1731,7 +1731,7 @@ body.has-sticky-banner #cookie-bar      { bottom: 90px; }
     align-items: center;
     justify-content: space-between;
     padding: 1.5rem 1.75rem 1.25rem;
-    border-bottom: 1.5px solid #fce7f3;
+    border-bottom: 1.5px solid #e5e7eb;
     flex-shrink: 0;
 }
 .privacy-title {
@@ -1771,7 +1771,7 @@ body.has-sticky-banner #cookie-bar      { bottom: 90px; }
     scroll-behavior: smooth;
 }
 .privacy-body::-webkit-scrollbar { width: 5px; }
-.privacy-body::-webkit-scrollbar-track { background: #fdf2f8; border-radius: 9999px; }
+.privacy-body::-webkit-scrollbar-track { background: #f5f5f5; border-radius: 9999px; }
 .privacy-body::-webkit-scrollbar-thumb { background: rgba(255,0,138,0.3); border-radius: 9999px; }
 
 .privacy-body h3 {
