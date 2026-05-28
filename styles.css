@@ -226,21 +226,34 @@ body {
 .hero-aurora {
     position: absolute;
     inset: 0;
-    background-image: url('assets/img/fondo_1.webp');
+    background-image: url('assets/img/fondo_1.1.webp');
     background-size: cover;
     background-position: center top;
     overflow: hidden;
     z-index: 0;
 }
 
-/* Overlay central uniforme para texto centrado sobre la imagen */
+/* Overlay direccional: blanco izquierda → transparente derecha */
 .hero-aurora::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(255,255,255,0.72);
+    background: linear-gradient(
+        105deg,
+        rgba(255,255,255,0.96) 0%,
+        rgba(255,255,255,0.88) 30%,
+        rgba(255,255,255,0.50) 58%,
+        rgba(255,255,255,0.12) 78%,
+        rgba(255,255,255,0) 100%
+    );
     pointer-events: none;
     z-index: 0;
+}
+
+@media (max-width: 1023px) {
+    .hero-aurora::before {
+        background: rgba(255,255,255,0.88);
+    }
 }
 
 /* Textura líneas diagonales sutiles sobre el hero */
