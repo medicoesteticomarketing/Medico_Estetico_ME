@@ -1835,6 +1835,40 @@ body.has-sticky-banner #cookie-bar      { bottom: 90px; }
     /* Pink word stays — accent only */
 }
 
+/* ─── VB: HEADLINE SHIMMER (destello auto) ───── */
+.hero-headline-shine {
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+
+.hero-headline-shine::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        105deg,
+        transparent 10%,
+        rgba(255,255,255,0.85) 50%,
+        transparent 90%
+    );
+    transform: skewX(-15deg);
+    pointer-events: none;
+    z-index: 2;
+    animation: headlineShimmer 6s ease-in-out infinite;
+}
+
+@keyframes headlineShimmer {
+    0%        { left: -120%; opacity: 0; }
+    6%        { opacity: 1; }
+    48%       { left: 140%; opacity: 1; }
+    54%       { opacity: 0; }
+    100%      { left: 140%; opacity: 0; }
+}
+
 /* ─── VB: NAV LINK hover crisp black → pink ─── */
 .nav-link {
     color: #374151;
