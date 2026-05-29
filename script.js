@@ -513,8 +513,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ── 13. QUITAR FONDO — foto diagnóstico ──────────────────────────────────────
-// Detecta el color de fondo muestreando las 4 esquinas y lo elimina con fade
-(async function () {
+// Desactivado: la imagen perfil_lateral.png ya tiene transparencia nativa desde Canva
+// (async function () {
+(async function () { return; // imagen PNG ya viene sin fondo
     const img = document.getElementById('foto-diagnostico');
     if (!img) return;
 
