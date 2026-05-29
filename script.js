@@ -420,16 +420,74 @@ document.addEventListener('DOMContentLoaded', () => {
     // ── 7. LEAD FORM → WHATSAPP ───────────────────────────────────────────
     const leadForm = document.getElementById('lead-form');
     if (leadForm) {
+
+        // Marca un campo con error visual + mensaje
+        const markError = (el, msg) => {
+            el.classList.add('diag-input--error');
+            const prev = el.parentElement.querySelector('.diag-field-error');
+            if (prev) prev.remove();
+            const span = document.createElement('span');
+            span.className = 'diag-field-error';
+            span.setAttribute('role', 'alert');
+            span.textContent = '⚠ ' + msg;
+            el.insertAdjacentElement('afterend', span);
+        };
+
+        // Limpia error de un campo
+        const clearError = (el) => {
+            el.classList.remove('diag-input--error');
+            const errMsg = el.parentElement.querySelector('.diag-field-error');
+            if (errMsg) errMsg.remove();
+        };
+
+        // Auto-limpiar al corregir (se registra una sola vez por campo)
+        ['f-nombre', 'f-whatsapp', 'f-especialidad', 'f-reto'].forEach(id => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const evt = el.tagName === 'SELECT' ? 'change' : 'input';
+            el.addEventListener(evt, () => clearError(el));
+        });
+
         leadForm.addEventListener('submit', e => {
             e.preventDefault();
-            const nombre      = document.getElementById('f-nombre').value.trim();
-            const especialidad = document.getElementById('f-especialidad').value;
-            const whatsapp    = document.getElementById('f-whatsapp').value.trim();
-            const email       = document.getElementById('f-email').value.trim();
-            const reto        = document.getElementById('f-reto').value.trim();
 
-            if (!nombre || !especialidad || !whatsapp) {
-                alert('Por favor completa los campos obligatorios.');
+            const elNombre       = document.getElementById('f-nombre');
+            const elWhatsapp     = document.getElementById('f-whatsapp');
+            const elEspecialidad = document.getElementById('f-especialidad');
+            const elEmail        = document.getElementById('f-email');
+            const elReto         = document.getElementById('f-reto');
+
+            // Limpiar errores previos
+            [elNombre, elWhatsapp, elEspecialidad, elReto].forEach(clearError);
+
+            const nombre       = elNombre.value.trim();
+            const whatsapp     = elWhatsapp.value.trim();
+            const especialidad = elEspecialidad.value;
+            const email        = elEmail.value.trim();
+            const reto         = elReto.value.trim();
+
+            let firstError = null;
+
+            if (!nombre) {
+                markError(elNombre, 'Ingresa tu nombre');
+                firstError = firstError || elNombre;
+            }
+            if (!whatsapp) {
+                markError(elWhatsapp, 'Ingresa tu número de WhatsApp');
+                firstError = firstError || elWhatsapp;
+            }
+            if (!especialidad) {
+                markError(elEspecialidad, 'Selecciona tu especialidad');
+                firstError = firstError || elEspecialidad;
+            }
+            if (!reto) {
+                markError(elReto, 'Cuéntanos tu principal reto');
+                firstError = firstError || elReto;
+            }
+
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                firstError.focus();
                 return;
             }
 
