@@ -1,14 +1,21 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
   "name": "medico-estetico-me",
   "compatibility_date": "2026-05-29",
-  "observability": {
-    "enabled": true
-  },
   "assets": {
-    "directory": "."
+    "directory": "./"
   },
-  "compatibility_flags": [
-    "nodejs_compat"
-  ]
+  "kv_namespaces": [
+    {
+      "binding": "REPORTES",
+      "id": "8b454fb22fdc4fa58bc3546165a7faaa"
+    },
+    {
+      "binding": "QUOTES",
+      "id": "d4139f6917b34826a64528f313739423"
+    }
+  ],
+  "vars": {
+    "NOTIFY_EMAIL": "medicoestetico.marketing@gmail.com",
+    "SITE_URL": "https://medico-estetico-me.medicoestetico-marketing.workers.dev"
+  }
 }
