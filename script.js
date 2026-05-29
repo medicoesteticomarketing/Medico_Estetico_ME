@@ -418,7 +418,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // ── 12. CERT MODAL (Certificaciones Oficiales) ───────────────────────────
+    // ── 12. COTIZADOR — Acceso con contraseña ────────────────────────────────
+    const cotizadorBtn = document.getElementById('cotizador-lock-btn');
+    if (cotizadorBtn) {
+        cotizadorBtn.addEventListener('click', () => {
+            const pass = prompt('🔒 Contraseña de acceso:');
+            if (pass === null) return; // canceló
+            if (pass === '290514') {
+                window.location.href = 'cotizador.html';
+            } else {
+                alert('Contraseña incorrecta.');
+            }
+        });
+    }
+
+
+    // ── 13. CERT MODAL (Certificaciones Oficiales) ───────────────────────────
     const certModal      = document.getElementById('cert-modal');
     const openCertBtn    = document.getElementById('open-cert-btn');
     const certModalClose = document.getElementById('cert-modal-close');
