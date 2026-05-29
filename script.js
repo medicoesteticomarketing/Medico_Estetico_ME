@@ -498,43 +498,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // ── 13. QUITAR FONDO BLANCO — foto diagnóstico ────────────────────────────────
-// Elimina píxeles blancos/casi-blancos via Canvas API con suavizado en bordes
-(function () {
+// Carga la imagen via fetch() (evita CORS), elimina píxeles blancos con Canvas
+(async function () {
     const img = document.getElementById('foto-diagnostico');
     if (!img) return;
 
-    function procesarFondo() {
-        try {
-            const canvas = document.createElement('canvas');
-            canvas.width  = img.naturalWidth;
-            canvas.height = img.naturalHeight;
-            const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0);
+    try {
+        const src  = img.getAttribute('src');
+        const resp = await fetch(src);
+        const blob = await resp.blob();
+        const bmp  = await createImageBitmap(blob);
 
-            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-            const data = imageData.data;
-            const UMBRAL = 235; // píxeles más blancos que esto → transparentes
+        const canvas = document.createElement('canvas');
+        canvas.width  = bmp.width;
+        canvas.height = bmp.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(bmp, 0, 0);
 
-            for (let i = 0; i < data.length; i += 4) {
-                const r = data[i], g = data[i + 1], b = data[i + 2];
-                const blancura = Math.min(r, g, b); // cuanto más alto, más blanco
-                if (blancura >= UMBRAL) {
-                    // Fade suave: de UMBRAL (opaco) a 255 (transparente)
-                    const alpha = Math.round(255 * (255 - blancura) / (255 - UMBRAL));
-                    data[i + 3] = Math.max(0, alpha);
-                }
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+        const UMBRAL = 240; // píxeles con blancura >= UMBRAL → transparentes
+
+        for (let i = 0; i < data.length; i += 4) {
+            const r = data[i], g = data[i + 1], b = data[i + 2];
+            const blancura = Math.min(r, g, b);
+            if (blancura >= UMBRAL) {
+                // Fade suave: UMBRAL=opaco, 255=transparente
+                data[i + 3] = Math.round(255 * (255 - blancura) / (255 - UMBRAL));
             }
-
-            ctx.putImageData(imageData, 0, 0);
-            img.src = canvas.toDataURL('image/png');
-        } catch (e) {
-            console.warn('Error procesando fondo imagen:', e);
         }
-    }
 
-    if (img.complete && img.naturalWidth > 0) {
-        procesarFondo();
-    } else {
-        img.addEventListener('load', procesarFondo, { once: true });
+        ctx.putImageData(imageData, 0, 0);
+        img.src = canvas.toDataURL('image/png');
+    } catch (e) {
+        console.warn('Error quitando fondo blanco:', e);
     }
 })();
