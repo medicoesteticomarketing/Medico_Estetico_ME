@@ -14,8 +14,15 @@
       "id": "d4139f6917b34826a64528f313739423"
     }
   ],
+  "secrets_store_secrets": [
+    {
+      "binding": "BREVO_KEY_DIAGNOSTICO",
+      "store_id": "540fa4e111114271a5ecd11309f9cfa6",
+      "secret_name": "BREVO_KEY_DIAGNOSTICO"
+    }
+  ],
   "vars": {
     "NOTIFY_EMAIL": "medicoestetico.marketing@gmail.com",
-    "SITE_URL": "https://medico-estetico-me.medicoestetico-marketing.workers.dev"
+    "SITE_URL": "https://medicoestetico.marketing"
   }
 }
