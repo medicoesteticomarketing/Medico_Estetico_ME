@@ -413,8 +413,38 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') {
             if (calcModal && !calcModal.hasAttribute('hidden')) closeCalcModal();
             if (simModal  && !simModal.hasAttribute('hidden'))  closeSimModal();
+            if (certModal && !certModal.hasAttribute('hidden')) closeCertModal();
         }
     });
+
+
+    // ── 12. CERT MODAL (Certificaciones Oficiales) ───────────────────────────
+    const certModal      = document.getElementById('cert-modal');
+    const openCertBtn    = document.getElementById('open-cert-btn');
+    const certModalClose = document.getElementById('cert-modal-close');
+
+    const openCertModal = () => {
+        if (!certModal) return;
+        certModal.removeAttribute('hidden');
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            certModal.classList.add('modal-visible');
+        }));
+        document.body.style.overflow = 'hidden';
+        if (certModalClose) certModalClose.focus();
+    };
+
+    const closeCertModal = () => {
+        if (!certModal) return;
+        certModal.classList.remove('modal-visible');
+        document.body.style.overflow = '';
+        certModal.addEventListener('transitionend', () => {
+            certModal.setAttribute('hidden', '');
+        }, { once: true });
+    };
+
+    if (openCertBtn)    openCertBtn.addEventListener('click', openCertModal);
+    if (certModalClose) certModalClose.addEventListener('click', closeCertModal);
+    if (certModal)      certModal.addEventListener('click', e => { if (e.target === certModal) closeCertModal(); });
 
 
     // ── 7. LEAD FORM — eliminado (botón enlaza directo a solicitud-diagnostico.html) ──
