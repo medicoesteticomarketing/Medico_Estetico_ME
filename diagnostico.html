@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Diagnóstico 360° — MédicoEstético.Marketing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        #prompt-output { font-family: 'Courier New', monospace; white-space: pre-wrap; }
+        .copied { animation: flash 0.4s ease; }
+        @keyframes flash { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    </style>
+</head>
+<body class="bg-slate-950 min-h-screen text-slate-100">
+
+<!-- NAV -->
+<nav class="border-b border-slate-800 px-6 py-4 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3">
+        <img src="assets/logo/logo_me_blanco.svg" alt="MédicoEstético.Marketing" style="height:32px;width:auto;">
+        <span class="text-white/60 text-xs font-bold uppercase tracking-widest">Diagnóstico 360°</span>
+    </a>
+    <span class="text-xs text-slate-500">🔒 Herramienta Interna — Fernanda Torres</span>
+</nav>
+
+<main class="max-w-4xl mx-auto px-4 py-10">
+
+    <!-- HEADER -->
+    <div class="mb-10">
+        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-4"
+              style="background:rgba(255,0,138,0.1);border:1px solid rgba(255,0,138,0.25);color:#ff008a;">
+            ⚡ GENERADOR DE PROMPT MAESTRO
+        </span>
+        <h1 class="text-3xl font-extrabold text-white mb-2">Diagnóstico de Autoridad Estética Digital 360°</h1>
+        <p class="text-slate-400 text-sm">Llena los datos del cliente → copia el prompt → pégalo en Claude.ai → reporte listo en 5 minutos.</p>
+    </div>
+
+    <!-- Aviso pre-llenado (se inserta dinámicamente) -->
+    <div id="aviso-prellenado"></div>
+
+    <div class="grid lg:grid-cols-2 gap-8">
+
+        <!-- ① FORMULARIO DE DATOS -->
+        <div class="space-y-5">
+            <h2 class="text-sm font-bold text-slate-400 uppercase tracking-widest">① Datos del cliente</h2>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1.5">Nombre del doctor</label>
+                <input id="f-nombre" type="text" placeholder="Dra. Ana García López"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2"
+                    style="--tw-ring-color:#ff008a;">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1.5">Email del doctor</label>
+                <input id="f-email" type="email" placeholder="dra.garcia@correo.com"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2"
+                    style="--tw-ring-color:#ff008a;">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1.5">WhatsApp del doctor</label>
+                <input id="f-whatsapp" type="tel" placeholder="+52 442 123 4567"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2"
+                    style="--tw-ring-color:#ff008a;">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1.5">Especialidad</label>
+                <input id="f-especialidad" type="text" placeholder="Ej: Dermatología Estética, Cirugía Plástica..."
+                    class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2"
+                    style="--tw-ring-color:#ff008a;">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1.5">Ciudad / País</label>
+                <input id="f-ciudad" type="text" placeholder="Querétaro, México"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2"
+                    style="--tw-ring-color:#ff008a;">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1.5">Sitio web actual (si tiene)</label>
+                <div class="flex gap-2">
+                    <input id="f-web" type="text" placeholder="www.tusitio.com  /  No tiene"
+                        class="flex-1 px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2"
+                        style="--tw-ring-color:#ff008a;">
+                    <button onclick="analizarVelocidad()" id="btn-velocidad"
+                        title="Analizar velocidad con PageSpeed Insights"
+                        class="px-3 py-2 rounded-xl bg-slate-700 hover:bg-slate-600 text-white text-sm font-bold transition-all flex-shrink-0 flex items-center gap-1.5">
+                        🔍 Velocidad
+                    </button>
+                </div>
+
+                <!-- Resultados PageSpeed -->
+                <div id="speed-results" class="hidden mt-3 bg-slate-900 border border-slate-700 rounded-xl p-4 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">PageSpeed Insights</span>
+                        <button onclick="document.getElementById('speed-results').classList.add('hidden'); velocidadData=null;"
+                            class="text-slate-600 hover:text-slate-400 text-xs">✕ quitar</button>
+                    </div>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="bg-slate-800 rounded-lg p-3 text-center">
+                            <div class="text-xs text-slate-500 mb-1">📱 Móvil</div>
+                            <div id="score-mobile" class="text-3xl font-extrabold">—</div>
+                            <div class="text-xs text-slate-500 mt-1">/ 100</div>
+                        </div>
+                        <div class="bg-slate-800 rounded-lg p-3 text-center">
+                            <div class="text-xs text-slate-500 mb-1">🖥️ Desktop</div>
+                            <div id="score-desktop" class="text-3xl font-extrabold">—</div>
+                            <div class="text-xs text-slate-500 mt-1">/ 100</div>
+                        </div>
+                    </div>
+                    <div id="speed-metrics" class="space-y-1.5 text-xs"></div>
+                    <p id="speed-semaforo" class="text-xs font-bold text-center pt-1"></p>
+                </div>
+                <div id="speed-loading" class="hidden mt-3 text-xs text-slate-500 flex items-center gap-2 px-1">
+                    <svg class="animate-spin h-3.5 w-3.5" style="color:#ff008a;" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                    </svg>
+                    Analizando velocidad del sitio...
+                </div>
+                <div id="speed-error" class="hidden mt-3 text-xs text-red-400 px-1"></div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1.5">Redes sociales activas</label>
+                <input id="f-redes" type="text" placeholder="Instagram: @dra_garcia / TikTok / No tiene"
+                    class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2"
+                    style="--tw-ring-color:#ff008a;">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1.5">Objetivo principal</label>
+                <select id="f-objetivo" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2" style="--tw-ring-color:#ff008a;">
+                    <option value="">— Selecciona —</option>
+                    <option>Atraer más pacientes para procedimientos estéticos</option>
+                    <option>Posicionarse como referente en medicina estética en su ciudad</option>
+                    <option>Aumentar la agenda de procedimientos premium</option>
+                    <option>Mejorar reputación digital y reseñas</option>
+                    <option>Lanzar nuevos tratamientos (botox, rellenos, cirugía…)</option>
+                    <option>Abrir nueva clínica estética o sucursal</option>
+                    <option>Mejorar presencia en Instagram / TikTok</option>
+                </select>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1.5">Estrategias actuales</label>
+                <input id="f-estrategias" type="text" placeholder="Google Ads | Instagram orgánico | Sin estrategia..."
+                    class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2"
+                    style="--tw-ring-color:#ff008a;">
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1.5">Mensaje / Notas del cliente</label>
+                <textarea id="f-notas" rows="3" placeholder="Lo que escribió en el formulario o comentó en la llamada..."
+                    class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm placeholder-slate-500 focus:outline-none focus:ring-2 resize-none"
+                    style="--tw-ring-color:#ff008a;"></textarea>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-1.5">Presupuesto estimado</label>
+                <select id="f-presupuesto" class="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-white text-sm focus:outline-none focus:ring-2" style="--tw-ring-color:#ff008a;">
+                    <option value="">— No mencionado —</option>
+                    <option>Básico (menos de $5,000 MXN/mes)</option>
+                    <option>Medio ($5,000 – $15,000 MXN/mes)</option>
+                    <option>Alto (más de $15,000 MXN/mes)</option>
+                    <option>Sin límite definido</option>
+                </select>
+            </div>
+
+            <!-- Campo oculto: valor de procedimientos, viene del formulario del cliente -->
+            <input type="hidden" id="f-valor-servicio">
+
+            <button onclick="generarPrompt()"
+                class="w-full text-white font-bold py-4 rounded-xl transition-all text-sm flex items-center justify-center gap-2"
+                style="background:#ff008a;box-shadow:0 8px 24px rgba(255,0,138,0.3);">
+                ⚡ Generar Prompt Maestro
+            </button>
+        </div>
+
+        <!-- ② PROMPT GENERADO -->
+        <div class="flex flex-col gap-4">
+            <div class="flex items-center justify-between">
+                <h2 class="text-sm font-bold text-slate-400 uppercase tracking-widest">② Prompt listo para Claude</h2>
+                <button id="btn-copy" onclick="copiarPrompt()" class="hidden text-xs bg-slate-700 hover:bg-slate-600 text-white px-3 py-1.5 rounded-lg font-bold transition-all">
+                    📋 Copiar todo
+                </button>
+            </div>
+
+            <div id="prompt-box" class="hidden flex-1 bg-slate-900 border border-slate-700 rounded-2xl p-5 relative">
+                <pre id="prompt-output" class="text-slate-300 text-xs leading-relaxed overflow-auto max-h-[600px]"></pre>
+            </div>
+
+            <div id="prompt-placeholder" class="flex-1 bg-slate-900/50 border border-dashed border-slate-700 rounded-2xl flex flex-col items-center justify-center p-10 text-center gap-3 min-h-[400px]">
+                <span class="text-4xl">💆</span>
+                <p class="text-slate-500 text-sm">Llena los datos del cliente<br>y genera el prompt aquí</p>
+            </div>
+
+            <!-- INSTRUCCIONES -->
+            <div id="instrucciones" class="hidden rounded-xl p-4 text-xs space-y-1.5"
+                 style="background:rgba(255,0,138,0.08);border:1px solid rgba(255,0,138,0.2);color:#ffa8d5;">
+                <p class="font-bold mb-2" style="color:#ff008a;">📌 Pasos para usar el prompt:</p>
+                <p>1. Haz clic en <strong>"Copiar todo"</strong></p>
+                <p>2. Abre <a href="https://claude.ai" target="_blank" class="underline hover:text-white">claude.ai</a> en una nueva pestaña</p>
+                <p>3. Pega el prompt y presiona Enter</p>
+                <p>4. En ~5 min tienes el reporte completo ✅</p>
+                <p>5. Pega el resultado abajo para generar el link del médico</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── ③ PUBLICAR DIAGNÓSTICO ── -->
+    <div class="mt-12 border-t border-slate-700 pt-10">
+        <h2 class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">③ Publicar y compartir con el médico</h2>
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-6 space-y-4">
+            <p class="text-slate-400 text-sm leading-relaxed">
+                Copia el diagnóstico que generó Claude, pégalo aquí y obtén un
+                <strong class="text-white">link único (ME-001, ME-002…)</strong> para compartirlo con el médico.
+                El link dura <strong class="text-white">60 días</strong>.
+            </p>
+            <textarea id="pub-contenido" rows="8"
+                placeholder="Pega aquí el diagnóstico completo generado por Claude..."
+                class="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-600 text-slate-200 text-sm placeholder-slate-600 focus:outline-none resize-none font-mono"
+                style="focus-ring-color:#ff008a;"></textarea>
+            <div id="pub-error" class="hidden text-sm rounded-xl px-4 py-3" style="color:#ff6bb3;background:rgba(255,0,138,0.08);border:1px solid rgba(255,0,138,0.3);"></div>
+            <button id="pub-btn" onclick="publicarReporte()"
+                class="w-full text-white font-bold py-3.5 rounded-xl transition-all text-sm flex items-center justify-center gap-2"
+                style="background:#ff008a;">
+                <span id="pub-btn-text">🔗 Generar link para el médico</span>
+            </button>
+
+            <!-- Resultado -->
+            <div id="pub-resultado" class="hidden rounded-xl p-5 space-y-3"
+                 style="background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);">
+                <p class="font-bold text-sm" style="color:#22c55e;">✅ ¡Listo! Link generado:</p>
+                <div class="flex items-center gap-2">
+                    <input id="pub-link" type="text" readonly
+                        class="flex-1 px-3 py-2.5 rounded-lg bg-slate-900 border border-slate-600 text-white text-sm font-mono focus:outline-none">
+                    <button onclick="copiarLink()" id="btn-copiar-link"
+                        class="px-4 py-2.5 bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold rounded-lg transition-all flex-shrink-0">
+                        📋 Copiar
+                    </button>
+                </div>
+                <span id="pub-folio" class="inline-block text-xs font-bold px-3 py-1 rounded-full"
+                      style="background:rgba(255,0,138,0.15);color:#ff008a;"></span>
+                <div class="flex flex-wrap gap-2 pt-1">
+                    <button onclick="window.open(document.getElementById('pub-link').value, '_blank')"
+                        class="flex-1 flex items-center justify-center gap-2 text-white text-xs font-bold py-2.5 rounded-lg transition-all min-w-[130px]"
+                        style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);">
+                        👁️ Vista previa
+                    </button>
+                    <button onclick="compartirWhatsApp()"
+                        class="flex-1 flex items-center justify-center gap-2 text-white text-xs font-bold py-2.5 rounded-lg transition-all min-w-[130px]"
+                        style="background:#22c55e;">
+                        📲 WhatsApp
+                    </button>
+                    <button onclick="compartirEmail()"
+                        class="flex-1 flex items-center justify-center gap-2 text-white text-xs font-bold py-2.5 rounded-lg transition-all min-w-[130px]"
+                        style="background:#3b82f6;">
+                        ✉️ Email
+                    </button>
+                </div>
+                <p class="text-slate-500 text-xs">El médico puede abrir este link en cualquier dispositivo e imprimirlo como PDF.</p>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script>
+let velocidadData = null;
+
+// ── Pre-llenar campos desde URL params ─────────────────────────────────────
+(function () {
+    const p = new URLSearchParams(window.location.search);
+    const fields = {
+        'f-nombre':       'nombre',
+        'f-email':        'email',
+        'f-whatsapp':     'whatsapp',
+        'f-especialidad': 'especialidad',
+        'f-ciudad':       'ciudad',
+        'f-web':          'web',
+        'f-redes':        'redes',
+        'f-objetivo':     'objetivo',
+        'f-presupuesto':  'presupuesto',
+        'f-notas':        'notas',
+        'f-estrategias':  'estrategias',
+    };
+    Object.entries(fields).forEach(([id, param]) => {
+        const val = p.get(param);
+        if (val) document.getElementById(id).value = val;
+    });
+    if (p.get('valorServicio')) document.getElementById('f-valor-servicio').value = p.get('valorServicio');
+
+    if (p.get('nombre') || p.get('especialidad')) {
+        const aviso = document.createElement('div');
+        aviso.className = 'mb-6 rounded-xl px-4 py-3 text-xs font-medium';
+        aviso.style.cssText = 'background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.25);color:#22c55e;';
+        aviso.innerHTML = '✅ Datos del formulario del cliente ya cargados. Completa los campos faltantes y genera el diagnóstico.';
+        document.getElementById('aviso-prellenado').appendChild(aviso);
+    }
+})();
+
+// ── Analizar velocidad con PageSpeed Insights ──────────────────────────────
+async function analizarVelocidad() {
+    let url = document.getElementById('f-web').value.trim();
+    if (!url || url.toLowerCase().includes('no tiene')) {
+        document.getElementById('speed-error').textContent = '⚠️ Ingresa una URL válida primero.';
+        document.getElementById('speed-error').classList.remove('hidden');
+        return;
+    }
+    if (!/^https?:\/\//i.test(url)) url = 'https://' + url;
+
+    document.getElementById('speed-error').classList.add('hidden');
+    document.getElementById('speed-results').classList.add('hidden');
+    document.getElementById('speed-loading').classList.remove('hidden');
+    document.getElementById('btn-velocidad').disabled = true;
+
+    try {
+        const apiBase = `/api/pagespeed?url=${encodeURIComponent(url)}`;
+        const resMobile  = await fetch(apiBase + '&strategy=mobile');
+        const dataMobile = await resMobile.json();
+
+        if (dataMobile.error) {
+            throw new Error(dataMobile.error.message || 'Cuota excedida. Espera e intenta de nuevo.');
+        }
+        if (!dataMobile.lighthouseResult) {
+            throw new Error('PageSpeed no pudo analizar el sitio. Verifica que la URL sea pública.');
+        }
+
+        const resDesktop  = await fetch(apiBase + '&strategy=desktop');
+        const dataDesktop = await resDesktop.json();
+
+        const mobile  = Math.round((dataMobile.lighthouseResult.categories?.performance?.score  || 0) * 100);
+        const desktop = Math.round((dataDesktop.lighthouseResult?.categories?.performance?.score || 0) * 100);
+
+        const audits = dataMobile.lighthouseResult.audits || {};
+        const fcp = audits['first-contentful-paint']?.displayValue  || '—';
+        const lcp = audits['largest-contentful-paint']?.displayValue || '—';
+        const cls = audits['cumulative-layout-shift']?.displayValue  || '—';
+        const si  = audits['speed-index']?.displayValue              || '—';
+
+        velocidadData = { url, mobile, desktop, fcp, lcp, cls, si };
+
+        const colorScore = (s) => s >= 90 ? '#22c55e' : s >= 50 ? '#f59e0b' : '#ef4444';
+
+        document.getElementById('score-mobile').textContent  = mobile;
+        document.getElementById('score-mobile').style.color  = colorScore(mobile);
+        document.getElementById('score-desktop').textContent = desktop;
+        document.getElementById('score-desktop').style.color = colorScore(desktop);
+
+        document.getElementById('speed-metrics').innerHTML = `
+            <div class="flex justify-between text-slate-400"><span>⏱ FCP (Primera carga visible)</span><span class="text-white font-bold">${fcp}</span></div>
+            <div class="flex justify-between text-slate-400"><span>🖼 LCP (Contenido más grande)</span><span class="text-white font-bold">${lcp}</span></div>
+            <div class="flex justify-between text-slate-400"><span>📐 CLS (Estabilidad visual)</span><span class="text-white font-bold">${cls}</span></div>
+            <div class="flex justify-between text-slate-400"><span>⚡ Speed Index</span><span class="text-white font-bold">${si}</span></div>
+        `;
+
+        const semaforo = mobile >= 90
+            ? '🟢 Sitio rápido — excelente experiencia móvil'
+            : mobile >= 50
+            ? '🟡 Velocidad mejorable — impacta conversión en móvil'
+            : '🔴 Sitio muy lento — pérdida crítica de pacientes potenciales';
+
+        document.getElementById('speed-semaforo').textContent = semaforo;
+        document.getElementById('speed-semaforo').style.color = colorScore(mobile);
+        document.getElementById('speed-results').classList.remove('hidden');
+
+    } catch (e) {
+        document.getElementById('speed-error').textContent = '❌ No se pudo analizar. Verifica que la URL sea pública y esté activa.';
+        document.getElementById('speed-error').classList.remove('hidden');
+    } finally {
+        document.getElementById('speed-loading').classList.add('hidden');
+        document.getElementById('btn-velocidad').disabled = false;
+    }
+}
+
+// ── Generar Prompt Maestro ─────────────────────────────────────────────────
+function generarPrompt() {
+    const nombre         = document.getElementById('f-nombre').value.trim()       || 'No especificado';
+    const especialidad   = document.getElementById('f-especialidad').value.trim() || 'No especificada';
+    const ciudad         = document.getElementById('f-ciudad').value.trim()       || 'No especificada';
+    const web            = document.getElementById('f-web').value.trim()          || 'No tiene sitio web';
+    const redes          = document.getElementById('f-redes').value.trim()        || 'No mencionadas';
+    const objetivo       = document.getElementById('f-objetivo').value            || 'No especificado';
+    const notas          = document.getElementById('f-notas').value.trim()        || 'Sin notas adicionales';
+    const presupuesto    = document.getElementById('f-presupuesto').value         || 'No mencionado';
+    const estrategias    = document.getElementById('f-estrategias').value.trim()  || 'No mencionadas';
+    const valorServicio  = document.getElementById('f-valor-servicio').value      || 'No especificado (estima según la especialidad)';
+
+    const bloqueVelocidad = velocidadData ? `
+════════════════════════════════════════
+ANÁLISIS DE VELOCIDAD — DATOS REALES (PageSpeed Insights)
+════════════════════════════════════════
+URL analizada: ${velocidadData.url}
+Score Móvil:   ${velocidadData.mobile}/100  ${velocidadData.mobile >= 90 ? '🟢 Rápido' : velocidadData.mobile >= 50 ? '🟡 Mejorable' : '🔴 Crítico'}
+Score Desktop: ${velocidadData.desktop}/100 ${velocidadData.desktop >= 90 ? '🟢 Rápido' : velocidadData.desktop >= 50 ? '🟡 Mejorable' : '🔴 Crítico'}
+FCP (Primera carga visible): ${velocidadData.fcp}
+LCP (Contenido principal):   ${velocidadData.lcp}
+CLS (Estabilidad visual):    ${velocidadData.cls}
+Speed Index:                 ${velocidadData.si}
+` : '';
+
+    const prompt = `Eres una consultora senior de marketing digital con 15 años de experiencia especializada EXCLUSIVAMENTE en medicina estética y cirugía plástica. Conoces a la perfección el comportamiento del paciente estético, los procedimientos (botox, rellenos, rinoplastia, liposucción, hilos tensores, láser, etc.), los ciclos de decisión de compra y las estrategias digitales que mejor convierten en este sector.
+
+Tu misión es generar un DIAGNÓSTICO DE AUTORIDAD ESTÉTICA DIGITAL 360° profesional, detallado y completamente accionable para el siguiente cliente.
+
+════════════════════════════════════════
+DATOS DEL CLIENTE
+════════════════════════════════════════
+Doctor/a: ${nombre}
+Especialidad: ${especialidad}
+Ciudad / País: ${ciudad}
+Sitio web actual: ${web}
+Redes sociales: ${redes}
+Estrategia digital actual: ${estrategias}
+Objetivo principal: ${objetivo}
+Presupuesto estimado: ${presupuesto}
+Valor promedio de procedimientos: ${valorServicio}
+Notas adicionales: ${notas}
+${bloqueVelocidad}
+════════════════════════════════════════
+INSTRUCCIONES DEL REPORTE
+════════════════════════════════════════
+
+Genera el reporte completo con EXACTAMENTE estas secciones, en este orden:
+
+---
+
+# 💆 DIAGNÓSTICO DE AUTORIDAD ESTÉTICA DIGITAL 360°
+**Preparado por:** MédicoEstético.Marketing — Agencia Especializada en Marketing para Medicina Estética
+**Paciente digital:** ${nombre} | ${especialidad}
+**Fecha:** ${new Date().toLocaleDateString('es-MX', {year:'numeric', month:'long', day:'numeric'})}
+
+---
+
+## 📋 RESUMEN EJECUTIVO
+(3–4 párrafos impactantes. Describe el estado actual de la presencia digital de este médico estético. En medicina estética, la primera impresión digital es TAN decisiva como la del consultorio — el paciente elige al especialista primero con los ojos, en redes o Google. Menciona los 2–3 hallazgos más críticos. Usa lenguaje clínico: "diagnóstico digital", "síntomas de invisibilidad", "tratamiento recomendado". Cierra con el potencial de crecimiento si se toman acciones.)
+
+---
+
+## 📊 INDICADORES DE AUTORIDAD DIGITAL
+
+\`\`\`semaforos
+sitio_web       = [rojo|amarillo|verde]
+posicionamiento = [rojo|amarillo|verde]
+reputacion      = [rojo|amarillo|verde]
+redes           = [rojo|amarillo|verde]
+publicidad      = [rojo|amarillo|verde]
+automatizacion  = [rojo|amarillo|verde]
+\`\`\`
+
+---
+
+### 🌐 1. Sitio Web & Experiencia del Paciente
+(Analiza: ¿Existe el sitio? ¿Es estético y profesional? ¿Refleja el nivel premium de la clínica o procedimientos? Velocidad mobile (usa datos PageSpeed si están disponibles). ¿Tiene galería de antes/después? ¿Testimonios de pacientes? ¿Formulario o botón de citas? ¿Transmite confianza? Da un score X/10 y justifica con hallazgos específicos.)
+
+### 📍 2. Posicionamiento Local (Google Maps / SEO)
+(¿Aparece en búsquedas como "[especialidad] en [ciudad]", "clínica estética cerca", "botox en [ciudad]"? ¿Google Business Profile optimizado? ¿Cuántas reseñas tiene y cuál es su score? ¿Fotos profesionales? ¿Horarios actualizados? Compara con benchmark de competidores típicos en su ciudad. Score X/10.)
+
+### ⭐ 3. Reputación Digital & Gestión de Reseñas
+(En medicina estética, la reputación es el factor #1 de decisión — los pacientes leen 10+ reseñas antes de agendar. Analiza: ¿Responde a reseñas? ¿Maneja bien los comentarios negativos? ¿Tiene perfil en Doctoralia, Zocdoc u otros directorios? ¿Testimonios en redes? Score X/10.)
+
+### 📱 4. Redes Sociales (Instagram / TikTok / Facebook)
+(CRÍTICO para medicina estética — es donde se toman las decisiones de compra. Analiza: ¿Tiene contenido de antes/después (el contenido que más convierte)? ¿Reels educativos sobre procedimientos? ¿Historias activas con CTA? ¿Frecuencia de publicación? ¿Engagement rate estimado? ¿Videos cortos de procedimientos? ¿Estética visual del perfil? Compara con benchmark del sector: clínicas top tienen 50K–500K seguidores con 2–4% engagement. Score X/10.)
+
+### 💰 5. Publicidad Digital (Meta Ads / Google Ads)
+(¿Invierte en paid media? ¿Tiene pixel de Meta instalado? ¿Retargeting activo? ¿Segmentación por intereses estéticos? En este sector, el costo por lead varía entre $50–$300 MXN según procedimiento y ciudad. ¿Usa videos de antes/después en sus anuncios? Score X/10. Estima el costo por lead actual y el potencial con una estrategia optimizada.)
+
+### 🤖 6. Automatización & Captación de Pacientes
+(¿Tiene CRM o sistema de agendamiento online? ¿Respuestas automáticas en redes y WhatsApp? ¿Seguimiento a leads que no agendan? ¿Reactivación de pacientes? ¿Recordatorios de cita? Un médico estético promedio pierde 40% de leads por falta de seguimiento. Score X/10.)
+
+---
+
+## 🏆 BENCHMARK COMPETITIVO
+(Describe 2–3 perfiles típicos de competencia para este médico en su ciudad. ¿Qué hace la "clínica líder" de su especialidad en esa ciudad? ¿Qué brechas puede capitalizar? ¿Cuál es la mayor ventaja competitiva que tiene este médico y que no está explotando digitalmente? Sé específico.)
+
+---
+
+## 🎯 PLAN DE TRATAMIENTO DIGITAL — TOP 3 PRIORIDADES
+
+### Prioridad 1: [Nombre del tratamiento — la acción MÁS urgente]
+**Problema detectado:** (qué está fallando y cuánto le cuesta en términos de pacientes perdidos)
+**Tratamiento recomendado:** (acciones concretas y específicas, no genéricas)
+**Tiempo de implementación:** X semanas
+**Resultado esperado:** (métrica concreta — ej: "+30% en leads de Instagram en 60 días")
+
+### Prioridad 2: [Nombre del tratamiento]
+(Ídem — segunda acción más impactante)
+
+### Prioridad 3: [Nombre del tratamiento]
+(Ídem — tercera acción de alto impacto)
+
+---
+
+## 📈 PROYECCIÓN DE RESULTADOS
+
+| Indicador | Estado Actual | Meta 3 meses | Meta 6 meses |
+|-----------|:------------:|:-----------:|:-----------:|
+| Pacientes nuevos/mes desde digital | X | +XX% | +XX% |
+| Seguidores Instagram/TikTok | X | +XX% | +XX% |
+| Reseñas Google | X | +XX reseñas | +XX reseñas |
+| Score PageSpeed Mobile | X/100 | 75+ | 85+ |
+| Costo por lead estimado | $XXX MXN | $XXX MXN | $XXX MXN |
+| ROI de inversión en marketing | — | 3x–4x | 5x–8x |
+
+---
+
+## 💡 INVERSIÓN RECOMENDADA
+
+| Paquete | Servicios incluidos | Inversión mensual | ROI estimado |
+|---------|:------------------:|:-----------------:|:-----------:|
+| Esencial | [descripción corta] | $X,XXX MXN | 3x–5x |
+| Profesional | [descripción corta] | $X,XXX MXN | 5x–8x |
+| Premium | [descripción corta] | $X,XXX MXN | 8x–12x |
+
+**Paquete recomendado para este caso:** [nombre]
+- Servicios específicos que incluye
+- Por qué es la elección correcta para este perfil de clínica
+
+---
+
+## ✍️ NOTA FINAL DE LA CONSULTORA
+(1–2 párrafos personales, cálidos y motivadores. Dirígete al doctor por su apellido o "Dra./Dr. [apellido]". Hazle sentir que este diagnóstico fue preparado exclusivamente para su caso. Menciona la oportunidad específica que existe en el mercado de medicina estética en su ciudad. Termina con una frase de cierre poderosa y una invitación concreta a la acción.)
+
+---
+*Diagnóstico preparado por MédicoEstético.Marketing © ${new Date().getFullYear()} | medicoestetico.marketing | hola@medicoestetico.marketing*
+
+════════════════════════════════════════
+REGLAS IMPORTANTES:
+1. Usa tono profesional pero CÁLIDO — el sector estético valora la calidez tanto como la experiencia
+2. Menciona procedimientos concretos según la especialidad (botox, rellenos, rinoplastia, etc.)
+3. Da NÚMEROS CONCRETOS — porcentajes, costos por lead, proyecciones. Nada de estimaciones vagas
+4. El reporte debe verse como si tomó 4 horas elaborarlo — detalle, especificidad, valor real
+5. Para el bloque de semáforos: usa EXACTAMENTE el formato indicado (verde/amarillo/rojo)
+6. La sección de REDES SOCIALES es la más crítica para medicina estética — dale más profundidad
+════════════════════════════════════════`;
+
+    document.getElementById('prompt-output').textContent = prompt;
+    document.getElementById('prompt-box').classList.remove('hidden');
+    document.getElementById('prompt-box').classList.add('flex');
+    document.getElementById('prompt-placeholder').classList.add('hidden');
+    document.getElementById('instrucciones').classList.remove('hidden');
+    document.getElementById('btn-copy').classList.remove('hidden');
+}
+
+function copiarPrompt() {
+    const text = document.getElementById('prompt-output').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('btn-copy');
+        btn.textContent = '✅ Copiado!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+            btn.textContent = '📋 Copiar todo';
+            btn.classList.remove('copied');
+        }, 2000);
+    });
+}
+
+async function publicarReporte() {
+    const contenido  = document.getElementById('pub-contenido').value.trim();
+    const errBox     = document.getElementById('pub-error');
+    const btn        = document.getElementById('pub-btn');
+    const btnText    = document.getElementById('pub-btn-text');
+
+    if (!contenido || contenido.length < 50) {
+        errBox.textContent = 'Por favor pega el diagnóstico completo antes de publicar.';
+        errBox.classList.remove('hidden');
+        return;
+    }
+
+    errBox.classList.add('hidden');
+    btn.disabled      = true;
+    btnText.textContent = 'Publicando...';
+
+    try {
+        const res  = await fetch('/api/guardar-reporte', {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contenido,
+                doctor:      document.getElementById('f-nombre').value.trim(),
+                especialidad: document.getElementById('f-especialidad').value.trim(),
+            }),
+        });
+        const json = await res.json();
+
+        if (json.ok) {
+            document.getElementById('pub-link').value = json.url;
+            document.getElementById('pub-folio').textContent = `Folio: ${json.id}`;
+            document.getElementById('pub-resultado').classList.remove('hidden');
+            document.getElementById('pub-resultado').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+            throw new Error(json.error || 'Error desconocido');
+        }
+    } catch (e) {
+        errBox.textContent = 'Error al publicar: ' + e.message;
+        errBox.classList.remove('hidden');
+    } finally {
+        btn.disabled      = false;
+        btnText.textContent = '🔗 Generar link para el médico';
+    }
+}
+
+function compartirWhatsApp() {
+    const link    = document.getElementById('pub-link').value;
+    const doctor  = document.getElementById('f-nombre').value.trim() || 'Doctor';
+    const nombre  = doctor.split(' ').slice(0, 2).join(' ');
+    const folio   = document.getElementById('pub-folio').textContent;
+    const msg = `Hola ${nombre}, aquí está su Diagnóstico de Autoridad Estética Digital 360° (${folio}):\n\n${link}\n\nPuede abrirlo desde cualquier dispositivo e imprimirlo como PDF.\n\nAl final del reporte encontrará el botón para solicitar su cotización personalizada. ¡Con gusto atendemos sus preguntas!\n\n— Fernanda Torres\nMédicoEstético.Marketing`;
+    const waNum = document.getElementById('f-whatsapp').value.trim().replace(/\D/g, '') || '';
+    const waUrl = waNum
+        ? `https://wa.me/${waNum}?text=${encodeURIComponent(msg)}`
+        : `https://wa.me/?text=${encodeURIComponent(msg)}`;
+    window.open(waUrl, '_blank');
+}
+
+function compartirEmail() {
+    const link    = document.getElementById('pub-link').value;
+    const doctor  = document.getElementById('f-nombre').value.trim() || 'Doctor';
+    const nombre  = doctor.split(' ').slice(0, 2).join(' ');
+    const folio   = document.getElementById('pub-folio').textContent;
+    const email   = document.getElementById('f-email').value.trim();
+    const subject = encodeURIComponent(`Su Diagnóstico Estético Digital 360° está listo — ${folio}`);
+    const body    = encodeURIComponent(`Hola ${nombre},\n\nSu Diagnóstico de Autoridad Estética Digital 360° (${folio}) ya está disponible:\n\n${link}\n\nPuede abrirlo desde cualquier dispositivo e imprimirlo como PDF. Al final del reporte encontrará el botón para solicitar su cotización personalizada.\n\nQuedo a sus órdenes para cualquier pregunta.\n\nAtentamente,\nFernanda Torres\nMédicoEstético.Marketing\nhola@medicoestetico.marketing\n+52 442 550 0232`);
+    window.open(`mailto:${email}?subject=${subject}&body=${body}`, '_blank');
+}
+
+function copiarLink() {
+    const input = document.getElementById('pub-link');
+    navigator.clipboard.writeText(input.value).then(() => {
+        const btn = document.getElementById('btn-copiar-link');
+        btn.textContent = '✅ Copiado';
+        setTimeout(() => { btn.textContent = '📋 Copiar'; }, 2000);
+    });
+}
+</script>
+
+</body>
+</html>

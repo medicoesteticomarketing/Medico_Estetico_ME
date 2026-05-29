@@ -491,19 +491,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            const msg = [
-                'Hola Fernanda, solicito mi diagnóstico gratuito:',
-                '',
-                '👤 *Nombre:* ' + nombre,
-                '🏥 *Especialidad:* ' + especialidad,
-                '📱 *WhatsApp:* ' + whatsapp,
-                '📧 *Email:* ' + email,
-                '🎯 *Principal reto:* ' + reto,
-                '',
-                '¡Espero tu respuesta! 💖'
-            ].join('\n');
-
-            window.open('https://wa.me/524425500232?text=' + encodeURIComponent(msg), '_blank');
+            // Redirigir a solicitud-diagnostico.html con los datos pre-llenados
+            const diagParams = new URLSearchParams({ nombre, whatsapp, especialidad, notas: reto });
+            window.location.href = 'solicitud-diagnostico.html?' + diagParams.toString();
         });
     }
 

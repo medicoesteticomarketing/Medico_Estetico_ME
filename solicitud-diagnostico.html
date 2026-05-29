@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Diagnóstico Estético Digital Gratuito — MédicoEstético.Marketing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+        .fade-in { animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        input:focus, select:focus, textarea:focus { --tw-ring-color: #ff008a !important; border-color: #ff008a !important; }
+        .check-item:has(input:checked) { border-color: #ff008a; background: #fff0f8; }
+        .btn-pink { background: #ff008a; }
+        .btn-pink:hover { background: #e0007a; }
+        .accent { color: #ff008a; }
+    </style>
+</head>
+<body class="min-h-screen" style="background: linear-gradient(135deg, #0a0a0a 0%, #1a0010 50%, #0a0a0a 100%);">
+
+<!-- NAV -->
+<nav class="border-b px-6 py-4" style="background:rgba(10,10,10,0.95);border-color:rgba(255,255,255,0.08);">
+    <div class="max-w-2xl mx-auto flex items-center justify-between">
+        <a href="/">
+            <img src="assets/logo/logo_me_blanco.svg" alt="MédicoEstético.Marketing" style="height:36px;width:auto;">
+        </a>
+        <span class="text-xs font-bold uppercase tracking-widest" style="color:#ff008a;">Diagnóstico Gratuito</span>
+    </div>
+</nav>
+
+<!-- PROGRESS BAR -->
+<div class="border-b px-6 py-3" style="background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.06);">
+    <div class="max-w-2xl mx-auto">
+        <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0" style="background:#22c55e;">
+                    <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                    </svg>
+                </div>
+                <span class="text-xs font-medium hidden sm:inline" style="color:rgba(255,255,255,0.4);">Datos de contacto</span>
+            </div>
+            <div class="flex-1 h-0.5 rounded-full" style="background:#ff008a;"></div>
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0" style="background:#ff008a;">2</div>
+                <span class="text-xs font-bold hidden sm:inline" style="color:#ff008a;">Perfil digital</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN -->
+<main class="max-w-2xl mx-auto px-4 py-10 fade-in">
+
+    <!-- HEADER -->
+    <div id="header-section" class="text-center mb-8">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold mb-4"
+             style="background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);color:#22c55e;">
+            ✅ Solicitud recibida correctamente
+        </div>
+        <h1 class="text-2xl md:text-3xl font-extrabold mb-3" style="color:#fff;" id="titulo-header">
+            Solicita tu Diagnóstico Digital Gratuito
+        </h1>
+        <p class="text-sm leading-relaxed max-w-lg mx-auto" style="color:rgba(255,255,255,0.5);">
+            Para que tu Diagnóstico de Autoridad Estética Digital sea
+            <strong style="color:rgba(255,255,255,0.75);">100% personalizado</strong>, necesitamos conocer tu
+            presencia digital actual. Solo te tomará <strong style="color:rgba(255,255,255,0.75);">2 minutos</strong>.
+        </p>
+    </div>
+
+    <!-- FORM CARD -->
+    <div id="form-section" class="rounded-2xl p-6 md:p-8 space-y-5"
+         style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);">
+
+        <!-- Datos pre-llenados: resumen si vienen de la landing -->
+        <div id="bloque-contacto-resumen" class="hidden rounded-xl p-4"
+             style="background:rgba(255,0,138,0.06);border:1px solid rgba(255,0,138,0.2);">
+            <p class="text-xs font-bold uppercase tracking-widest mb-3" style="color:rgba(255,255,255,0.4);">Tus datos registrados</p>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+                <div>
+                    <span class="text-xs" style="color:rgba(255,255,255,0.4);">Nombre</span>
+                    <p id="display-nombre" class="font-semibold truncate" style="color:#fff;">—</p>
+                </div>
+                <div>
+                    <span class="text-xs" style="color:rgba(255,255,255,0.4);">Especialidad</span>
+                    <p id="display-especialidad" class="font-semibold truncate" style="color:#fff;">—</p>
+                </div>
+                <div>
+                    <span class="text-xs" style="color:rgba(255,255,255,0.4);">WhatsApp</span>
+                    <p id="display-whatsapp" class="font-semibold truncate" style="color:#fff;">—</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Campos de contacto: se muestran solo si llegan directo -->
+        <div id="bloque-contacto-campos" class="space-y-4">
+            <p class="text-xs font-bold uppercase tracking-widest" style="color:rgba(255,255,255,0.4);">Tus datos de contacto</p>
+            <div>
+                <label class="block text-sm font-semibold mb-1.5" style="color:rgba(255,255,255,0.75);">
+                    Nombre completo <span style="color:#ff008a;">*</span>
+                </label>
+                <input id="f-nombre" type="text" placeholder="Dra. Ana García López"
+                    class="w-full px-4 py-3 rounded-xl text-sm transition-all focus:outline-none"
+                    style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;">
+            </div>
+            <div>
+                <label class="block text-sm font-semibold mb-1.5" style="color:rgba(255,255,255,0.75);">
+                    Especialidad médica <span style="color:#ff008a;">*</span>
+                </label>
+                <select id="f-especialidad"
+                    class="w-full px-4 py-3 rounded-xl text-sm focus:outline-none transition-all"
+                    style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;">
+                    <option value="" style="background:#1a0010;">— Selecciona tu especialidad —</option>
+                    <option style="background:#1a0010;">Cirugía Plástica y Reconstructiva</option>
+                    <option style="background:#1a0010;">Dermatología Estética</option>
+                    <option style="background:#1a0010;">Medicina Estética / Antiaging</option>
+                    <option style="background:#1a0010;">Odontología Estética</option>
+                    <option style="background:#1a0010;">Nutrición Estética / Medicina Integrativa</option>
+                    <option style="background:#1a0010;">Rinología / Otoplastia</option>
+                    <option style="background:#1a0010;">Oftalmología Estética</option>
+                    <option style="background:#1a0010;">Tricología / Trasplante Capilar</option>
+                    <option style="background:#1a0010;">Clínica Estética Multidisciplinaria</option>
+                    <option style="background:#1a0010;">Otra especialidad estética</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-semibold mb-1.5" style="color:rgba(255,255,255,0.75);">
+                    WhatsApp <span style="color:#ff008a;">*</span>
+                </label>
+                <input id="f-whatsapp" type="tel" placeholder="+52 442 123 4567"
+                    class="w-full px-4 py-3 rounded-xl text-sm transition-all focus:outline-none"
+                    style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;">
+            </div>
+        </div>
+
+        <!-- Email: siempre visible -->
+        <div>
+            <label class="block text-sm font-semibold mb-1.5" style="color:rgba(255,255,255,0.75);">
+                Correo electrónico <span style="color:#ff008a;">*</span>
+            </label>
+            <input id="f-email" type="email" placeholder="dra.garcia@correo.com"
+                class="w-full px-4 py-3 rounded-xl text-sm transition-all focus:outline-none"
+                style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;">
+            <p class="text-xs mt-1.5 pl-1" style="color:rgba(255,255,255,0.35);">📩 Te enviaremos tu diagnóstico personalizado a este correo en 24 h.</p>
+        </div>
+
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);">
+        <p class="text-xs font-bold uppercase tracking-widest" style="color:rgba(255,255,255,0.4);">Perfil digital</p>
+
+        <!-- Ciudad -->
+        <div>
+            <label class="block text-sm font-semibold mb-1.5" style="color:rgba(255,255,255,0.75);">
+                ¿En qué ciudad y país ejerces? <span style="color:#ff008a;">*</span>
+            </label>
+            <input id="f-ciudad" type="text" placeholder="Ej: Querétaro, México"
+                class="w-full px-4 py-3 rounded-xl text-sm transition-all focus:outline-none"
+                style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;">
+        </div>
+
+        <!-- Sitio web -->
+        <div>
+            <label class="block text-sm font-semibold mb-1.5" style="color:rgba(255,255,255,0.75);">
+                ¿Tienes sitio web actualmente?
+            </label>
+            <input id="f-web" type="text" placeholder="www.tusitio.com  /  No tengo sitio web"
+                class="w-full px-4 py-3 rounded-xl text-sm transition-all focus:outline-none"
+                style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;">
+        </div>
+
+        <!-- Estrategia digital actual -->
+        <div>
+            <label class="block text-sm font-semibold mb-2" style="color:rgba(255,255,255,0.75);">
+                ¿Qué estrategia de marketing digital tienes actualmente?
+                <span class="font-normal text-xs ml-1" style="color:rgba(255,255,255,0.35);">(puedes marcar varias)</span>
+            </label>
+            <div class="space-y-2" id="estrategias-group">
+                <label class="check-item flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all"
+                       style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);">
+                    <input type="checkbox" name="estrategia" value="Agencia de marketing genérica" class="w-4 h-4" style="accent-color:#ff008a;">
+                    <span class="text-sm" style="color:rgba(255,255,255,0.8);">🏢 Agencia de marketing genérica</span>
+                </label>
+                <label class="check-item flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all"
+                       style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);">
+                    <input type="checkbox" name="estrategia" value="Google Ads" class="w-4 h-4" style="accent-color:#ff008a;">
+                    <span class="text-sm" style="color:rgba(255,255,255,0.8);">🔍 Google Ads</span>
+                </label>
+                <label class="check-item flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all"
+                       style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);">
+                    <input type="checkbox" name="estrategia" value="Facebook / Meta Ads" class="w-4 h-4" style="accent-color:#ff008a;">
+                    <span class="text-sm" style="color:rgba(255,255,255,0.8);">📘 Facebook / Meta Ads</span>
+                </label>
+                <label class="check-item flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all"
+                       style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);">
+                    <input type="checkbox" name="estrategia" value="Directorio médico (Doctoralia, Top Doctors, etc.)" class="w-4 h-4" style="accent-color:#ff008a;">
+                    <span class="text-sm" style="color:rgba(255,255,255,0.8);">🏥 Directorio médico (Doctoralia, Top Doctors…)</span>
+                </label>
+                <label class="check-item flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all"
+                       style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);">
+                    <input type="checkbox" name="estrategia" value="SEO / Blog médico" class="w-4 h-4" style="accent-color:#ff008a;">
+                    <span class="text-sm" style="color:rgba(255,255,255,0.8);">📝 SEO / Blog médico</span>
+                </label>
+                <label class="check-item flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all"
+                       style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);">
+                    <input type="checkbox" name="estrategia" value="Manejo propio de redes sociales" class="w-4 h-4" style="accent-color:#ff008a;">
+                    <span class="text-sm" style="color:rgba(255,255,255,0.8);">📱 Manejo propio de redes sociales</span>
+                </label>
+                <label class="check-item flex items-center gap-3 p-3 rounded-xl cursor-pointer transition-all"
+                       style="border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.03);">
+                    <input type="checkbox" name="estrategia" value="Ninguna, empiezo desde cero" class="w-4 h-4" style="accent-color:#ff008a;">
+                    <span class="text-sm" style="color:rgba(255,255,255,0.8);">🚀 Ninguna, empiezo desde cero</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="space-y-3">
+            <label class="block text-sm font-semibold" style="color:rgba(255,255,255,0.75);">
+                ¿Tienes redes sociales? Pega tus enlaces
+            </label>
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0"
+                     style="background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><circle cx="17.5" cy="6.5" r="0.5" fill="white" stroke="none"/></svg>
+                </div>
+                <input id="f-instagram" type="url" placeholder="https://instagram.com/tuperfil"
+                    class="w-full px-4 py-3 rounded-xl text-sm transition-all focus:outline-none"
+                    style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;">
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-black flex items-center justify-center flex-shrink-0"
+                     style="border:1px solid rgba(255,255,255,0.15);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+                </div>
+                <input id="f-tiktok" type="url" placeholder="https://tiktok.com/@tuperfil"
+                    class="w-full px-4 py-3 rounded-xl text-sm transition-all focus:outline-none"
+                    style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;">
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:#1877F2;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                </div>
+                <input id="f-facebook" type="url" placeholder="https://facebook.com/tupagina"
+                    class="w-full px-4 py-3 rounded-xl text-sm transition-all focus:outline-none"
+                    style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;">
+            </div>
+        </div>
+
+        <!-- Objetivo principal -->
+        <div>
+            <label class="block text-sm font-semibold mb-1.5" style="color:rgba(255,255,255,0.75);">
+                ¿Cuál es tu objetivo principal? <span style="color:#ff008a;">*</span>
+            </label>
+            <select id="f-objetivo"
+                class="w-full px-4 py-3 rounded-xl text-sm focus:outline-none transition-all"
+                style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;">
+                <option value="" style="background:#1a0010;">— Selecciona el que más te identifique —</option>
+                <option style="background:#1a0010;">Atraer más pacientes para procedimientos estéticos</option>
+                <option style="background:#1a0010;">Posicionarme como referente en medicina estética en mi ciudad</option>
+                <option style="background:#1a0010;">Aumentar la agenda de procedimientos premium</option>
+                <option style="background:#1a0010;">Mejorar mi reputación digital y reseñas</option>
+                <option style="background:#1a0010;">Lanzar nuevos tratamientos (botox, rellenos, cirugía…)</option>
+                <option style="background:#1a0010;">Abrir nueva clínica estética o sucursal</option>
+                <option style="background:#1a0010;">Mejorar mi presencia en Instagram / TikTok</option>
+            </select>
+        </div>
+
+        <!-- Presupuesto -->
+        <div>
+            <label class="block text-sm font-semibold mb-1.5" style="color:rgba(255,255,255,0.75);">
+                ¿Con qué presupuesto mensual cuentas para marketing? <span style="color:#ff008a;">*</span>
+            </label>
+            <select id="f-presupuesto"
+                class="w-full px-4 py-3 rounded-xl text-sm focus:outline-none transition-all"
+                style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;">
+                <option value="" style="background:#1a0010;">— Selecciona tu rango —</option>
+                <option style="background:#1a0010;">Básico (menos de $5,000 MXN/mes)</option>
+                <option style="background:#1a0010;">Medio ($5,000 – $15,000 MXN/mes)</option>
+                <option style="background:#1a0010;">Alto (más de $15,000 MXN/mes)</option>
+                <option style="background:#1a0010;">Sin límite definido</option>
+            </select>
+        </div>
+
+        <!-- Valor de procedimientos -->
+        <div>
+            <label class="block text-sm font-semibold mb-1.5" style="color:rgba(255,255,255,0.75);">
+                ¿Cuál es el valor promedio de tus procedimientos? <span style="color:#ff008a;">*</span>
+            </label>
+            <select id="f-valor-servicio"
+                class="w-full px-4 py-3 rounded-xl text-sm focus:outline-none transition-all"
+                style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;">
+                <option value="" style="background:#1a0010;">— Selecciona un rango —</option>
+                <option value="Menos de $1,500 MXN (consulta básica)" style="background:#1a0010;">Menos de $1,500 MXN (consulta básica)</option>
+                <option value="$1,500 – $3,000 MXN (consulta + plan)" style="background:#1a0010;">$1,500 – $3,000 MXN (consulta + plan)</option>
+                <option value="$3,000 – $8,000 MXN (toxina, rellenos, básicos)" style="background:#1a0010;">$3,000 – $8,000 MXN (toxina, rellenos, básicos)</option>
+                <option value="$8,000 – $20,000 MXN (hilos, láser, intermedios)" style="background:#1a0010;">$8,000 – $20,000 MXN (hilos, láser, intermedios)</option>
+                <option value="Más de $20,000 MXN (cirugía, procedimientos avanzados)" style="background:#1a0010;">Más de $20,000 MXN (cirugía, procedimientos avanzados)</option>
+            </select>
+            <p class="text-xs mt-1.5 pl-1" style="color:rgba(255,255,255,0.35);">💡 Esto nos permite calcular el retorno real de tu inversión en marketing — el diagnóstico incluirá números concretos de tu clínica.</p>
+        </div>
+
+        <!-- Notas adicionales -->
+        <div>
+            <label class="block text-sm font-semibold mb-1.5" style="color:rgba(255,255,255,0.75);">
+                ¿Algo más que quieras agregar?
+            </label>
+            <textarea id="f-notas" rows="3"
+                placeholder="Cuéntanos cualquier detalle importante: reto actual, resultados que buscas, situación de tu clínica..."
+                class="w-full px-4 py-3 rounded-xl text-sm transition-all focus:outline-none resize-none"
+                style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);color:#fff;"></textarea>
+        </div>
+
+        <!-- Error -->
+        <div id="form-error" class="hidden text-sm rounded-xl px-4 py-3"
+             style="color:#ff6bb3;background:rgba(255,0,138,0.08);border:1px solid rgba(255,0,138,0.3);"></div>
+
+        <!-- Submit -->
+        <button id="btn-submit" onclick="enviarDiagnostico()"
+            class="w-full text-white font-bold py-4 rounded-xl transition-all text-sm shadow-lg flex items-center justify-center gap-2"
+            style="background:#ff008a;box-shadow:0 8px 24px rgba(255,0,138,0.3);">
+            <span id="btn-text">💆 Solicitar mi Diagnóstico Gratuito</span>
+        </button>
+
+        <p class="text-center text-xs" style="color:rgba(255,255,255,0.3);">
+            🔒 Tus datos son confidenciales y nunca serán compartidos con terceros.
+        </p>
+    </div>
+
+</main>
+
+<!-- SUCCESS STATE -->
+<div id="success-section" class="hidden max-w-2xl mx-auto px-4 py-16 text-center fade-in">
+    <div class="rounded-2xl p-10" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.09);">
+        <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6"
+             style="background:rgba(255,0,138,0.15);border:2px solid rgba(255,0,138,0.4);">
+            <svg class="w-8 h-8" fill="none" stroke="#ff008a" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+        </div>
+        <h2 class="text-2xl font-extrabold mb-3" style="color:#fff;">¡Tu diagnóstico está en proceso!</h2>
+        <p class="text-sm leading-relaxed mb-6 max-w-sm mx-auto" style="color:rgba(255,255,255,0.5);">
+            Hemos recibido toda la información. Te enviaremos tu
+            <strong style="color:rgba(255,255,255,0.75);">Diagnóstico de Autoridad Estética Digital 360°</strong>
+            en las próximas <strong style="color:rgba(255,255,255,0.75);">24 horas hábiles</strong>.
+        </p>
+        <a href="https://wa.me/524425500232?text=Hola%20Fernanda%2C%20acabo%20de%20solicitar%20mi%20Diagn%C3%B3stico%20Est%C3%A9tico%20Digital%20360%C2%B0%20%F0%9F%92%96"
+            target="_blank" rel="noopener noreferrer"
+            class="flex items-center justify-center gap-3 text-white font-bold px-6 py-4 rounded-2xl transition-all w-full mb-6"
+            style="background:#22c55e;box-shadow:0 6px 20px rgba(34,197,94,0.3);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+            </svg>
+            ¿Quieres hablar con nosotros ahora?
+        </a>
+        <a href="/" class="text-sm transition-colors" style="color:rgba(255,255,255,0.4);">
+            ← Volver al sitio
+        </a>
+    </div>
+</div>
+
+<script>
+// ── Pre-llenar con datos del URL (vienen de la landing page) ──────────────
+const params        = new URLSearchParams(window.location.search);
+const nombreParam   = params.get('nombre')       || '';
+const waParam       = params.get('whatsapp')     || '';
+const especParam    = params.get('especialidad') || '';
+const notasParam    = params.get('notas')        || '';
+const vienePrellenado = !!(nombreParam || waParam || especParam);
+
+if (vienePrellenado) {
+    document.getElementById('bloque-contacto-resumen').classList.remove('hidden');
+    document.getElementById('bloque-contacto-campos').classList.add('hidden');
+    if (nombreParam) {
+        const primerNombre = nombreParam.split(' ').slice(0, 2).join(' ');
+        document.getElementById('titulo-header').innerHTML =
+            `¡Un paso más, <strong style="color:#ff008a;">${primerNombre}</strong>!`;
+        document.getElementById('display-nombre').textContent = nombreParam;
+    }
+    if (especParam) document.getElementById('display-especialidad').textContent = especParam;
+    if (waParam)    document.getElementById('display-whatsapp').textContent    = waParam;
+} else {
+    document.getElementById('bloque-contacto-resumen').classList.add('hidden');
+    document.getElementById('bloque-contacto-campos').classList.remove('hidden');
+}
+
+if (notasParam) document.getElementById('f-notas').value = notasParam;
+
+// ── Enviar formulario ─────────────────────────────────────────────────────
+async function enviarDiagnostico() {
+    const ciudad        = document.getElementById('f-ciudad').value.trim();
+    const objetivo      = document.getElementById('f-objetivo').value;
+    const presupuesto   = document.getElementById('f-presupuesto').value;
+    const valorServicio = document.getElementById('f-valor-servicio').value;
+    const errBox        = document.getElementById('form-error');
+    const btn           = document.getElementById('btn-submit');
+    const btnText       = document.getElementById('btn-text');
+
+    // Recoger campos según origen
+    const nombre      = vienePrellenado ? nombreParam  : document.getElementById('f-nombre').value.trim();
+    const whatsapp    = vienePrellenado ? waParam       : document.getElementById('f-whatsapp').value.trim();
+    const especialidad= vienePrellenado ? especParam    : document.getElementById('f-especialidad').value;
+    const email       = document.getElementById('f-email').value.trim();
+
+    // Validación
+    const mostrarError = (msg, id) => {
+        errBox.textContent = msg;
+        errBox.classList.remove('hidden');
+        if (id) document.getElementById(id)?.focus();
+        window.scrollTo({ top: errBox.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+    };
+
+    if (!vienePrellenado && !nombre)       { mostrarError('Por favor escribe tu nombre completo.', 'f-nombre'); return; }
+    if (!vienePrellenado && !especialidad) { mostrarError('Por favor selecciona tu especialidad.', 'f-especialidad'); return; }
+    if (!vienePrellenado && !whatsapp)     { mostrarError('Por favor escribe tu número de WhatsApp.', 'f-whatsapp'); return; }
+    if (!email)                            { mostrarError('Por favor escribe tu correo electrónico.', 'f-email'); return; }
+    if (!ciudad)                           { mostrarError('Por favor indica tu ciudad y país.', 'f-ciudad'); return; }
+    if (!objetivo)                         { mostrarError('Por favor selecciona tu objetivo principal.', 'f-objetivo'); return; }
+    if (!presupuesto)                      { mostrarError('Por favor selecciona tu presupuesto mensual.', 'f-presupuesto'); return; }
+    if (!valorServicio)                    { mostrarError('Por favor selecciona el valor de tus procedimientos.', 'f-valor-servicio'); return; }
+
+    errBox.classList.add('hidden');
+    btn.disabled  = true;
+    btnText.textContent = 'Enviando...';
+
+    const estrategias = [...document.querySelectorAll('input[name="estrategia"]:checked')]
+        .map(cb => cb.value).join(' | ') || 'Ninguna indicada';
+
+    const instagram = document.getElementById('f-instagram').value.trim();
+    const tiktok    = document.getElementById('f-tiktok').value.trim();
+    const facebook  = document.getElementById('f-facebook').value.trim();
+    const redes = [
+        instagram ? `Instagram: ${instagram}` : '',
+        tiktok    ? `TikTok: ${tiktok}`       : '',
+        facebook  ? `Facebook: ${facebook}`   : '',
+    ].filter(Boolean).join(' | ') || 'No tiene';
+
+    const data = {
+        nombre,
+        email,
+        whatsapp,
+        especialidad,
+        ciudad,
+        web:         document.getElementById('f-web').value.trim(),
+        estrategias,
+        redes,
+        objetivo,
+        presupuesto,
+        valorServicio,
+        notas: document.getElementById('f-notas').value.trim(),
+    };
+
+    try {
+        const res = await fetch('/api/diagnostico-cliente', {
+            method:  'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:    JSON.stringify(data),
+        });
+
+        if (res.ok) {
+            document.getElementById('form-section').classList.add('hidden');
+            document.getElementById('header-section').classList.add('hidden');
+            document.getElementById('success-section').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            throw new Error('Error del servidor');
+        }
+    } catch {
+        errBox.textContent = 'Hubo un problema. Por favor escríbenos por WhatsApp: +52 442 550 0232';
+        errBox.classList.remove('hidden');
+        btn.disabled  = false;
+        btnText.textContent = '💆 Solicitar mi Diagnóstico Gratuito';
+    }
+}
+</script>
+
+</body>
+</html>
