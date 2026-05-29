@@ -495,3 +495,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+
+// ── 13. QUITAR FONDO BLANCO — foto diagnóstico ────────────────────────────────
+// Elimina píxeles blancos/casi-blancos via Canvas API con suavizado en bordes
+(function () {
+    const img = document.getElementById('foto-diagnostico');
+    if (!img) return;
+
+    function procesarFondo() {
+        try {
+            const canvas = document.createElement('canvas');
+            canvas.width  = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+            const UMBRAL = 235; // píxeles más blancos que esto → transparentes
+
+            for (let i = 0; i < data.length; i += 4) {
+                const r = data[i], g = data[i + 1], b = data[i + 2];
+                const blancura = Math.min(r, g, b); // cuanto más alto, más blanco
+                if (blancura >= UMBRAL) {
+                    // Fade suave: de UMBRAL (opaco) a 255 (transparente)
+                    const alpha = Math.round(255 * (255 - blancura) / (255 - UMBRAL));
+                    data[i + 3] = Math.max(0, alpha);
+                }
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+            img.src = canvas.toDataURL('image/png');
+        } catch (e) {
+            console.warn('Error procesando fondo imagen:', e);
+        }
+    }
+
+    if (img.complete && img.naturalWidth > 0) {
+        procesarFondo();
+    } else {
+        img.addEventListener('load', procesarFondo, { once: true });
+    }
+})();
