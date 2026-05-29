@@ -165,8 +165,7 @@
                 </div>
             </div>
 
-            <!-- ⚠️ IMPORTANTE: reemplaza XXXXXXXX con tu ID real de Formspree -->
-            <form id="forma-aceptacion" action="https://formspree.io/f/XXXXXXXX" method="POST" class="space-y-4">
+            <form id="forma-aceptacion" class="space-y-4">
                 <!-- Campos ocultos (se llenan con JS) -->
                 <input type="hidden" name="_subject"            id="f-subject">
                 <input type="hidden" name="_cc"                 id="f-cc">
@@ -416,13 +415,26 @@ document.getElementById('forma-aceptacion').addEventListener('submit', async fun
     const txt = document.getElementById('acc-btn-txt');
     btn.disabled = true;
     txt.textContent = 'Enviando…';
+
+    const payload = {
+        nombre:  document.getElementById('f-nombre-input').value.trim(),
+        email:   document.getElementById('f-email-input').value.trim(),
+        folio:   document.getElementById('f-folio').value,
+        cliente: document.getElementById('f-cliente').value,
+        empresa: document.getElementById('f-empresa').value,
+        total:   document.getElementById('f-total').value,
+        mensual: document.getElementById('f-mensual').value,
+        url:     document.getElementById('f-url').value,
+    };
+
     try {
-        const res = await fetch(this.action, {
+        const res  = await fetch('/api/aceptar-cotizacion', {
             method: 'POST',
-            body: new FormData(this),
-            headers: { 'Accept': 'application/json' }
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
         });
-        if (res.ok) {
+        const data = await res.json();
+        if (res.ok && data.ok) {
             document.getElementById('firma-panel').classList.add('hidden');
             document.getElementById('firma-ok').classList.remove('hidden');
             document.getElementById('ok-fecha').textContent =
