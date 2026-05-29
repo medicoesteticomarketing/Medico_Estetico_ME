@@ -512,8 +512,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// ── 13. QUITAR FONDO BLANCO — foto diagnóstico ────────────────────────────────
-// Carga la imagen via fetch() (evita CORS), elimina píxeles blancos con Canvas
+// ── 13. QUITAR FONDO — foto diagnóstico ──────────────────────────────────────
+// Detecta el color de fondo muestreando las 4 esquinas y lo elimina con fade
 (async function () {
     const img = document.getElementById('foto-diagnostico');
     if (!img) return;
@@ -525,27 +525,40 @@ document.addEventListener('DOMContentLoaded', () => {
         const bmp  = await createImageBitmap(blob);
 
         const canvas = document.createElement('canvas');
-        canvas.width  = bmp.width;
-        canvas.height = bmp.height;
+        const w = canvas.width  = bmp.width;
+        const h = canvas.height = bmp.height;
         const ctx = canvas.getContext('2d');
         ctx.drawImage(bmp, 0, 0);
 
-        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const data = imageData.data;
-        const UMBRAL = 240; // píxeles con blancura >= UMBRAL → transparentes
+        const imageData = ctx.getImageData(0, 0, w, h);
+        const d = imageData.data;
 
-        for (let i = 0; i < data.length; i += 4) {
-            const r = data[i], g = data[i + 1], b = data[i + 2];
-            const blancura = Math.min(r, g, b);
-            if (blancura >= UMBRAL) {
-                // Fade suave: UMBRAL=opaco, 255=transparente
-                data[i + 3] = Math.round(255 * (255 - blancura) / (255 - UMBRAL));
+        // Función helper: color de un píxel (x, y)
+        const px = (x, y) => { const i = (y * w + x) * 4; return [d[i], d[i+1], d[i+2]]; };
+
+        // Detectar color de fondo promediando las 4 esquinas
+        const corners = [px(0,0), px(w-1,0), px(0,h-1), px(w-1,h-1)];
+        const bgR = Math.round(corners.reduce((s,c) => s+c[0], 0) / 4);
+        const bgG = Math.round(corners.reduce((s,c) => s+c[1], 0) / 4);
+        const bgB = Math.round(corners.reduce((s,c) => s+c[2], 0) / 4);
+
+        const TOLERANCIA = 40; // distancia máxima al color de fondo para eliminar
+
+        for (let i = 0; i < d.length; i += 4) {
+            const dist = Math.sqrt(
+                (d[i]   - bgR) ** 2 +
+                (d[i+1] - bgG) ** 2 +
+                (d[i+2] - bgB) ** 2
+            );
+            if (dist < TOLERANCIA) {
+                // Fade suave: más cerca al fondo → más transparente
+                d[i+3] = Math.round(255 * dist / TOLERANCIA);
             }
         }
 
         ctx.putImageData(imageData, 0, 0);
         img.src = canvas.toDataURL('image/png');
     } catch (e) {
-        console.warn('Error quitando fondo blanco:', e);
+        console.warn('Error quitando fondo:', e);
     }
 })();
