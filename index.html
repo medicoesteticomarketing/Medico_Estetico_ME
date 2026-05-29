@@ -251,7 +251,6 @@
                         <h3 class="cert-title">Diseño y Promoción de Marca Personal</h3>
                         <p class="cert-authority">AVALADO POR LA RED DE ESTÁNDARES DE COMPETENCIA CONOCER DEL GOBIERNO DE MÉXICO.</p>
                         <p class="cert-desc">En el sector estético, los pacientes no solo eligen un tratamiento — eligen a quién se lo confían. Esta certificación respalda la construcción de tu autoridad digital para que seas la primera opción en tu ciudad.</p>
-                        <a href="https://wa.me/524425500232?text=Hola%20Fernanda%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20tu%20certificaci%C3%B3n%20EC1474" target="_blank" rel="noopener noreferrer" class="cert-link">Certificación Oficial →</a>
                     </div>
                 </div>
 
@@ -265,11 +264,19 @@
                         <h3 class="cert-title">Implementación de Estrategias de Mercadotecnia Digital</h3>
                         <p class="cert-authority">AVALADO POR LA RED DE ESTÁNDARES DE COMPETENCIA CONOCER DEL GOBIERNO DE MÉXICO.</p>
                         <p class="cert-desc">Certificación que garantiza la ejecución correcta de campañas pagadas, segmentación de audiencias por perfil de paciente estético y medición real del costo por lead y ROAS de cada peso invertido.</p>
-                        <a href="https://wa.me/524425500232?text=Hola%20Fernanda%2C%20quiero%20conocer%20m%C3%A1s%20sobre%20tu%20certificaci%C3%B3n%20EC1621" target="_blank" rel="noopener noreferrer" class="cert-link">Certificación Oficial →</a>
                     </div>
                 </div>
 
             </div>
+
+            <!-- Botón único de certificaciones -->
+            <div class="text-center mt-10 fade-in-up">
+                <button type="button" id="open-cert-btn"
+                        class="inline-flex items-center gap-2 cert-link">
+                    🏅 Ver Certificaciones Oficiales
+                </button>
+            </div>
+
         </div>
     </section>
 
@@ -965,6 +972,21 @@
             <p class="modal-skip-wrap">
                 <button id="modal-skip" class="modal-skip-btn">No, prefiero pagar precio completo</button>
             </p>
+        </div>
+    </div>
+
+
+    <!-- ░░ CERT MODAL: Certificaciones Oficiales ░░ -->
+    <div id="cert-modal" class="modal-overlay" role="dialog" aria-modal="true"
+         aria-labelledby="cert-modal-title" hidden>
+        <div class="modal-glass" style="max-width:620px;">
+            <button id="cert-modal-close" class="modal-close" aria-label="Cerrar certificaciones">✕</button>
+            <h2 id="cert-modal-title" class="text-xl font-black text-brand-secondary mb-2 uppercase text-center">Certificaciones Oficiales</h2>
+            <p class="text-gray-500 text-sm mb-5 text-center">Avaladas por el Gobierno de México — RED CONOCER EC1474 &amp; EC1621</p>
+            <img src="assets/img/fer_certificados.webp"
+                 alt="Certificaciones oficiales de Fernanda Torres — EC1474 y EC1621 avaladas por CONOCER"
+                 class="w-full rounded-2xl shadow-lg"
+                 loading="lazy">
         </div>
     </div>
 
