@@ -432,26 +432,26 @@
     <!-- ░░ LEAD CAPTURE FORM — DIAGNÓSTICO ░░ -->
     <section id="diagnostico" class="py-24 bg-white relative overflow-hidden" aria-labelledby="form-heading">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="rounded-[2.5rem] relative overflow-hidden shadow-2xl" style="background:#0a0a0a;">
+            <div class="grid lg:grid-cols-[2fr_5fr] items-end gap-8">
 
-                <!-- Orbs de fondo -->
-                <div class="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none" style="background:rgba(255,255,255,0.04);" aria-hidden="true"></div>
-                <div class="absolute bottom-0 left-0 w-72 h-72 rounded-full blur-3xl pointer-events-none" style="background:rgba(255,255,255,0.02);" aria-hidden="true"></div>
+                <!-- FOTO — izquierda, fuera de la caja -->
+                <div class="hidden lg:block">
+                    <img src="assets/img/perfil_lateral.webp"
+                         id="foto-diagnostico"
+                         alt="Fernanda Torres — Especialista en Marketing Médico Estético"
+                         class="w-full object-contain object-bottom"
+                         loading="lazy" width="400" height="700">
+                </div>
 
-                <!-- Layout: foto izquierda | contenido derecha -->
-                <div class="grid lg:grid-cols-[2fr_5fr] items-stretch relative z-10">
+                <!-- CAJA DIAGNÓSTICO — derecha -->
+                <div class="rounded-[2.5rem] relative overflow-hidden shadow-2xl" style="background:#0a0a0a;">
 
-                    <!-- FOTO -->
-                    <div class="hidden lg:block">
-                        <img src="assets/img/perfil_lateral.webp"
-                             id="foto-diagnostico"
-                             alt="Fernanda Torres — Especialista en Marketing Médico Estético"
-                             class="w-full h-full object-cover object-center"
-                             loading="lazy" width="400" height="700">
-                    </div>
+                    <!-- Orbs de fondo -->
+                    <div class="absolute top-0 right-0 w-96 h-96 rounded-full blur-3xl pointer-events-none" style="background:rgba(255,255,255,0.04);" aria-hidden="true"></div>
+                    <div class="absolute bottom-0 left-0 w-72 h-72 rounded-full blur-3xl pointer-events-none" style="background:rgba(255,255,255,0.02);" aria-hidden="true"></div>
 
                     <!-- CONTENIDO (form + bot) -->
-                    <div class="p-8 md:p-14">
+                    <div class="p-8 md:p-14 relative z-10">
                         <div class="grid lg:grid-cols-2 gap-12 items-start">
 
                     <!-- Formulario -->
@@ -528,8 +528,9 @@
                         </div><!-- /grid form+bot -->
 
                     </div><!-- /contenido -->
-                </div><!-- /grid foto+contenido -->
-            </div><!-- /card negra -->
+                </div><!-- /card negra -->
+
+            </div><!-- /grid exterior foto+caja -->
         </div>
     </section>
 
