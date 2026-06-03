@@ -1,7 +1,0 @@
-name = "medico-estetico-me"
-compatibility_date = "2024-09-23"
-main = "_worker.js"
-
-[assets]
-directory = "."
-binding = "ASSETS"
