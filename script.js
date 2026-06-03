@@ -91,17 +91,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { once: true });
     };
 
-    // Trigger: when footer enters viewport
-    if (!modalShown && footer && modal) {
-        const footerObs = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    openModal();
-                    footerObs.disconnect();
-                }
-            });
-        }, { threshold: 0.1 });
-        footerObs.observe(footer);
+    // Trigger: 90 segundos en página O 60% de scroll (lo que ocurra primero)
+    if (!modalShown && modal) {
+        // — Trigger 1: temporizador de 90 segundos —
+        const timerTrigger = setTimeout(() => {
+            openModal();
+            window.removeEventListener('scroll', scrollTrigger);
+        }, 90000);
+
+        // — Trigger 2: 60% de scroll —
+        const scrollTrigger = () => {
+            const scrolled = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+            if (scrolled >= 0.60) {
+                openModal();
+                clearTimeout(timerTrigger);
+                window.removeEventListener('scroll', scrollTrigger);
+            }
+        };
+        window.addEventListener('scroll', scrollTrigger, { passive: true });
     }
 
     if (btnClose) btnClose.addEventListener('click', closeModal);
