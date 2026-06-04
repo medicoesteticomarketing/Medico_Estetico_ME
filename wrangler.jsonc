@@ -1,6 +1,7 @@
 {
   "name": "medico-estetico-landing",
   "compatibility_date": "2026-05-29",
+  "main": "_worker.js",
   "assets": {
     "directory": "./"
   },
