@@ -1,6 +1,6 @@
 # MédicoEstético.Marketing — Estado del Proyecto
 
-## Último update: 2026-05-29
+## Último update: 2026-06-04
 
 ---
 
@@ -20,42 +20,40 @@
 - Firma de email Fernanda Torres: `firma_email.html` con PNG + GIF animado Google & Meta
 - Variables de entorno en Cloudflare: `BREVO_KEY_DIAGNOSTICO`, `NOTIFY_EMAIL`, `SITE_URL` ✅
 - Modal conversión: trigger a 90 segundos O 60% de scroll (lo que ocurra primero)
+- `_worker.js` autocontenido (sin imports) con handlers de diagnóstico y cotización ✅
+- Repo transferido a Fer: `medicoesteticomarketing/Medico_Estetico_ME` — Fer es dueña ✅
+- TopBrandMedical es colaborador directo del repo de Fer — push directo sin sync ✅
 
 ## 🔲 Pendiente
-- **CRÍTICO:** Formulario diagnóstico `/api/diagnostico-cliente` regresa 404
-  - Causa: proyecto usa `npx wrangler deploy` (modelo Workers, no Pages)
-  - La carpeta `functions/` solo funciona con Cloudflare Pages
-  - Solución aplicada: se crearon `wrangler.toml` + `_worker.js` pero el build falló
-  - Próximo paso: ver el log completo del error en Cloudflare → "Ver compilación" → "Copiar registro"
-- Probar flujo completo del formulario de diagnóstico end-to-end
+- Verificar que el formulario diagnóstico funciona end-to-end (probar en producción)
+- Verificar que llegan 2 correos: uno a Fer y uno al médico
 - Probar flujo completo de aceptación de cotización
-- Verificar que emails llegan desde `hola@medicoestetico.marketing`
 
 ## ⚠️ Decisiones importantes
-- Repositorio upstream: `topbrandmedical/Medico_Estetico_ME` (aquí se pushea)
-- Fork de Fer: `medicoesteticomarketing/Medico_Estetico_ME` (conectado a Cloudflare)
-- Flujo: push a topbrandmedical → Fer hace "Bifurcación de sincronización" → Cloudflare despliega
+- Repositorio principal: `medicoesteticomarketing/Medico_Estetico_ME` (Fer es dueña)
+- TopBrandMedical es colaborador — pushea directo, sin fork ni sync
+- El proyecto es un **Cloudflare Worker** (NO Pages) — usa `_worker.js` + `wrangler.toml`
+- `_worker.js` debe ser un archivo único autocontenido (sin imports locales)
+- `.assetsignore` excluye `_worker.js` y `wrangler.toml` de los assets estáticos
 - Brevo SMTP: servidor `smtp-relay.brevo.com`, puerto `587`, login `ace300001@smtp-brevo.com`
 - API Key Brevo: guardada como `BREVO_KEY_DIAGNOSTICO` en Cloudflare (nombre en Brevo: "ME - Diagnósticos")
 - Contraseña cotizador: `290514`
 - **NO mezclar nada con la carpeta TOP BRAND MEDICAL** — solo leer como referencia
 
 ## 🎯 Próximo paso
-1. Abrir log completo del build fallido en Cloudflare → copiar el error exacto
-2. Corregir el `wrangler.toml` o `_worker.js` según el error
-3. Hacer push → Fer sincroniza fork → verificar que el deploy pasa
-4. Probar formulario de diagnóstico en `medicoestetico.marketing/solicitud-diagnostico.html`
-5. Verificar que llegan 2 correos: uno a Fer y uno al médico
+1. Probar formulario de diagnóstico en `medicoestetico.marketing/solicitud-diagnostico.html`
+2. Verificar que llegan 2 correos: uno a Fer y uno al médico
+3. Probar flujo completo de aceptación de cotización
 
 ## 📁 Archivos clave
 - `index.html` — landing page principal
 - `solicitud-diagnostico.html` — formulario de diagnóstico gratuito
 - `cotizacion.html` — vista pública de cotización con aceptación
 - `cotizador.html` — generador de cotizaciones (protegido con contraseña)
-- `functions/api/diagnostico-cliente.js` — handler del formulario de diagnóstico
-- `functions/api/aceptar-cotizacion.js` — handler de aceptación de cotización
-- `_worker.js` — entry point del Worker (enruta /api/* a los handlers)
+- `_worker.js` — Worker principal autocontenido (maneja /api/diagnostico-cliente y /api/aceptar-cotizacion)
 - `wrangler.toml` — configuración del Worker de Cloudflare
+- `.assetsignore` — excluye _worker.js y wrangler.toml de assets
+- `functions/api/` — handlers originales (referencia, no se usan en producción)
 - `firma_email.html` — firma de email lista para copiar a Gmail
 - `assets/img/firma_fer_torres.png` — imagen de la firma
 - `assets/img/google_meta_animados.gif` — GIF animado de certificaciones Google & Meta
