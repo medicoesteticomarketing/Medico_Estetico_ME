@@ -16,6 +16,13 @@
       "id": "d4139f6917b34826a64528f313739423"
     }
   ],
+  "d1_databases": [
+    {
+      "binding": "BLOG_DB",
+      "database_name": "content-os-me",
+      "database_id": "438f2d80-4d78-4f55-b014-897b17ef5465"
+    }
+  ],
   "vars": {
     "NOTIFY_EMAIL": "medicoestetico.marketing@gmail.com",
     "SITE_URL": "https://medicoestetico.marketing"

@@ -142,6 +142,374 @@ async function handleObtenerReporte(request, env) {
     return new Response(data, { headers: { ...CORS, 'Content-Type': 'application/json' } });
 }
 
+// ── Blog público (lee D1 binding BLOG_DB, misma base que content-os-me-worker) ─
+// Solo sirve artículos con estado='PUBLISHED'. Fer aprueba en el editor de
+// Content OS (GENERATED→DRAFT→REVIEW→APPROVED→PUBLISHED); esto solo lee el
+// resultado final. No modifica nada de la landing existente (index.html intacto).
+
+const BLOG_SITE = 'https://medicoestetico.marketing';
+const BLOG_BRAND = { primary: '#ff008a' };
+
+function blogEsc(s) {
+    return String(s ?? '')
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+// Solo estos esquemas de URL pueden llegar a un href/src generado desde markdown.
+// Bloquea javascript:, data:, vbscript:, etc. — el resto del contenido siempre
+// pasa por blogEsc() antes de esto, así que esta es la segunda capa de defensa.
+// JSON.stringify no escapa '<', así que un título con "</script>" podría cerrar
+// el <script type="application/ld+json"> anfitrión e inyectar HTML. < lo evita.
+function blogJsonLd(obj) {
+    return JSON.stringify(obj).replace(/</g, '\\u003c');
+}
+
+function blogSafeUrl(url) {
+    const u = String(url || '').trim();
+    if (/^(https?:\/\/|mailto:|tel:|\/|#)/i.test(u)) return u;
+    return null;
+}
+
+// Markdown -> HTML con lista whitelist de bloques (sin dependencias, sin HTML crudo del
+// usuario): H2/H3, listas con/sin orden, negritas/itálicas, enlaces, citas, tablas,
+// imágenes con caption y párrafos. TODO el texto pasa por inline() -> blogEsc() antes
+// de insertarse; solo los patrones reconocidos (**, *, [..](..)) generan tags reales,
+// y esos operan sobre texto YA escapado, así que no hay forma de inyectar HTML crudo.
+function blogMdToHtml(md) {
+    if (!md) return '';
+    const lines = md.replace(/\r\n/g, '\n').split('\n');
+    const blocks = [];
+    let i = 0;
+
+    const inline = t => blogEsc(t)
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/\[(.+?)\]\((.+?)\)/g, (_, txt, href) => {
+            const safe = blogSafeUrl(href);
+            return safe ? `<a href="${blogEsc(safe)}" rel="noopener noreferrer">${txt}</a>` : txt;
+        });
+
+    while (i < lines.length) {
+        const line = lines[i].trim();
+
+        if (!line) { i++; continue; }
+
+        // Imagen (con caption opcional): ![alt](url "caption")
+        const img = line.match(/^!\[(.*?)\]\((\S+)(?:\s+"(.*?)")?\)$/);
+        if (img) {
+            const [, alt, src, caption] = img;
+            const safeSrc = blogSafeUrl(src);
+            if (safeSrc) {
+                blocks.push(`<figure><img src="${blogEsc(safeSrc)}" alt="${blogEsc(alt)}" loading="lazy">${
+                    (caption || alt) ? `<figcaption>${blogEsc(caption || alt)}</figcaption>` : ''
+                }</figure>`);
+            }
+            i++; continue;
+        }
+
+        // Encabezados H2/H3
+        const h = line.match(/^(#{2,3})\s+(.*)$/);
+        if (h) { blocks.push(`<h${h[1].length}>${inline(h[2])}</h${h[1].length}>`); i++; continue; }
+
+        // Cita (>...), agrupa líneas consecutivas
+        if (line.startsWith('>')) {
+            const quoteLines = [];
+            while (i < lines.length && lines[i].trim().startsWith('>')) {
+                quoteLines.push(lines[i].trim().replace(/^>\s?/, ''));
+                i++;
+            }
+            blocks.push(`<blockquote><p>${inline(quoteLines.join(' '))}</p></blockquote>`);
+            continue;
+        }
+
+        // Tabla: fila de cabecera + fila separadora (---|---) + filas de datos
+        if (/^\|.*\|$/.test(line) && lines[i + 1] && /^\|?[\s:|-]+\|?$/.test(lines[i + 1].trim())) {
+            const parseRow = l => l.trim().replace(/^\||\|$/g, '').split('|').map(c => c.trim());
+            const header = parseRow(line);
+            i += 2;
+            const rows = [];
+            while (i < lines.length && /^\|.*\|$/.test(lines[i].trim())) { rows.push(parseRow(lines[i].trim())); i++; }
+            blocks.push(
+                '<table><thead><tr>' + header.map(c => `<th>${inline(c)}</th>`).join('') + '</tr></thead><tbody>' +
+                rows.map(r => '<tr>' + r.map(c => `<td>${inline(c)}</td>`).join('') + '</tr>').join('') +
+                '</tbody></table>'
+            );
+            continue;
+        }
+
+        // Lista ordenada
+        if (/^\d+\.\s+/.test(line)) {
+            const items = [];
+            while (i < lines.length && /^\d+\.\s+/.test(lines[i].trim())) { items.push(lines[i].trim().replace(/^\d+\.\s+/, '')); i++; }
+            blocks.push('<ol>' + items.map(t => `<li>${inline(t)}</li>`).join('') + '</ol>');
+            continue;
+        }
+
+        // Lista no ordenada
+        if (/^[-*]\s+/.test(line)) {
+            const items = [];
+            while (i < lines.length && /^[-*]\s+/.test(lines[i].trim())) { items.push(lines[i].trim().replace(/^[-*]\s+/, '')); i++; }
+            blocks.push('<ul>' + items.map(t => `<li>${inline(t)}</li>`).join('') + '</ul>');
+            continue;
+        }
+
+        // Párrafo: acumula líneas hasta la próxima línea en blanco o bloque especial
+        const paraLines = [];
+        while (i < lines.length && lines[i].trim() &&
+               !/^(#{2,3})\s+/.test(lines[i].trim()) && !lines[i].trim().startsWith('>') &&
+               !/^\|.*\|$/.test(lines[i].trim()) && !/^\d+\.\s+/.test(lines[i].trim()) &&
+               !/^[-*]\s+/.test(lines[i].trim()) && !/^!\[/.test(lines[i].trim())) {
+            paraLines.push(lines[i].trim()); i++;
+        }
+        if (paraLines.length) blocks.push(`<p>${inline(paraLines.join(' '))}</p>`);
+        else i++;
+    }
+
+    return blocks.join('\n');
+}
+
+function blogReadingTime(md) {
+    const words = (md || '').trim().split(/\s+/).filter(Boolean).length;
+    return Math.max(1, Math.round(words / 200));
+}
+
+const BLOG_NEXT_ACTION_LABEL = {
+    cta_contextual: 'Ver más', enlace_interno: 'Leer más', articulo_relacionado: 'Artículo relacionado',
+    articulo_pilar: 'Ver la guía completa', recurso: 'Ver recurso', diagnostico: 'Solicita tu diagnóstico gratuito',
+    servicio: 'Conoce el servicio', whatsapp: 'Escríbenos por WhatsApp'
+};
+
+function blogNextActionHref(post) {
+    if (post.next_action_type === 'whatsapp') {
+        return `https://wa.me/524425500232?text=${encodeURIComponent('Hola Fernanda, leí tu artículo "' + post.titulo + '" y quiero saber más')}`;
+    }
+    if (post.next_action_destino) return post.next_action_destino;
+    if (post.next_action_type === 'diagnostico') return '/#diagnostico';
+    if (post.next_action_type === 'servicio') return '/#servicios';
+    return null;
+}
+
+function blogBaseHead({ title, description, canonical, ogImage }) {
+    return `
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${blogEsc(title)}</title>
+    <meta name="description" content="${blogEsc(description || '')}">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="${blogEsc(canonical)}">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="MédicoEstético.Marketing">
+    <meta property="og:title" content="${blogEsc(title)}">
+    <meta property="og:description" content="${blogEsc(description || '')}">
+    <meta property="og:url" content="${blogEsc(canonical)}">
+    ${ogImage ? `<meta property="og:image" content="${blogEsc(ogImage)}">` : ''}
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,700;12..96,800&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = { theme: { extend: {
+        colors: { brand: { primary: '#ff008a', secondary: '#000000', bg: '#f8f8f8' } },
+        fontFamily: { sans: ['Raleway','sans-serif'], display: ['Bricolage Grotesque','sans-serif'] }
+      } } };
+    </script>
+    <link rel="icon" href="/assets/logo/favicon_de_perfil_me.svg" type="image/svg+xml">
+    <style>
+      .prose-blog { color: #262626; line-height: 1.75; }
+      .prose-blog h2 { font-size: 1.5rem; font-weight: 900; margin: 2rem 0 0.75rem; color: #0a0a0a; }
+      .prose-blog h3 { font-size: 1.2rem; font-weight: 800; margin: 1.5rem 0 0.5rem; color: #0a0a0a; }
+      .prose-blog p { margin: 0 0 1rem; }
+      .prose-blog ul, .prose-blog ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+      .prose-blog li { margin-bottom: 0.35rem; }
+      .prose-blog ul { list-style: disc; }
+      .prose-blog ol { list-style: decimal; }
+      .prose-blog a { color: #ff008a; font-weight: 600; text-decoration: underline; }
+      .prose-blog strong { font-weight: 800; color: #0a0a0a; }
+      .prose-blog blockquote { border-left: 4px solid #ff008a; padding: 0.25rem 1.25rem; margin: 1.5rem 0; color: #555; font-style: italic; background: #FDF6F3; border-radius: 0 0.75rem 0.75rem 0; }
+      .prose-blog blockquote p { margin: 0; }
+      .prose-blog table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.9rem; }
+      .prose-blog th, .prose-blog td { border: 1px solid #eee; padding: 0.6rem 0.8rem; text-align: left; }
+      .prose-blog th { background: #FDF6F3; font-weight: 800; color: #0a0a0a; }
+      .prose-blog figure { margin: 1.5rem 0; }
+      .prose-blog figure img { width: 100%; border-radius: 1rem; display: block; }
+      .prose-blog figcaption { font-size: 0.8rem; color: #999; text-align: center; margin-top: 0.5rem; }
+    </style>`;
+}
+
+// Header/footer ligeros del blog — mismo lenguaje visual que la landing, sin tocar
+// la navbar bloqueada de index.html (plantilla nueva, independiente).
+function blogHeader() {
+    return `
+    <header class="border-b border-gray-100 bg-white/95 backdrop-blur-md sticky top-0 z-40">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+            <a href="/" class="flex items-center" aria-label="Inicio MédicoEstético.Marketing">
+                <img src="/assets/logo/logo_me_original.svg" alt="MédicoEstético.Marketing" class="h-10 w-auto object-contain">
+            </a>
+            <a href="/#diagnostico" class="hidden sm:inline-block text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full text-white" style="background:${BLOG_BRAND.primary}">Diagnóstico gratuito</a>
+        </div>
+    </header>`;
+}
+
+function blogFooter() {
+    return `
+    <footer class="border-t border-gray-100 mt-20 py-10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p class="text-gray-400 text-xs font-bold uppercase tracking-widest">&copy; 2026 MédicoEstético.Marketing</p>
+            <a href="/" class="text-xs font-black uppercase tracking-widest" style="color:${BLOG_BRAND.primary}">Volver al inicio →</a>
+        </div>
+    </footer>`;
+}
+
+async function renderBlogIndex(env, url) {
+    const db = env.BLOG_DB;
+    const catSlug = url.searchParams.get('categoria');
+
+    const cats = (await db.prepare("SELECT * FROM blog_categories WHERE activa=1 ORDER BY orden, nombre").all()).results;
+    let cat = null;
+    if (catSlug) cat = cats.find(c => c.slug === catSlug) || null;
+
+    const sql = cat
+        ? "SELECT * FROM blog_posts WHERE estado='PUBLISHED' AND category_id=? ORDER BY fecha_publicacion DESC"
+        : "SELECT * FROM blog_posts WHERE estado='PUBLISHED' ORDER BY fecha_publicacion DESC";
+    const stmt = cat ? db.prepare(sql).bind(cat.id) : db.prepare(sql);
+    const posts = (await stmt.all()).results;
+
+    const catNombre = Object.fromEntries(cats.map(c => [c.id, c.nombre]));
+    const canonical = BLOG_SITE + '/blog/' + (catSlug ? '?categoria=' + encodeURIComponent(catSlug) : '');
+
+    const cards = posts.length ? posts.map(p => `
+        <article class="border border-gray-100 rounded-[1.5rem] p-6 hover:shadow-lg transition-shadow">
+            <span class="text-xs font-black uppercase tracking-widest" style="color:${BLOG_BRAND.primary}">${blogEsc(catNombre[p.category_id] || '')}</span>
+            <h2 class="text-xl font-black mt-2 mb-2 text-brand-secondary"><a href="/blog/${blogEsc(p.slug)}/" class="hover:underline">${blogEsc(p.titulo)}</a></h2>
+            ${p.dek ? `<p class="text-gray-500 text-sm mb-3">${blogEsc(p.dek)}</p>` : ''}
+            <div class="text-xs text-gray-400 font-bold uppercase tracking-wide">${p.fecha_publicacion ? new Date(p.fecha_publicacion).toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' }) : ''} · ${blogReadingTime(p.cuerpo_md)} min de lectura</div>
+        </article>`).join('\n')
+        : `<p class="text-gray-400 text-sm">Todavía no hay artículos publicados en esta categoría.</p>`;
+
+    const catFilters = cats.map(c => `<a href="/blog/${c.slug === catSlug ? '' : '?categoria=' + encodeURIComponent(c.slug)}" class="px-3 py-1.5 rounded-full text-xs font-black uppercase tracking-wide border ${c.slug === catSlug ? 'text-white' : 'text-gray-500 border-gray-200'}" style="${c.slug === catSlug ? `background:${BLOG_BRAND.primary};border-color:${BLOG_BRAND.primary}` : ''}">${blogEsc(c.nombre)}</a>`).join('');
+
+    const html = `<!doctype html><html lang="es"><head>${blogBaseHead({
+        title: cat ? `${cat.nombre} — Blog de MédicoEstético.Marketing` : 'Blog — MédicoEstético.Marketing',
+        description: 'Recursos, estrategia y autoridad digital para médicos y clínicas estéticas.',
+        canonical
+    })}</head>
+    <body class="bg-white text-brand-secondary font-sans antialiased">
+        ${blogHeader()}
+        <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="mb-10">
+                <span class="text-sm font-black uppercase tracking-widest" style="color:${BLOG_BRAND.primary}">Centro de conocimiento</span>
+                <h1 class="text-4xl lg:text-5xl font-display font-black mt-2 mb-4">Blog</h1>
+                <p class="text-gray-500 max-w-xl">Recursos para hacer crecer tu práctica: captación de pacientes, publicidad médica, SEO y regulación — sin genéricos, sin relleno.</p>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-10">
+                <a href="/blog/" class="px-3 py-1.5 rounded-full text-xs font-black uppercase tracking-wide border ${!catSlug ? 'text-white' : 'text-gray-500 border-gray-200'}" style="${!catSlug ? `background:${BLOG_BRAND.primary};border-color:${BLOG_BRAND.primary}` : ''}">Todas</a>
+                ${catFilters}
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">${cards}</div>
+        </main>
+        ${blogFooter()}
+    </body></html>`;
+
+    return new Response(html, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+}
+
+async function renderBlogPost(env, slug) {
+    const db = env.BLOG_DB;
+    const post = await db.prepare("SELECT * FROM blog_posts WHERE slug=? AND estado='PUBLISHED'").bind(slug).first();
+    if (!post) return new Response('Artículo no encontrado', { status: 404 });
+
+    const category = post.category_id ? await db.prepare("SELECT * FROM blog_categories WHERE id=?").bind(post.category_id).first() : null;
+    const pilar = post.pilar_post_id ? await db.prepare("SELECT slug, titulo FROM blog_posts WHERE id=? AND estado='PUBLISHED'").bind(post.pilar_post_id).first() : null;
+
+    const relacionados = (await db.prepare(
+        `SELECT slug, titulo, dek FROM blog_posts
+         WHERE estado='PUBLISHED' AND id<>? AND (cluster_id=? OR category_id=?)
+         ORDER BY fecha_publicacion DESC LIMIT 3`
+    ).bind(post.id, post.cluster_id || -1, post.category_id || -1).all()).results;
+
+    const canonical = `${BLOG_SITE}/blog/${post.slug}/`;
+    const nextHref = blogNextActionHref(post);
+    const nextLabel = BLOG_NEXT_ACTION_LABEL[post.next_action_type] || null;
+
+    const jsonLd = {
+        '@context': 'https://schema.org', '@type': 'Article',
+        headline: post.titulo, description: post.meta_description || post.dek || '',
+        author: { '@type': 'Person', name: 'Fernanda Torres' },
+        publisher: { '@type': 'Organization', name: 'MédicoEstético.Marketing' },
+        datePublished: post.fecha_publicacion, dateModified: post.updated_at, mainEntityOfPage: canonical
+    };
+    const breadcrumbLd = {
+        '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+        itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Inicio', item: BLOG_SITE + '/' },
+            { '@type': 'ListItem', position: 2, name: 'Blog', item: BLOG_SITE + '/blog/' },
+            { '@type': 'ListItem', position: 3, name: post.titulo, item: canonical }
+        ]
+    };
+
+    const html = `<!doctype html><html lang="es"><head>${blogBaseHead({
+        title: post.meta_title || post.titulo, description: post.meta_description || post.dek || '',
+        canonical, ogImage: post.imagen_hero
+    })}
+    <script type="application/ld+json">${blogJsonLd(jsonLd)}</script>
+    <script type="application/ld+json">${blogJsonLd(breadcrumbLd)}</script>
+    </head>
+    <body class="bg-white text-brand-secondary font-sans antialiased">
+        ${blogHeader()}
+        <main class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <nav class="text-xs text-gray-400 font-bold uppercase tracking-widest mb-6" aria-label="Breadcrumb">
+                <a href="/" class="hover:underline">Inicio</a> / <a href="/blog/" class="hover:underline">Blog</a> / ${category ? blogEsc(category.nombre) : ''}
+            </nav>
+            <span class="text-sm font-black uppercase tracking-widest" style="color:${BLOG_BRAND.primary}">${category ? blogEsc(category.nombre) : ''}</span>
+            <h1 class="text-3xl lg:text-4xl font-display font-black mt-2 mb-3 leading-tight">${blogEsc(post.titulo)}</h1>
+            ${post.dek ? `<p class="text-lg text-gray-500 mb-4">${blogEsc(post.dek)}</p>` : ''}
+            <div class="text-xs text-gray-400 font-bold uppercase tracking-wide mb-10">${post.fecha_publicacion ? new Date(post.fecha_publicacion).toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' }) : ''} · ${blogReadingTime(post.cuerpo_md)} min de lectura</div>
+
+            <article class="prose-blog max-w-none">${blogMdToHtml(post.cuerpo_md)}</article>
+
+            ${nextHref && nextLabel ? `
+            <div class="mt-12 p-6 rounded-[1.5rem] border border-gray-100" style="background:#FDF6F3">
+                ${post.next_action_texto ? `<p class="font-bold mb-3">${blogEsc(post.next_action_texto)}</p>` : ''}
+                <a href="${blogEsc(nextHref)}" ${/^https?:/.test(nextHref) ? 'target="_blank" rel="noopener noreferrer"' : ''} class="inline-block text-sm font-black uppercase tracking-widest px-5 py-3 rounded-full text-white" style="background:${BLOG_BRAND.primary}">${blogEsc(nextLabel)} →</a>
+            </div>` : ''}
+
+            ${pilar ? `<p class="mt-10 text-sm"><a href="/blog/${blogEsc(pilar.slug)}/" class="font-bold" style="color:${BLOG_BRAND.primary}">← Ver la guía completa: ${blogEsc(pilar.titulo)}</a></p>` : ''}
+
+            ${relacionados.length ? `
+            <div class="mt-16 pt-10 border-t border-gray-100">
+                <h2 class="text-sm font-black uppercase tracking-widest text-gray-400 mb-6">Artículos relacionados</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                    ${relacionados.map(r => `<a href="/blog/${blogEsc(r.slug)}/" class="block p-4 rounded-2xl border border-gray-100 hover:shadow-md transition-shadow">
+                        <p class="font-bold text-sm mb-1">${blogEsc(r.titulo)}</p>
+                        ${r.dek ? `<p class="text-xs text-gray-400">${blogEsc(r.dek)}</p>` : ''}
+                    </a>`).join('')}
+                </div>
+            </div>` : ''}
+        </main>
+        ${blogFooter()}
+    </body></html>`;
+
+    return new Response(html, { headers: { 'Content-Type': 'text/html; charset=utf-8' } });
+}
+
+async function renderBlogSitemap(env) {
+    const db = env.BLOG_DB;
+    const posts = (await db.prepare("SELECT slug, updated_at FROM blog_posts WHERE estado='PUBLISHED'").all()).results;
+    const urls = [
+        `<url><loc>${BLOG_SITE}/blog/</loc><changefreq>daily</changefreq></url>`,
+        ...posts.map(p => `<url><loc>${BLOG_SITE}/blog/${blogEsc(p.slug)}/</loc><lastmod>${(p.updated_at || '').slice(0, 10)}</lastmod></url>`)
+    ].join('\n');
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`;
+    return new Response(xml, { headers: { 'Content-Type': 'application/xml; charset=utf-8' } });
+}
+
+function renderRobotsTxt() {
+    const txt = `User-agent: *\nAllow: /\n\nSitemap: ${BLOG_SITE}/sitemap-blog.xml\n`;
+    return new Response(txt, { headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
+}
+
 // ── Router principal ──────────────────────────────────────────────────────────
 export default {
     async fetch(request, env, ctx) {
@@ -152,6 +520,12 @@ export default {
         if (path === '/api/aceptar-cotizacion')   return handleAceptarCotizacion(request, env);
         if (path === '/api/guardar-reporte')       return handleGuardarReporte(request, env);
         if (path === '/api/obtener-reporte')       return handleObtenerReporte(request, env);
+
+        if (path === '/blog' || path === '/blog/')       return renderBlogIndex(env, url);
+        const mPost = path.match(/^\/blog\/([a-z0-9-]+)\/?$/);
+        if (mPost)                                        return renderBlogPost(env, mPost[1]);
+        if (path === '/sitemap-blog.xml')                 return renderBlogSitemap(env);
+        if (path === '/robots.txt')                        return renderRobotsTxt();
 
         // Para todo lo demás, servir archivos estáticos
         return env.ASSETS.fetch(request);
