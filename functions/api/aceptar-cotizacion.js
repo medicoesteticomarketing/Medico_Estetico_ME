@@ -1,4 +1,4 @@
-// Cloudflare Workers Function — Aceptación de cotización (médico estético)
+﻿// Cloudflare Workers Function — Aceptación de cotización (médico estético)
 // Variables de entorno requeridas: BREVO_KEY_DIAGNOSTICO, NOTIFY_EMAIL, SITE_URL
 
 const CORS = {
@@ -85,14 +85,14 @@ export async function onRequest(context) {
                         <div style="background:#fff0f8;border-left:4px solid #ff008a;padding:16px;border-radius:0 8px 8px 0;margin:0 0 24px;">
                             <p style="margin:0;color:#cc0070;font-weight:bold;font-size:14px;">¿Tienes alguna pregunta?</p>
                             <p style="margin:8px 0 0;color:#555;font-size:13px;">Escríbenos directamente por WhatsApp:</p>
-                            <a href="https://wa.me/524425500232" style="color:#ff008a;font-weight:bold;font-size:14px;">+52 442 550 0232</a>
+                            <a href="https://wa.me/523329683200" style="color:#ff008a;font-weight:bold;font-size:14px;">+52 33 2968 3200</a>
                         </div>
                         <p style="color:#666;font-size:14px;margin:0 0 4px;">Atentamente,</p>
                         <p style="color:#333;font-size:14px;margin:0;"><strong>Fernanda Torres</strong><br>Especialista en Marketing para Medicina Estética<br>MédicoEstético.Marketing</p>
                         <hr style="border:none;border-top:1px solid #eee;margin:24px 0;">
                         <p style="color:#aaa;font-size:11px;margin:0;">
                             <a href="${siteUrl}" style="color:#ff008a;">medicoestetico.marketing</a> ·
-                            hola@medicoestetico.marketing · +52 442 550 0232
+                            hola@medicoestetico.marketing · +52 33 2968 3200
                         </p>
                     </div>
                 </div>

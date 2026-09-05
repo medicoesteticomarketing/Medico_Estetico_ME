@@ -1,4 +1,4 @@
-/**
+﻿/**
  * MédicoEstético.Marketing — Cloudflare Worker
  * Enruta /api/* a los handlers correspondientes
  */
@@ -59,7 +59,7 @@ async function handleDiagnosticoCliente(request, env) {
         await enviarEmail(env, {
             to: email,
             subject: `${nombreCorto}, tu Diagnóstico Estético Digital está en preparación 💖`,
-            html: `<div style="font-family:sans-serif;max-width:600px;margin:auto;"><div style="background:#0a0a0a;padding:20px 24px;border-radius:12px 12px 0 0;text-align:center;"><span style="color:#ff008a;font-size:18px;font-weight:900;letter-spacing:0.06em;">MédicoEstético.Marketing</span></div><div style="background:#fff;padding:32px 28px;border-radius:0 0 12px 12px;border:1px solid #eee;"><h2 style="color:#0a0a0a;margin:0 0 12px;">¡Perfecto, ${nombreCorto}!</h2><p style="color:#444;font-size:15px;line-height:1.6;margin:0 0 12px;">Hemos recibido toda la información necesaria para preparar tu <strong>Diagnóstico de Autoridad Estética Digital 360°</strong>.</p><p style="color:#444;font-size:15px;line-height:1.6;margin:0 0 20px;">Nuestro equipo lo analizará y recibirás tu diagnóstico personalizado en las próximas <strong>24 horas hábiles</strong>.</p><div style="background:#fff0f8;border-left:4px solid #ff008a;padding:16px;border-radius:0 8px 8px 0;margin:0 0 24px;"><p style="margin:0;color:#cc0070;font-weight:bold;font-size:14px;">¿Tienes alguna pregunta?</p><p style="margin:8px 0 0;color:#555;font-size:13px;">Escríbenos directamente por WhatsApp:</p><a href="https://wa.me/524425500232" style="color:#ff008a;font-weight:bold;font-size:14px;">+52 442 550 0232</a></div><p style="color:#666;font-size:14px;margin:0 0 4px;">Atentamente,</p><p style="color:#333;font-size:14px;margin:0;"><strong>Fernanda Torres</strong><br>Especialista en Marketing para Medicina Estética<br>MédicoEstético.Marketing</p><hr style="border:none;border-top:1px solid #eee;margin:24px 0;"><p style="color:#aaa;font-size:11px;margin:0;"><a href="${siteUrl}" style="color:#ff008a;">medicoestetico.marketing</a> · hola@medicoestetico.marketing · +52 442 550 0232</p></div></div>`
+            html: `<div style="font-family:sans-serif;max-width:600px;margin:auto;"><div style="background:#0a0a0a;padding:20px 24px;border-radius:12px 12px 0 0;text-align:center;"><span style="color:#ff008a;font-size:18px;font-weight:900;letter-spacing:0.06em;">MédicoEstético.Marketing</span></div><div style="background:#fff;padding:32px 28px;border-radius:0 0 12px 12px;border:1px solid #eee;"><h2 style="color:#0a0a0a;margin:0 0 12px;">¡Perfecto, ${nombreCorto}!</h2><p style="color:#444;font-size:15px;line-height:1.6;margin:0 0 12px;">Hemos recibido toda la información necesaria para preparar tu <strong>Diagnóstico de Autoridad Estética Digital 360°</strong>.</p><p style="color:#444;font-size:15px;line-height:1.6;margin:0 0 20px;">Nuestro equipo lo analizará y recibirás tu diagnóstico personalizado en las próximas <strong>24 horas hábiles</strong>.</p><div style="background:#fff0f8;border-left:4px solid #ff008a;padding:16px;border-radius:0 8px 8px 0;margin:0 0 24px;"><p style="margin:0;color:#cc0070;font-weight:bold;font-size:14px;">¿Tienes alguna pregunta?</p><p style="margin:8px 0 0;color:#555;font-size:13px;">Escríbenos directamente por WhatsApp:</p><a href="https://wa.me/523329683200" style="color:#ff008a;font-weight:bold;font-size:14px;">+52 33 2968 3200</a></div><p style="color:#666;font-size:14px;margin:0 0 4px;">Atentamente,</p><p style="color:#333;font-size:14px;margin:0;"><strong>Fernanda Torres</strong><br>Especialista en Marketing para Medicina Estética<br>MédicoEstético.Marketing</p><hr style="border:none;border-top:1px solid #eee;margin:24px 0;"><p style="color:#aaa;font-size:11px;margin:0;"><a href="${siteUrl}" style="color:#ff008a;">medicoestetico.marketing</a> · hola@medicoestetico.marketing · +52 33 2968 3200</p></div></div>`
         });
     }
 
@@ -89,7 +89,7 @@ async function handleAceptarCotizacion(request, env) {
         await enviarEmail(env, {
             to: email,
             subject: `✅ Confirmación: aceptaste la cotización ${folio} — MédicoEstético.Marketing`,
-            html: `<div style="font-family:sans-serif;max-width:600px;margin:auto;"><div style="background:#0a0a0a;padding:20px 24px;border-radius:12px 12px 0 0;text-align:center;"><span style="color:#ff008a;font-size:18px;font-weight:900;letter-spacing:0.06em;">MédicoEstético.Marketing</span></div><div style="background:#fff;padding:32px 28px;border-radius:0 0 12px 12px;border:1px solid #eee;"><h2 style="color:#0a0a0a;margin:0 0 12px;">¡Excelente decisión, ${nombreCorto}!</h2><p style="color:#444;font-size:15px;line-height:1.6;margin:0 0 12px;">Hemos registrado tu aceptación de la cotización <strong>${folio}</strong> por un total de <strong style="color:#ff008a;">${total}</strong>.</p><p style="color:#444;font-size:15px;line-height:1.6;margin:0 0 20px;">Nuestro equipo se pondrá en contacto contigo a la brevedad para coordinar los próximos pasos e iniciar los servicios contratados.</p><div style="background:#fff0f8;border-left:4px solid #ff008a;padding:16px;border-radius:0 8px 8px 0;margin:0 0 24px;"><p style="margin:0;color:#cc0070;font-weight:bold;font-size:14px;">¿Tienes alguna pregunta?</p><p style="margin:8px 0 0;color:#555;font-size:13px;">Escríbenos directamente por WhatsApp:</p><a href="https://wa.me/524425500232" style="color:#ff008a;font-weight:bold;font-size:14px;">+52 442 550 0232</a></div><p style="color:#666;font-size:14px;margin:0 0 4px;">Atentamente,</p><p style="color:#333;font-size:14px;margin:0;"><strong>Fernanda Torres</strong><br>Especialista en Marketing para Medicina Estética<br>MédicoEstético.Marketing</p><hr style="border:none;border-top:1px solid #eee;margin:24px 0;"><p style="color:#aaa;font-size:11px;margin:0;"><a href="${siteUrl}" style="color:#ff008a;">medicoestetico.marketing</a> · hola@medicoestetico.marketing · +52 442 550 0232</p></div></div>`
+            html: `<div style="font-family:sans-serif;max-width:600px;margin:auto;"><div style="background:#0a0a0a;padding:20px 24px;border-radius:12px 12px 0 0;text-align:center;"><span style="color:#ff008a;font-size:18px;font-weight:900;letter-spacing:0.06em;">MédicoEstético.Marketing</span></div><div style="background:#fff;padding:32px 28px;border-radius:0 0 12px 12px;border:1px solid #eee;"><h2 style="color:#0a0a0a;margin:0 0 12px;">¡Excelente decisión, ${nombreCorto}!</h2><p style="color:#444;font-size:15px;line-height:1.6;margin:0 0 12px;">Hemos registrado tu aceptación de la cotización <strong>${folio}</strong> por un total de <strong style="color:#ff008a;">${total}</strong>.</p><p style="color:#444;font-size:15px;line-height:1.6;margin:0 0 20px;">Nuestro equipo se pondrá en contacto contigo a la brevedad para coordinar los próximos pasos e iniciar los servicios contratados.</p><div style="background:#fff0f8;border-left:4px solid #ff008a;padding:16px;border-radius:0 8px 8px 0;margin:0 0 24px;"><p style="margin:0;color:#cc0070;font-weight:bold;font-size:14px;">¿Tienes alguna pregunta?</p><p style="margin:8px 0 0;color:#555;font-size:13px;">Escríbenos directamente por WhatsApp:</p><a href="https://wa.me/523329683200" style="color:#ff008a;font-weight:bold;font-size:14px;">+52 33 2968 3200</a></div><p style="color:#666;font-size:14px;margin:0 0 4px;">Atentamente,</p><p style="color:#333;font-size:14px;margin:0;"><strong>Fernanda Torres</strong><br>Especialista en Marketing para Medicina Estética<br>MédicoEstético.Marketing</p><hr style="border:none;border-top:1px solid #eee;margin:24px 0;"><p style="color:#aaa;font-size:11px;margin:0;"><a href="${siteUrl}" style="color:#ff008a;">medicoestetico.marketing</a> · hola@medicoestetico.marketing · +52 33 2968 3200</p></div></div>`
         });
     }
 
@@ -176,24 +176,65 @@ function blogSafeUrl(url) {
 // imágenes con caption y párrafos. TODO el texto pasa por inline() -> blogEsc() antes
 // de insertarse; solo los patrones reconocidos (**, *, [..](..)) generan tags reales,
 // y esos operan sobre texto YA escapado, así que no hay forma de inyectar HTML crudo.
-function blogMdToHtml(md) {
-    if (!md) return '';
-    const lines = md.replace(/\r\n/g, '\n').split('\n');
+// El editor de Content OS inserta este marcador literal dentro de cuerpo_md junto a
+// afirmaciones sin verificar (ver MARCADOR en content-os-me-worker/src/services/verify.js).
+// Es una anotación interna para el flujo editorial (Fer), nunca contenido para el lector
+// público — el render del blog debe eliminarla sin tocar el resto del texto ni el dato
+// almacenado en D1 (hechos_pendientes_json sigue intacto para Content OS).
+const BLOG_INTERNAL_MARKERS = [/\s*\[pendiente de verificar\]/gi];
+
+function blogStripInternalMarkers(md) {
+    if (!md) return md;
+    return BLOG_INTERNAL_MARKERS.reduce((t, re) => t.replace(re, ''), md);
+}
+
+// Bloques editoriales: estructura controlada, exactamente 4 variantes con
+// función editorial propia (no decorativas). Un tipo fuera de esta lista
+// (alucinado por la IA o mal escrito a mano) NUNCA se muestra como bloque —
+// degrada a contenido normal, sin exponer el fence ":::" al lector.
+const BLOG_CALLOUT_META = {
+    accent: { icon: '💡', label: 'Idea clave' },
+    highlight: { icon: '📌', label: 'Dato destacado' },
+    tip: { icon: '✅', label: 'Recomendación' },
+    warning: { icon: '⚠️', label: 'Importante' }
+};
+
+const blogInline = t => blogEsc(t)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/\[(.+?)\]\((.+?)\)/g, (_, txt, href) => {
+        const safe = blogSafeUrl(href);
+        return safe ? `<a href="${blogEsc(safe)}" rel="noopener noreferrer">${txt}</a>` : txt;
+    });
+
+// Parser de bloques, extraído para poder llamarse recursivamente sobre el
+// contenido interno de un ":::tipo ... :::" (así una cita, lista o párrafo
+// dentro de un bloque editorial se renderiza con las mismas reglas que el
+// resto del artículo — reutiliza, no duplica el parser).
+function blogParseBlocks(lines) {
     const blocks = [];
     let i = 0;
-
-    const inline = t => blogEsc(t)
-        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.+?)\*/g, '<em>$1</em>')
-        .replace(/\[(.+?)\]\((.+?)\)/g, (_, txt, href) => {
-            const safe = blogSafeUrl(href);
-            return safe ? `<a href="${blogEsc(safe)}" rel="noopener noreferrer">${txt}</a>` : txt;
-        });
 
     while (i < lines.length) {
         const line = lines[i].trim();
 
         if (!line) { i++; continue; }
+
+        // Bloque editorial: :::tipo ... :::
+        const fence = line.match(/^:::(\w+)\s*$/);
+        if (fence) {
+            const tipo = fence[1].toLowerCase();
+            i++;
+            const innerLines = [];
+            while (i < lines.length && lines[i].trim() !== ':::') { innerLines.push(lines[i]); i++; }
+            if (i < lines.length) i++; // consume el ":::" de cierre, si existe
+            const innerHtml = blogParseBlocks(innerLines).join('\n');
+            const meta = BLOG_CALLOUT_META[tipo];
+            blocks.push(meta
+                ? `<div class="callout callout-${tipo}"><span class="callout-label">${meta.icon} ${blogEsc(meta.label)}</span>${innerHtml}</div>`
+                : innerHtml); // tipo no reconocido: contenido normal, sin wrapper ni fence visible
+            continue;
+        }
 
         // Imagen (con caption opcional): ![alt](url "caption")
         const img = line.match(/^!\[(.*?)\]\((\S+)(?:\s+"(.*?)")?\)$/);
@@ -210,7 +251,7 @@ function blogMdToHtml(md) {
 
         // Encabezados H2/H3
         const h = line.match(/^(#{2,3})\s+(.*)$/);
-        if (h) { blocks.push(`<h${h[1].length}>${inline(h[2])}</h${h[1].length}>`); i++; continue; }
+        if (h) { blocks.push(`<h${h[1].length}>${blogInline(h[2])}</h${h[1].length}>`); i++; continue; }
 
         // Cita (>...), agrupa líneas consecutivas
         if (line.startsWith('>')) {
@@ -219,7 +260,7 @@ function blogMdToHtml(md) {
                 quoteLines.push(lines[i].trim().replace(/^>\s?/, ''));
                 i++;
             }
-            blocks.push(`<blockquote><p>${inline(quoteLines.join(' '))}</p></blockquote>`);
+            blocks.push(`<blockquote><p>${blogInline(quoteLines.join(' '))}</p></blockquote>`);
             continue;
         }
 
@@ -231,8 +272,8 @@ function blogMdToHtml(md) {
             const rows = [];
             while (i < lines.length && /^\|.*\|$/.test(lines[i].trim())) { rows.push(parseRow(lines[i].trim())); i++; }
             blocks.push(
-                '<table><thead><tr>' + header.map(c => `<th>${inline(c)}</th>`).join('') + '</tr></thead><tbody>' +
-                rows.map(r => '<tr>' + r.map(c => `<td>${inline(c)}</td>`).join('') + '</tr>').join('') +
+                '<table><thead><tr>' + header.map(c => `<th>${blogInline(c)}</th>`).join('') + '</tr></thead><tbody>' +
+                rows.map(r => '<tr>' + r.map(c => `<td>${blogInline(c)}</td>`).join('') + '</tr>').join('') +
                 '</tbody></table>'
             );
             continue;
@@ -242,7 +283,7 @@ function blogMdToHtml(md) {
         if (/^\d+\.\s+/.test(line)) {
             const items = [];
             while (i < lines.length && /^\d+\.\s+/.test(lines[i].trim())) { items.push(lines[i].trim().replace(/^\d+\.\s+/, '')); i++; }
-            blocks.push('<ol>' + items.map(t => `<li>${inline(t)}</li>`).join('') + '</ol>');
+            blocks.push('<ol>' + items.map(t => `<li>${blogInline(t)}</li>`).join('') + '</ol>');
             continue;
         }
 
@@ -250,7 +291,7 @@ function blogMdToHtml(md) {
         if (/^[-*]\s+/.test(line)) {
             const items = [];
             while (i < lines.length && /^[-*]\s+/.test(lines[i].trim())) { items.push(lines[i].trim().replace(/^[-*]\s+/, '')); i++; }
-            blocks.push('<ul>' + items.map(t => `<li>${inline(t)}</li>`).join('') + '</ul>');
+            blocks.push('<ul>' + items.map(t => `<li>${blogInline(t)}</li>`).join('') + '</ul>');
             continue;
         }
 
@@ -259,14 +300,21 @@ function blogMdToHtml(md) {
         while (i < lines.length && lines[i].trim() &&
                !/^(#{2,3})\s+/.test(lines[i].trim()) && !lines[i].trim().startsWith('>') &&
                !/^\|.*\|$/.test(lines[i].trim()) && !/^\d+\.\s+/.test(lines[i].trim()) &&
-               !/^[-*]\s+/.test(lines[i].trim()) && !/^!\[/.test(lines[i].trim())) {
+               !/^[-*]\s+/.test(lines[i].trim()) && !/^!\[/.test(lines[i].trim()) && !/^:::/.test(lines[i].trim())) {
             paraLines.push(lines[i].trim()); i++;
         }
-        if (paraLines.length) blocks.push(`<p>${inline(paraLines.join(' '))}</p>`);
+        if (paraLines.length) blocks.push(`<p>${blogInline(paraLines.join(' '))}</p>`);
         else i++;
     }
 
-    return blocks.join('\n');
+    return blocks;
+}
+
+function blogMdToHtml(md) {
+    if (!md) return '';
+    md = blogStripInternalMarkers(md);
+    const lines = md.replace(/\r\n/g, '\n').split('\n');
+    return blogParseBlocks(lines).join('\n');
 }
 
 function blogReadingTime(md) {
@@ -282,7 +330,7 @@ const BLOG_NEXT_ACTION_LABEL = {
 
 function blogNextActionHref(post) {
     if (post.next_action_type === 'whatsapp') {
-        return `https://wa.me/524425500232?text=${encodeURIComponent('Hola Fernanda, leí tu artículo "' + post.titulo + '" y quiero saber más')}`;
+        return `https://wa.me/523329683200?text=${encodeURIComponent('Hola Fernanda, leí tu artículo "' + post.titulo + '" y quiero saber más')}`;
     }
     if (post.next_action_destino) return post.next_action_destino;
     if (post.next_action_type === 'diagnostico') return '/#diagnostico';
@@ -335,6 +383,20 @@ function blogBaseHead({ title, description, canonical, ogImage }) {
       .prose-blog figure { margin: 1.5rem 0; }
       .prose-blog figure img { width: 100%; border-radius: 1rem; display: block; }
       .prose-blog figcaption { font-size: 0.8rem; color: #999; text-align: center; margin-top: 0.5rem; }
+      .hero-blog { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 1.25rem; display: block; margin: 1.25rem 0 2rem; }
+      .card-hero { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 1rem; display: block; margin-bottom: 0.75rem; }
+      .prose-blog .callout { border-left: 4px solid; border-radius: 0 1rem 1rem 0; padding: 1rem 1.25rem; margin: 1.5rem 0; }
+      .prose-blog .callout p { margin: 0.4rem 0 0; }
+      .prose-blog .callout p:first-of-type { margin-top: 0.4rem; }
+      .prose-blog .callout-label { display: block; font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; }
+      .prose-blog .callout-accent { border-color: #ff008a; background: #FDF0F7; }
+      .prose-blog .callout-accent .callout-label { color: #ff008a; }
+      .prose-blog .callout-highlight { border-color: #f5a623; background: #FFF8E9; }
+      .prose-blog .callout-highlight .callout-label { color: #b8860b; }
+      .prose-blog .callout-tip { border-color: #2e9e5b; background: #EAFAF0; }
+      .prose-blog .callout-tip .callout-label { color: #1e7a44; }
+      .prose-blog .callout-warning { border-color: #d64545; background: #FDECEA; }
+      .prose-blog .callout-warning .callout-label { color: #b13030; }
     </style>`;
 }
 
@@ -381,6 +443,7 @@ async function renderBlogIndex(env, url) {
 
     const cards = posts.length ? posts.map(p => `
         <article class="border border-gray-100 rounded-[1.5rem] p-6 hover:shadow-lg transition-shadow">
+            ${p.imagen_hero ? `<img src="${blogEsc(p.imagen_hero)}" alt="${blogEsc(p.titulo)}" class="card-hero" loading="lazy" onerror="this.remove()">` : ''}
             <span class="text-xs font-black uppercase tracking-widest" style="color:${BLOG_BRAND.primary}">${blogEsc(catNombre[p.category_id] || '')}</span>
             <h2 class="text-xl font-black mt-2 mb-2 text-brand-secondary"><a href="/blog/${blogEsc(p.slug)}/" class="hover:underline">${blogEsc(p.titulo)}</a></h2>
             ${p.dek ? `<p class="text-gray-500 text-sm mb-3">${blogEsc(p.dek)}</p>` : ''}
@@ -432,6 +495,31 @@ async function renderBlogPost(env, slug) {
     const canonical = `${BLOG_SITE}/blog/${post.slug}/`;
     const nextHref = blogNextActionHref(post);
     const nextLabel = BLOG_NEXT_ACTION_LABEL[post.next_action_type] || null;
+    const ctaHtml = (nextHref && nextLabel) ? `
+            <div class="mt-12 p-6 rounded-[1.5rem] border border-gray-100" style="background:#FDF6F3">
+                ${post.next_action_texto ? `<p class="font-bold mb-3">${blogEsc(post.next_action_texto)}</p>` : ''}
+                <a href="${blogEsc(nextHref)}" ${/^https?:/.test(nextHref) ? 'target="_blank" rel="noopener noreferrer"' : ''} class="inline-block text-sm font-black uppercase tracking-widest px-5 py-3 rounded-full text-white" style="background:${BLOG_BRAND.primary}">${blogEsc(nextLabel)} →</a>
+            </div>` : '';
+
+    // CTA contextual (Fase 5, punto 3): por defecto (next_action_posicion NULL
+    // o fuera de rango) el CTA va al final — comportamiento idéntico al de
+    // siempre. Solo con una posición válida se parte el cuerpo en dos mitades
+    // y el MISMO bloque de CTA (sin cambiar su markup) queda entre ellas.
+    const bodyBlocks = blogParseBlocks(blogStripInternalMarkers(post.cuerpo_md || '').replace(/\r\n/g, '\n').split('\n'));
+    let articleHtml = null, ctaAlFinal = ctaHtml;
+    if (ctaHtml && Number.isInteger(post.next_action_posicion)) {
+        const headingIdx = [];
+        bodyBlocks.forEach((b, i) => { if (/^<h[23]>/.test(b)) headingIdx.push(i); });
+        const n = post.next_action_posicion;
+        if (n >= 0 && n < headingIdx.length) {
+            const insertAt = n + 1 < headingIdx.length ? headingIdx[n + 1] : bodyBlocks.length;
+            const before = bodyBlocks.slice(0, insertAt).join('\n');
+            const after = bodyBlocks.slice(insertAt).join('\n');
+            articleHtml = `<article class="prose-blog max-w-none">${before}</article>${ctaHtml}${after ? `<article class="prose-blog max-w-none">${after}</article>` : ''}`;
+            ctaAlFinal = ''; // ya insertado a mitad de artículo, no repetirlo al final
+        }
+    }
+    if (!articleHtml) articleHtml = `<article class="prose-blog max-w-none">${bodyBlocks.join('\n')}</article>`;
 
     const jsonLd = {
         '@context': 'https://schema.org', '@type': 'Article',
@@ -465,15 +553,12 @@ async function renderBlogPost(env, slug) {
             <span class="text-sm font-black uppercase tracking-widest" style="color:${BLOG_BRAND.primary}">${category ? blogEsc(category.nombre) : ''}</span>
             <h1 class="text-3xl lg:text-4xl font-display font-black mt-2 mb-3 leading-tight">${blogEsc(post.titulo)}</h1>
             ${post.dek ? `<p class="text-lg text-gray-500 mb-4">${blogEsc(post.dek)}</p>` : ''}
-            <div class="text-xs text-gray-400 font-bold uppercase tracking-wide mb-10">${post.fecha_publicacion ? new Date(post.fecha_publicacion).toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' }) : ''} · ${blogReadingTime(post.cuerpo_md)} min de lectura</div>
+            <div class="text-xs text-gray-400 font-bold uppercase tracking-wide mb-6">${post.fecha_publicacion ? new Date(post.fecha_publicacion).toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' }) : ''} · ${blogReadingTime(post.cuerpo_md)} min de lectura</div>
+            ${post.imagen_hero ? `<img src="${blogEsc(post.imagen_hero)}" alt="${blogEsc(post.titulo)}" class="hero-blog" onerror="this.remove()">` : ''}
 
-            <article class="prose-blog max-w-none">${blogMdToHtml(post.cuerpo_md)}</article>
+            ${articleHtml}
 
-            ${nextHref && nextLabel ? `
-            <div class="mt-12 p-6 rounded-[1.5rem] border border-gray-100" style="background:#FDF6F3">
-                ${post.next_action_texto ? `<p class="font-bold mb-3">${blogEsc(post.next_action_texto)}</p>` : ''}
-                <a href="${blogEsc(nextHref)}" ${/^https?:/.test(nextHref) ? 'target="_blank" rel="noopener noreferrer"' : ''} class="inline-block text-sm font-black uppercase tracking-widest px-5 py-3 rounded-full text-white" style="background:${BLOG_BRAND.primary}">${blogEsc(nextLabel)} →</a>
-            </div>` : ''}
+            ${ctaAlFinal}
 
             ${pilar ? `<p class="mt-10 text-sm"><a href="/blog/${blogEsc(pilar.slug)}/" class="font-bold" style="color:${BLOG_BRAND.primary}">← Ver la guía completa: ${blogEsc(pilar.titulo)}</a></p>` : ''}
 

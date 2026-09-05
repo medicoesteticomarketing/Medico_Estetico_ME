@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -624,7 +624,7 @@ function compartirEmail() {
     const folio   = document.getElementById('pub-folio').textContent;
     const email   = document.getElementById('f-email').value.trim();
     const subject = encodeURIComponent(`Su Diagnóstico Estético Digital 360° está listo — ${folio}`);
-    const body    = encodeURIComponent(`Hola ${nombre},\n\nSu Diagnóstico de Autoridad Estética Digital 360° (${folio}) ya está disponible:\n\n${link}\n\nPuede abrirlo desde cualquier dispositivo e imprimirlo como PDF. Al final del reporte encontrará el botón para solicitar su cotización personalizada.\n\nQuedo a sus órdenes para cualquier pregunta.\n\nAtentamente,\nFernanda Torres\nMédicoEstético.Marketing\nhola@medicoestetico.marketing\n+52 442 550 0232`);
+    const body    = encodeURIComponent(`Hola ${nombre},\n\nSu Diagnóstico de Autoridad Estética Digital 360° (${folio}) ya está disponible:\n\n${link}\n\nPuede abrirlo desde cualquier dispositivo e imprimirlo como PDF. Al final del reporte encontrará el botón para solicitar su cotización personalizada.\n\nQuedo a sus órdenes para cualquier pregunta.\n\nAtentamente,\nFernanda Torres\nMédicoEstético.Marketing\nhola@medicoestetico.marketing\n+52 33 2968 3200`);
     window.open(`mailto:${email}?subject=${subject}&body=${body}`, '_blank');
 }
 
